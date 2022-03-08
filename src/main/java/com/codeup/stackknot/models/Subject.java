@@ -5,7 +5,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "sets")
+@Table(name = "subjects")
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
