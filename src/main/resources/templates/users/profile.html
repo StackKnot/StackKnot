@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${user.username}"></title>
 </head>
 <body>
+<div th:include="partials/navbar :: navbar"></div>
+<div>
 
+    <h3 th:text="${user.username}"></h3>
+    <h3 th:text="${user.firstName}"></h3>
+    <h3 th:text="${user.lastName}"></h3>
+    <h3 th:text="${user.email}"></h3>
+
+    <div th:each="set : ${sets}">
+        <h2 th:text="${set.title}" ></h2>
+        <p th:text="${set.description}"></p>
+    </div>
+
+</div>
 
 </body>
 </html>
