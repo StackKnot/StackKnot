@@ -1,5 +1,5 @@
 package com.codeup.stackknot.repositories;
-package com.codeup.stackknot.models.Whiteboard;
+import com.codeup.stackknot.models.Whiteboard;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

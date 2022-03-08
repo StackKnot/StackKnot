@@ -1,5 +1,5 @@
 package com.codeup.stackknot.repositories;
-package com.codeup.stackknot.models.Card;
+import com.codeup.stackknot.models.Card;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

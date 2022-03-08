@@ -5,6 +5,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user_set_prog")
 public class UserSetProg {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
@@ -22,6 +27,14 @@ public class UserSetProg {
         this.user = user;
         this.set = set;
         this.progression = progression;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public User getUser() {
