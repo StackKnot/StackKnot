@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form th:action="@{/card/{id}/delete(id = ${card.getId()})}" th:method="POST" th:object="${card}">
+<form th:action="@{/cards/{id}/delete(id = ${card.getId()})}" th:method="POST" th:object="${card}">
     <div class="form-group">
         <label for="question">Question</label>
         <input type="text" class="form-control" id="question" name="question" th:field="*{question}">
