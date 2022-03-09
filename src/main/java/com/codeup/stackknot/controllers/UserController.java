@@ -67,9 +67,15 @@ public class UserController {
     }
 
     @PostMapping("/profile/{id}/edit")
-    public String submitEdit(@ModelAttribute User user) {
-        usersDao.save(user);
-        return "redirect:/login";
+    public String submitEdit(@ModelAttribute User changes) {
+        User userToEdit = usersDao.getById(changes.getId());
+
+        userToEdit.setUsername(changes.getUsername());
+        userToEdit.setEmail(changes.getEmail());
+        userToEdit.setFirstName(changes.getFirstName());
+        userToEdit.setLastName(changes.getLastName());
+        usersDao.save(userToEdit);
+        return "redirect:/profile/" + userToEdit.getUsername();
     }
 
 
