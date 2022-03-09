@@ -28,7 +28,15 @@ public class UserController {
         this.setsDao = setsDao;
     }
 
+  // SHOW THE HOMEPAGE
+    @GetMapping("/homepage")
+    public String showHomePage() {
+        return "/homepage";
+    }
+
+
     // LOGIN MAPPING, DOESNT DO MUCH WILL MOVE THIS TO AUTHENTICATION CONTROLLER ONCE WE ARE CLOSER TO FINISHED PRODUCT AND
+
     @GetMapping("/login")
     public String showLoginForm() {
         return "users/login";
