@@ -2,7 +2,7 @@ package com.codeup.stackknot.controllers;
 
 import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.repositories.UserRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

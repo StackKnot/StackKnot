@@ -20,7 +20,7 @@ public class SetController {
     private UserRepository userDao;
     private ProgressionRepository progressionDao;
 
-    public SetController(SetRepository setDao, CardRepository carDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao) {
+    public SetController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao) {
         this.setDao = setDao;
         this.cardDao = cardDao;
         this.subjectDao = subjectDao;
@@ -42,7 +42,7 @@ public class SetController {
         set.setUser(userDao.getById(1L));
         set.setSubject(subjectDao.getById(1L));
         setDao.save(set);
-        return "redirect:cards/create";
+        return "redirect:../cards/create";
 
     }
 
@@ -50,6 +50,7 @@ public class SetController {
     @GetMapping("/sets/{id}")
     public String setById(@PathVariable long id, Model model) {
         model.addAttribute("singleSet", setDao.getById(id));
+        model.addAttribute("cards", cardDao.findAllBySetId(id));
         return "sets/show";
     }
 
