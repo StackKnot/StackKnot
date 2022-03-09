@@ -3,21 +3,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Create Post</title>
+    <title>Create Card</title>
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
     <th:block th:include="/partials/header :: styling"></th:block>
 </head>
 <body>
 
-<form th:action="@{/posts/create}" th:method="POST" th:object="${newPost}">
+<form th:action="@{/cards/create}" th:method="POST" th:object="${newCard}">
     <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title" th:field="*{title}">
+        <label for="question">Term/Question</label>
+        <input type="text" class="form-control" id="question" name="question" th:field="*{question}">
     </div>
 
     <div class="form-group">
-            <label for="body">Body</label>
-        <textarea class="form-control" id="body" rows="5" name="body" th:field="*{body}"></textarea>
+            <label for="answer">Answer</label>
+        <textarea class="form-control" id="answer" rows="5" name="answer" th:field="*{answer}"></textarea>
     </div>
 
     <button type="submit">Submit</button>
