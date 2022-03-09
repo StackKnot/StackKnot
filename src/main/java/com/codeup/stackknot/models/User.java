@@ -52,7 +52,7 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public User(long id, String username, String email, String password, String firstName, String lastName, Boolean isAdmin) {
+    public User(long id, String username, String email, String password, String firstName, String lastName, Boolean isAdmin, List<Set> sets) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -60,6 +60,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.isAdmin = isAdmin;
+        this.sets = sets;
     }
 
     public long getId() {
