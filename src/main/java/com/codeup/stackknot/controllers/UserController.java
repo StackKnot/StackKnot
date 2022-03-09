@@ -5,7 +5,7 @@ import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.repositories.CardRepository;
 import com.codeup.stackknot.repositories.SetRepository;
 import com.codeup.stackknot.repositories.UserRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,24 +28,27 @@ public class UserController {
         this.setsDao = setsDao;
     }
 
-
+    // LOGIN MAPPING, DOESNT DO MUCH WILL MOVE THIS TO AUTHENTICATION CONTROLLER ONCE WE ARE CLOSER TO FINISHED PRODUCT AND
     @GetMapping("/login")
     public String showLoginForm() {
         return "users/login";
     }
 
+
+    //USER REGISTRATION
     @GetMapping("/sign-up")
-    public String showSignupForm(Model model){
+    public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
         return "users/sign-up";
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@ModelAttribute User user) {
         usersDao.save(user);
         return "redirect:/login";
     }
 
+    //INDIVIDUAL PROFILE PAGES, THIS WILL BE LOCKED DOWN LATER WHEN WE ARE ACTUALLY CHECKING AGAINST THE SESSION
     @GetMapping("/profile/{username}")
     public String showProfile(@PathVariable String username, Model model) {
         User user = usersDao.findByUsername(username);
@@ -55,6 +58,19 @@ public class UserController {
         return "users/profile";
     }
 
+    //EDITING OF PROFILE
+    @GetMapping("/profile/{id}/edit")
+    public String showEditForm(@PathVariable long id, Model model) {
+        User user = usersDao.getById(id);
+        model.addAttribute("user", user);
+        return "users/edit";
+    }
+
+    @PostMapping("/profile/{id}/edit")
+    public String submitEdit(@ModelAttribute User user) {
+        usersDao.save(user);
+        return "redirect:/login";
+    }
 
 
 }

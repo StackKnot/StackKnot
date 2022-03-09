@@ -9,12 +9,17 @@
 <div th:include="partials/navbar :: navbar"></div>
 <div>
 
+
+    <form th:action="@{/profile/{id}/edit (id = ${user.getId()})}" th:method="GET"><button type="submit"></button></form>
     <h3 th:text="${user.username}"></h3>
     <h3 th:text="${user.firstName}"></h3>
     <h3 th:text="${user.lastName}"></h3>
     <h3 th:text="${user.email}"></h3>
 
+    
+    
     <div th:each="set : ${sets}">
+        <form action=""></form>
         <h2 th:text="${set.title}" ></h2>
         <p th:text="${set.description}"></p>
     </div>
