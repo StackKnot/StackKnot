@@ -1,0 +1,13 @@
+
+.navbar-brand {
+    display: flex;
+    justify-content: center;
+    height: 90px;
+    width: 50px;
+}
+
+.user-icon {
+    display: flex;
+    height: 50px;
+    width: 50px;
+}
