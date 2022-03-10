@@ -1,6 +1,7 @@
 package com.codeup.stackknot.controllers;
 
 import com.codeup.stackknot.models.Set;
+import com.codeup.stackknot.models.Subject;
 import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.repositories.*;
 //import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class SetController {
@@ -32,15 +35,16 @@ public class SetController {
     @GetMapping("/sets/create")
     public String createSetForm(Model model) {
         model.addAttribute("newSet", new Set());
+        model.addAttribute("subjects", subjectDao.findAll());
         return "sets/create";
     }
 
     @PostMapping("/sets/create")
-    public String createSet(@ModelAttribute Set set) {
+    public String createSet(@ModelAttribute Set set, @ModelAttribute Subject subject) {
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        set.setUser(loggedInUser);
         set.setUser(userDao.getById(1L));
-//        set.setSubject(subjectDao.getById(1L));
+//        set.setSubject(subject);
         setDao.save(set);
         return "redirect:../cards/create";
 
