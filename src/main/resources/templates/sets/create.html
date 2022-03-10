@@ -20,6 +20,14 @@
         <textarea class="form-control" id="description" rows="5" name="description" th:field="*{description}"></textarea>
     </div>
 
+    <div class="form-group">
+        <label for="subject">Subject</label>
+        <select class="form-control" id="subject" th:field="*{subject.id}">
+            <option value="1" th:value="1">Java</option>
+            <option value="2" th:value="2">JavaScript</option>
+        </select>
+    </div>
+
     <button type="submit">Submit</button>
 
 </form>

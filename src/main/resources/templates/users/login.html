@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <title>Log In</title>
+    <th:block th:include="/partials/bootstrap :: styling"></th:block>
 </head>
 <body>
+<div th:include="partials/navbar :: navbar"></div>
+
 <form th:action="@{/login}" method="post">
     <label for="username">Username</label>
     <input id="username" name="username" type="text" />
@@ -12,5 +15,7 @@
     <input id="password" name="password" type="password" />
     <input type="submit" value="Log In" />
 </form>
+
+<th:block th:replace="/partials/header :: scripts"></th:block>
 </body>
 </html>
