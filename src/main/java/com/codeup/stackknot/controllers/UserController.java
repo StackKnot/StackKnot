@@ -20,11 +20,6 @@ public class UserController {
 
     }
 
-    @GetMapping("/homepage")
-    public String showHomePage() {
-        return "/homepage";
-    }
-
     @GetMapping("/login")
     public String showLoginForm() {
         return "users/login";
