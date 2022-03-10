@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--Thymeleaf attribute -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>White Boarding Problems</title>
+    <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <!--    CKEDITOR SCRIPT -->
+    <script src="https://cdn.ckeditor.com/4.17.2/standard-all/ckeditor.js"></script>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+<h3>Question here</h3>
+<label>
+    <textarea name="editor"></textarea>
+</label>
+<div>
+    <input type="submit" value="Get Solution">
+</div>
+
+<div>
+    <img th:src="@{url}">Js</img>
+</div>
+
+
+
+
+<!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
+<th:block th:replace="partials/footer :: styling"></th:block>
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
+<script>
+    CKEDITOR.replace('editor', {
+        height: 260,
+        width: 700,
+        removeButtons: 'PasteFromWord'
+    });
+</script>
+</body>
+</html>
