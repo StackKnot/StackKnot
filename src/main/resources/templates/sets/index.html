@@ -10,7 +10,8 @@
 <div th:replace="/partials/navbar.html :: navbar"></div>
 
 <div th:each="set : ${allSets}">
-    <h2 th:text="${set.getSubject().getTitle()}"></h2>
+<!--I keep getting an error for a null value whenever this one was in just commenting out for testing -->
+<!--    <h2 th:text="${set.getSubject().getTitle()}"></h2>-->
     <h3 th:text="${set.getTitle()}"></h3>
     <p th:text="${set.getDescription()}"></p>
     <p th:text="${set.getUser().getFirstName()}"></p>

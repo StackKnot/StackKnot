@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${user.username}"></title>
+    <th:block th:include="/partials/bootstrap :: styling"></th:block>
 </head>
 <body>
 <div th:include="partials/navbar :: navbar"></div>
 <div>
-
 
     <form th:action="@{/profile/{id}/edit (id = ${user.getId()})}" method="POST" th:object="${user}">
 
@@ -29,8 +29,8 @@
         <button type="submit">submit</button>
     </form>
 
-
 </div>
 
+<th:block th:replace="/partials/header :: scripts"></th:block>
 </body>
 </html>

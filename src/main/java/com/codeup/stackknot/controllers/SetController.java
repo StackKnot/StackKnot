@@ -40,7 +40,7 @@ public class SetController {
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        set.setUser(loggedInUser);
         set.setUser(userDao.getById(1L));
-        set.setSubject(subjectDao.getById(1L));
+//        set.setSubject(subjectDao.getById(1L));
         setDao.save(set);
         return "redirect:../cards/create";
 
