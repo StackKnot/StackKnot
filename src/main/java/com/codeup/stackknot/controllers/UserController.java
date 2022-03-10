@@ -29,8 +29,6 @@ public class UserController {
     }
 
 
-
-
     // LOGIN MAPPING, DOESNT DO MUCH WILL MOVE THIS TO AUTHENTICATION CONTROLLER ONCE WE ARE CLOSER TO FINISHED PRODUCT AND
 
     @GetMapping("/login")

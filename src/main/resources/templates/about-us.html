@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- ... -->
+    </head>
+
+    <th:block th:fragment="styling">
+        <!--    styling fragment includes the stylesheet for Bootstrap-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    </th:block>
+
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <!--    Templating-->
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header.html :: styling"></th:block>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="d-flex justify-content-center">
+<div class="card bg-dark text-white" style="width: 40rem">
+    <img src="https://mdbcdn.b-cdn.net/img/new/slides/017.webp" class="card-img" alt="Stony Beach"/>
+    <div class="card-img-overlay">
+        <h5 class="card-title" style="text-align: center">About StackKnot</h5>
+        <p class="card-text">
+            A way for Software Developers to sharpen their skills. StackKnot allows you to unravel the proverbial knot of full stack software development. We accomplish this by making card sets to study in a flashcard interface or create different kinds of tests to study with. Also, do you dread the whiteboard? We have a section for that!. Set with questions and picture answers for Javascript and Java!
+        </p>
+        <p class="card-text">-dev team</p>
+    </div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 50px">
+<h1>Meet The Developers</h1>
+</div><br><br>
+
+<!--CARDS-->
+<div class="d-flex justify-content-center">
+<div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4">
+    <div class="col">
+        <div class="card" style="width: 15rem; border-width: 10px">
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    This is a longer card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.
+                </p>
+            </div>
+            <div class="card-body">
+                <a href="#" class="card-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="card-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="card-link"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card" style="width: 15rem; border-width: 10px">
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp" class="card-img-top" alt="Palm Springs Road"/>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    This is a longer card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.
+                </p>
+            </div>
+            <div class="card-body">
+                <a href="#" class="card-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="card-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="card-link"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card" style="width: 15rem; border-width: 10px">
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp" class="card-img-top" alt="Los Angeles Skyscrapers"/>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-body">
+                <a href="#" class="card-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="card-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="card-link"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card" style="width: 15rem; border-width: 10px">
+            <img src="/static/img/codeup10-21-0163.jpg" class="card-img-top" alt="Skyscrapers"/>
+            <div class="card-body">
+                <h5 class="card-title">Juan Longoria</h5>
+                <p class="card-text">
+                    Full Stack Developer
+                </p>
+            </div>
+            <div class="card-body">
+                <a href="https://www.linkedin.com/in/juan-longoria-developer" class="card-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/juanlongoria" class="card-link"><i class="fab fa-github"></i></a>
+                <a href="mailto:juan.a.longoria66@gmail.com?subject=User at StackKnot" class="card-link"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<th:block th:fragment="scripts">
+    <!--    scripts fragment includes the js bundle for Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5bdcb73ea0.js" crossorigin="anonymous"></script>
+</th:block>
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
+
+
+</body>
+</html>
