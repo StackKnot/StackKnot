@@ -13,7 +13,13 @@
     <h3><span th:text="${singleSet.getTitle()}"></span></h3>
     <p><span th:text="${singleSet.getDescription()}"></span></p>
 </div>
-<p th:text="${singleSet.getUser().getFirstName()}"></p>
+<div>
+    <ul th:each="card : ${cards}">
+        <li th:text="${card.getQuestion()}"></li>
+        <li th:text="${card.getAnswer()}"></li>
+    </ul>
+</div>
+
 
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="/partials/header :: scripts"></th:block>
