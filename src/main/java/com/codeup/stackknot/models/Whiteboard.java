@@ -1,7 +1,7 @@
 package com.codeup.stackknot.models;
 
 import javax.persistence.*;
-
+import com.cloudinary.StoredFile;
 @Entity
 @Table(name = "whiteboards")
 public class Whiteboard {
@@ -62,4 +62,13 @@ public class Whiteboard {
     public void setJavaURL(String javaURL) {
         this.javaURL = javaURL;
     }
+
+    public StoredFile getUpload() {
+        StoredFile file = new StoredFile();
+        file.setPreloadedFile(jsURL);
+        file.setPreloadedFile(javaURL);
+        return file;
+    }
+
+
 }

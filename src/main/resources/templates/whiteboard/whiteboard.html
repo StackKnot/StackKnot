@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--Thymeleaf attribute -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>White Boarding Problems</title>
+    <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <!--    CKEDITOR SCRIPT -->
+    <script src="https://cdn.ckeditor.com/4.17.2/standard-all/ckeditor.js"></script>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+<h3 th:text="${whiteboard.getQuestion()}"></h3>
+<div>
+    <input type="submit" value="Next Problem" onclick="getNext()"/>
+</div>
+
+<label>
+    <textarea name="editor"></textarea>
+</label>
+<div>
+    <input type="submit" value="Get Solution" onclick="showImage()"/>
+</div>
+
+<div>
+<img id="solutionJava" th:src="${whiteboard.getJavaURL()}" th:target="_blank" alt="Java Solution" style="visibility: hidden"/>
+<img id="solutionJS" th:src="${whiteboard.getJsURL()}" th:target="_blank" alt="JS Solution" style="visibility: hidden"/>
+</div>
+
+<!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
+<th:block th:replace="partials/footer :: styling"></th:block>
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
+<script>
+    CKEDITOR.replace('editor', {
+        height: 260,
+        width: 700,
+        removeButtons: 'PasteFromWord'
+    });
+
+    function showImage() {
+        document.getElementById('solutionJava').style.visibility='visible';
+        document.getElementById('solutionJS').style.visibility='visible';
+    }
+
+    function getNext() {
+        let randomQuestion = Math.floor((Math.random() * 2) + 1);
+        location.replace('/whiteboard/' + randomQuestion)
+    }
+</script>
+</body>
+</html>
