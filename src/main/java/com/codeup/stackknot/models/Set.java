@@ -15,6 +15,14 @@ public class Set {
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "set")
     private List<Card> cards;
+
+    public Set(String title, String description, User user, Subject subject) {
+        this.title = title;
+        this.description = description;
+        this.user = user;
+        this.subject = subject;
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
