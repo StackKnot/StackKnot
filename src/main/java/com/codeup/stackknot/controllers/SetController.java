@@ -70,13 +70,14 @@ public class SetController {
     public String editSetFrom(@PathVariable long id, Model model) {
         Set set = setDao.getById(id);
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User loggedInUser = userDao.getById(1L);
-        if (set.getUser().getId() == loggedInUser.getId()) {
+//        User loggedInUser = userDao.getById(1L);
+//        if (set.getUser().getId() == loggedInUser.getId()) {
             model.addAttribute("set", set);
+            model.addAttribute("subjects", subjectDao.findAll());
             return "sets/edit";
-        } else {
-            return "redirect:/sets";
-        }
+//        } else {
+//            return "redirect:/sets";
+//        }
     }
 
     @PostMapping("/sets/{id}/edit")
@@ -85,7 +86,7 @@ public class SetController {
         User loggedInUser = userDao.getById(1L);
         set.setUser(loggedInUser);
         setDao.save(set);
-        return "redirect:/sets";
+        return "redirect:/sets/{id}";
     }
 
     // DELETE SPECIFIC SET BY ID
