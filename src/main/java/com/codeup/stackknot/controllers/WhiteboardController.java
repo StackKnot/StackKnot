@@ -1,33 +1,58 @@
 package com.codeup.stackknot.controllers;
 
 import com.cloudinary.utils.ObjectUtils;
+import com.codeup.stackknot.models.Whiteboard;
 import com.codeup.stackknot.repositories.UserRepository;
 import com.codeup.stackknot.repositories.WhiteboardRepository;
+import org.cloudinary.json.JSONArray;
+import org.cloudinary.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import com.cloudinary.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Controller
+//@RequestMapping(value="/whiteboard")
 public class WhiteboardController {
+
+
+    @Qualifier("com.cloudinary.cloud_name")
+    String mCloudName;
+
+
+    @Qualifier("com.cloudinary.api_key")
+    String mApiKey;
+
+
+    @Qualifier("com.cloudinary.api_secret")
+    String mApiSecret;
 
     // DEPENDENCY INJECTION
     private UserRepository userDao;
-    private WhiteboardRepository boardDao;
+    private WhiteboardRepository whiteboardDao;
+    private String imageTag;
 
-    // CLOUDINARY CONFIG
+    public WhiteboardController(WhiteboardRepository whiteboardDao) {
+        this.whiteboardDao = whiteboardDao;
+    }
 
-
-    @GetMapping("/whiteboard")
-    public String showEditor(Model model) {
-        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", "smith-gary",
-                "api_key", "883556972268276",
-                "api_secret", "ixEGdvlRBS2RAKCiYWZcQ2340Oc",
-                "secure", true));
-    cloudinary.url().imageTag("boulder.jpg", Cloudinary.asMap("alt", "boulder image"));
-
-        model.addAttribute("url", boardDao.getById(1L).getJavaURL());
+//     SHOW WHITEBOARD SECTION
+    @GetMapping("/whiteboard/{id}")
+    public String showEditor(@PathVariable long id, Model model) {
+        model.addAttribute("whiteboard", whiteboardDao.getById(id));
         return "whiteboard/whiteboard";
     }
 }
