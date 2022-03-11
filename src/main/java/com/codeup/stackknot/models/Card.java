@@ -21,6 +21,12 @@ public class Card {
     public Card() {
     }
 
+    public Card(String question, String answer, Set set) {
+        this.question = question;
+        this.answer = answer;
+        this.set = set;
+    }
+
     public Card(String question, String answer) {
         this.question = question;
         this.answer = answer;

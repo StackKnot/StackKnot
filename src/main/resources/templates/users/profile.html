@@ -20,7 +20,7 @@
     <div th:each="set : ${sets}">
         <h2 th:text="${set.title}" ></h2>
         <p th:text="${set.description}"></p>
-        <form th:action="@{/sets/{id}/edit (id = ${set.getId()})}"><button type="submit">Edit</button></form>
+        <form th:action="@{/sets/{id}(id = ${set.getId()})}"><button type="submit">Edit</button></form>
     </div>
 
 </div>
