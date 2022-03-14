@@ -18,6 +18,7 @@ import com.cloudinary.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -51,9 +52,24 @@ public class WhiteboardController {
     }
 
 //     SHOW WHITEBOARD SECTION
+    @GetMapping("/whiteboard")
+    public String getStartedPage() {
+        whiteboardDao.findAll();
+        return "whiteboard/whiteboardStart";
+    }
+
     @GetMapping("/whiteboard/{id}")
     public String showEditor(@PathVariable long id, Model model) {
         model.addAttribute("whiteboard", whiteboardDao.getById(id));
         return "whiteboard/whiteboard";
     }
+
+    // ADMIN UPLOAD ABILITY
+//    @GetMapping("/whiteboard/upload")
+//    public String uploadSolution(@ModelAttribute SolutionUpload solutionUpload, BindingResult result, ModelMap model) throws IOException {
+//        SolotuionUploadValidator validator = new SolutionUploadValidator();
+//        validator.validate(solutionUpload, result);
+//
+//
+//    }
 }
