@@ -12,15 +12,15 @@ import java.util.concurrent.TimeUnit;
 @SpringBootApplication
 public class StackKnotApplication {
 
-	@Configuration
-	public class WebConfiguration extends WebMvcConfigurationSupport {
-
-		@Override
-		public void addResourceHandlers(ResourceHandlerRegistry registry) {
-			registry.addResourceHandler("/**")
-					.addResourceLocations("classpath:/static/");
-		}
-	}
+//	@Configuration
+//	public class WebConfiguration extends WebMvcConfigurationSupport {
+//
+//		@Override
+//		public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//			registry.addResourceHandler("/**")
+//					.addResourceLocations("classpath:/static/");
+//		}
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(StackKnotApplication.class, args);
