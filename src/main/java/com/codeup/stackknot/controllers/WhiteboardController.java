@@ -8,6 +8,7 @@ import org.cloudinary.json.JSONArray;
 import org.cloudinary.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,15 +30,15 @@ import java.util.Map;
 public class WhiteboardController {
 
 
-    @Qualifier("com.cloudinary.cloud_name")
+    @Value("${COM_CLOUDINARY_CLOUD_NAME}")
     String mCloudName;
 
 
-    @Qualifier("com.cloudinary.api_key")
+    @Value("${COM_CLOUDINARY_API_KEY}")
     String mApiKey;
 
 
-    @Qualifier("com.cloudinary.api_secret")
+    @Value("${COM_CLOUDINARY_API_SECRET}")
     String mApiSecret;
 
     // DEPENDENCY INJECTION
