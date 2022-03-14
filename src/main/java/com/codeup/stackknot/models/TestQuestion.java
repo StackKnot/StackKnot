@@ -5,14 +5,14 @@ public class TestQuestion {
     private String question;
     private String correctAnswer;
     private String wrongAnswer1;
-    private String wronganswer2;
+    private String wrongAnswer2;
     private String wrongAnswer3;
 
-    public TestQuestion(String question, String correctAnswer, String wrongAnswer1, String wronganswer2, String wrongAnswer3) {
+    public TestQuestion(String question, String correctAnswer, String wrongAnswer1, String wrongAnswer2, String wrongAnswer3) {
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.wrongAnswer1 = wrongAnswer1;
-        this.wronganswer2 = wronganswer2;
+        this.wrongAnswer2 = wrongAnswer2;
         this.wrongAnswer3 = wrongAnswer3;
     }
 
@@ -43,12 +43,12 @@ public class TestQuestion {
         this.wrongAnswer1 = wrongAnswer1;
     }
 
-    public String getWronganswer2() {
-        return wronganswer2;
+    public String getWrongAnswer2() {
+        return wrongAnswer2;
     }
 
-    public void setWronganswer2(String wronganswer2) {
-        this.wronganswer2 = wronganswer2;
+    public void setWrongAnswer2(String wrongAnswer2) {
+        this.wrongAnswer2 = wrongAnswer2;
     }
 
     public String getWrongAnswer3() {
