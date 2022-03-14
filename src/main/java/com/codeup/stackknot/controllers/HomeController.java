@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
     @GetMapping("/")
     public String homePage() {
-        return "/homepage";
+        return "homepage";
     }
 
     @GetMapping("/about-us")
     public String showLoginForm() {
-        return "/about-us";
+        return "about-us";
     }
 
 
