@@ -8,3 +8,4 @@ INSERT INTO sets (description, title, subject_id, user_id) VALUES ("test java se
 
 INSERT INTO cards (answer, question, set_id) VALUES ("test java answer", "test java question", 1), ("test javascript answer", "test javascript question", 2);
 
+INSERT INTO whiteboards (javaurl, jsurl, question) VALUES ("https://res.cloudinary.com/smith-gary/image/upload/v1647287764/Screen_Shot_2022-03-14_at_2.55.31_PM_ma6rkd.png", "https://res.cloudinary.com/smith-gary/image/upload/v1647286602/Screen_Shot_2022-03-14_at_2.35.12_PM_lsu5ou.png", "Create function to check whether or not the input string is a Palindrome.");
