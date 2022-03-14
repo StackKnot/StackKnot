@@ -26,28 +26,28 @@ public class TestController {
         this.progressionDao = progressionDao;
     }
 
-    @GetMapping("/tests/{setId}")
-    public String generateTest(@PathVariable long setId) {
-        List<Card>questions = cardDao.findAllBySetId(setId);
-        List<String>answers;
-        List<TestQuestion>testQuestions;
-
-        for (Card question : questions) {
-            answers.add(question.getAnswer());
-        }
-
-        for (Card question : questions ) {
-
-            TestQuestion testQuestion = new TestQuestion();
-
-            testQuestion.setQuestion(question.getQuestion());
-            testQuestion.setCorrectAnswer(question.getAnswer());
-
-
-        }
-
-
-    }
+//    @GetMapping("/tests/{setId}")
+//    public String generateTest(@PathVariable long setId) {
+//        List<Card>questions = cardDao.findAllBySetId(setId);
+//        List<String>answers;
+//        List<TestQuestion>testQuestions;
+//
+//        for (Card question : questions) {
+//            answers.add(question.getAnswer());
+//        }
+//
+//        for (Card question : questions ) {
+//
+//            TestQuestion testQuestion = new TestQuestion();
+//
+//            testQuestion.setQuestion(question.getQuestion());
+//            testQuestion.setCorrectAnswer(question.getAnswer());
+//
+//
+//        }
+//
+//
+//    }
 
 
 
