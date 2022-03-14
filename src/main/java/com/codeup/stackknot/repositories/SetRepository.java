@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface SetRepository extends JpaRepository<Set, Long> {
     List<Set> findAllByUserId(long user_id);
+
+    Set getByTitle(String title);
+
+    Set getByDescription(String description);
 }

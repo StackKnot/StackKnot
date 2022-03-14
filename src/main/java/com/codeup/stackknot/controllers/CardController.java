@@ -27,58 +27,62 @@ public class CardController {
     }
 
     // CREATE CARD
-    @GetMapping("/cards/create")
-    public String createCardForm(Model model) {
-        model.addAttribute("newCard", new Card());
+    @GetMapping("/cards/create/{setId}")
+    public String createCardForm(Model model, @PathVariable long setId) {
+        Card card = new Card();
+        Set set = setDao.getById(setId);
+        card.setSet(set);
+        model.addAttribute("newCard", card);
         return "cards/create";
     }
 
     @PostMapping("/cards/create")
     public String createCard(@ModelAttribute Card card) {
-        card.setSet(setDao.getById(2L));
-        Set id = setDao.getById(2L);
+//        card.setSet(setDao.getById(2L));
+//        Set id = setDao.getById(2L);
         cardDao.save(card);
-        return "redirect:../sets/" + id.getId();
+        return "redirect:../sets/" + card.getSet().getId();
     }
 
     // EDIT CARDS
     @GetMapping("/cards/{id}/edit")
     public String editCardForm(@PathVariable long id, Model model) {
         Card card = cardDao.getById(id);
-        Set correctSet = setDao.getById(2L);
-        if (card.getSet().getId() == correctSet.getId()) {
+//        Set correctSet = setDao.getById(2L);
+//        if (card.getSet().getId() == correctSet.getId()) {
             model.addAttribute("card", card);
             return "cards/edit";
-        } else {
-            return "redirect:../../sets/" + correctSet.getId();
-        }
+//        } else {
+//            return "redirect:../../sets/" + correctSet.getId();
+//        }
     }
 
     @PostMapping("/cards/{id}/edit")
     public String editCard(@ModelAttribute Card card, @PathVariable long id) {
-        Set correctSet = setDao.getById(2L);
-        card.setSet(correctSet);
+//        Set correctSet = setDao.getById(2L);
+//        card.setSet(correctSet);
         cardDao.save(card);
-        return "redirect:../../sets/" + correctSet.getId();
+        return "redirect:../../sets/" + card.getSet().getId();
     }
 
     // DELETE CARD
     @GetMapping("/cards/{id}/delete")
     public String deleteForm(@PathVariable long id, Model model) {
         Card card = cardDao.getById(id);
-        Set correctSet = setDao.getById(2L);
-        if (card.getSet().getId() == correctSet.getId()) {
+//        Set correctSet = setDao.getById(2L);
+//        if (card.getSet().getId() == correctSet.getId()) {
             model.addAttribute("card", card);
             return "cards/delete";
-        } else {
-            return "redirect:../../sets/" + correctSet.getId();
-        }
+//        } else {
+//            return "redirect:../../sets/" + correctSet.getId();
+//        }
     }
 
     @PostMapping("cards/{id}/delete")
-    public String deleteCard(@ModelAttribute Card card, @PathVariable long id) {
+    public String deleteCard(@PathVariable long id) {
+        Card card = cardDao.getById(id);
         cardDao.deleteById(id);
-        Set correctSet = setDao.getById(2L);
-        return  "redirect:../../sets/" + correctSet.getId();
+//        Set correctSet = setDao.getById(2L);
+        return  "redirect:../../sets/" + card.getSet().getId();
     }
 }
