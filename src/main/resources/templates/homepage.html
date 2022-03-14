@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta charset="UTF-8">
     <title>StackKnot Home Page</title>
     <!--    Templating-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header.html :: styling"></th:block>
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
