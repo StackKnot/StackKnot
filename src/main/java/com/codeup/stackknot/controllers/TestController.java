@@ -30,43 +30,44 @@ public class TestController {
     }
 
 
-    public Test generateTest(@PathVariable long setId) {
-        List<Card>questions = cardDao.findAllBySetId(setId);
-        List<String>answers;
-        List<TestQuestion>testQuestions;
-
-        for (Card question : questions) {
-            answers.add(question.getAnswer());
-        }
-
-        for (Card question : questions ) {
-
-            TestQuestion testQuestion = new TestQuestion();
-
-            testQuestion.setQuestion(question.getQuestion());
-            testQuestion.setCorrectAnswer(question.getAnswer());
-
-            do {
-                Collections.shuffle(answers);
-                testQuestion.setWrongAnswer1(answers.get(1));
-                testQuestion.setWrongAnswer2(answers.get(2));
-                testQuestion.setWrongAnswer3(answers.get(3));
-            } while ( testQuestion.getCorrectAnswer().equals(testQuestion.getWrongAnswer1()) || testQuestion.getCorrectAnswer().equals( testQuestion.getWrongAnswer2()) || testQuestion.getCorrectAnswer().equals(testQuestion.getWrongAnswer3())
-            || testQuestion.getWrongAnswer1().equals(testQuestion.getWrongAnswer2()) || testQuestion.getWrongAnswer2().equals(testQuestion.getWrongAnswer3()) || testQuestion.getWrongAnswer1().equals(testQuestion.getWrongAnswer3()));
-
-
-            testQuestions.add(testQuestion);
-        }
-
-        return new Test(testQuestions);
-    }
-
-
-    @GetMapping("/test/{setId}")
-    public String showTest(@PathVariable long setId, Model model) {
-        model.addAttribute("test", generateTest(setId));
-        return "tests/show";
-    }
+//    public Test generateTest(@PathVariable long setId) {
+//        List<Card>questions = cardDao.findAllBySetId(setId);
+//        List<String>answers = new List<String>() {
+//        };
+//        List<TestQuestion>testQuestions = new ;
+//
+//        for (Card question : questions) {
+//            answers.add(question.getAnswer());
+//        }
+//
+//        for (Card question : questions ) {
+//
+//            TestQuestion testQuestion = new TestQuestion();
+//
+//            testQuestion.setQuestion(question.getQuestion());
+//            testQuestion.setCorrectAnswer(question.getAnswer());
+//
+//            do {
+//                Collections.shuffle(answers);
+//                testQuestion.setWrongAnswer1(answers.get(1));
+//                testQuestion.setWrongAnswer2(answers.get(2));
+//                testQuestion.setWrongAnswer3(answers.get(3));
+//            } while ( testQuestion.getCorrectAnswer().equals(testQuestion.getWrongAnswer1()) || testQuestion.getCorrectAnswer().equals( testQuestion.getWrongAnswer2()) || testQuestion.getCorrectAnswer().equals(testQuestion.getWrongAnswer3())
+//            || testQuestion.getWrongAnswer1().equals(testQuestion.getWrongAnswer2()) || testQuestion.getWrongAnswer2().equals(testQuestion.getWrongAnswer3()) || testQuestion.getWrongAnswer1().equals(testQuestion.getWrongAnswer3()));
+//
+//
+//            testQuestions.add(testQuestion);
+//        }
+//
+//        return new Test(testQuestions);
+//    }
+//
+//
+//    @GetMapping("/test/{setId}")
+//    public String showTest(@PathVariable long setId, Model model) {
+//        model.addAttribute("test", generateTest(setId));
+//        return "tests/show";
+//    }
 
 
 
