@@ -15,8 +15,13 @@ public class HomeController {
     }
 
     @GetMapping("/about-us")
-    public String showLoginForm() {
+    public String showAboutUs() {
         return "/about-us";
+    }
+
+    @GetMapping("/contact-form")
+    public String showContactAnExpert() {
+        return "/contact-form";
     }
 
 

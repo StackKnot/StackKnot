@@ -1,0 +1,2 @@
+const SENDGRID_KEY = "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"
+const SENDGRID_API_KEY = "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"

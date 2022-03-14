@@ -5,6 +5,7 @@ import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.repositories.CardRepository;
 import com.codeup.stackknot.repositories.SetRepository;
 import com.codeup.stackknot.repositories.UserRepository;
+import com.codeup.stackknot.services.EmailService;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +21,14 @@ public class UserController {
     private UserRepository usersDao;
     private CardRepository cardsDao;
     private SetRepository setsDao;
+    private final EmailService emailService;
 
 
-    public UserController(UserRepository usersDao, CardRepository cardsDao, SetRepository setsDao) {
+    public UserController(UserRepository usersDao, CardRepository cardsDao, SetRepository setsDao, EmailService emailService) {
         this.usersDao = usersDao;
         this.cardsDao = cardsDao;
         this.setsDao = setsDao;
+        this.emailService = emailService;
     }
 
 
@@ -46,6 +49,7 @@ public class UserController {
 
     @PostMapping("/sign-up")
     public String saveUser(@ModelAttribute User user) {
+        emailService.prepareAndSend(user, "Registration Confirmation", "Welcome To StacKKnot, Thank You For Registering!");
         usersDao.save(user);
         return "redirect:/login";
     }
