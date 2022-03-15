@@ -68,13 +68,13 @@ public class SetController {
     public String editSetFrom(@PathVariable long id, Model model) {
         Set set = setDao.getById(id);
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (set.getUser().getId() == loggedInUser.getId()) {
-            model.addAttribute("set", set);
-            model.addAttribute("subjects", subjectDao.findAll());
+//        if (set.getUser().getId() == loggedInUser.getId()) {
+//            model.addAttribute("set", set);
+//            model.addAttribute("subjects", subjectDao.findAll());
             return "sets/edit";
-        } else {
-            return "redirect:/sets";
-        }
+//        } else {
+//            return "redirect:/sets";
+//        }
     }
 
     @PostMapping("/sets/{id}/edit")
