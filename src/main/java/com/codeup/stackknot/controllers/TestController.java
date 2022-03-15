@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.swing.plaf.basic.BasicDesktopIconUI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,25 +46,36 @@ public class TestController {
             TestQuestion testQuestion = new TestQuestion();
 
             testQuestion.setQuestion(question.getQuestion());
-            testQuestion.setCorrectAnswer(question.getAnswer());
+            testQuestion.setAnswer1(question.getAnswer());
 
             do {
                 Collections.shuffle(answers);
-                testQuestion.setWrongAnswer1(answers.get(1));
-                testQuestion.setWrongAnswer2(answers.get(2));
-                testQuestion.setWrongAnswer3(answers.get(3));
-            } while ( testQuestion.getCorrectAnswer().equals(testQuestion.getWrongAnswer1()) || testQuestion.getCorrectAnswer().equals( testQuestion.getWrongAnswer2()) || testQuestion.getCorrectAnswer().equals(testQuestion.getWrongAnswer3())
-            || testQuestion.getWrongAnswer1().equals(testQuestion.getWrongAnswer2()) || testQuestion.getWrongAnswer2().equals(testQuestion.getWrongAnswer3()) || testQuestion.getWrongAnswer1().equals(testQuestion.getWrongAnswer3()));
+                testQuestion.setAnswer2(answers.get(1));
+                testQuestion.setAnswer3(answers.get(2));
+                testQuestion.setAnswer4(answers.get(3));
+            } while ( testQuestion.getAnswer1().equals(testQuestion.getAnswer2()) || testQuestion.getAnswer1().equals( testQuestion.getAnswer3()) || testQuestion.getAnswer1().equals(testQuestion.getAnswer4())
+            || testQuestion.getAnswer2().equals(testQuestion.getAnswer3()) || testQuestion.getAnswer3().equals(testQuestion.getAnswer4()) || testQuestion.getAnswer2().equals(testQuestion.getAnswer4()));
+
+            List<String> questionAnswers = new ArrayList<>();
+            questionAnswers.add(testQuestion.getAnswer1());
+            questionAnswers.add(testQuestion.getAnswer2());
+            questionAnswers.add(testQuestion.getAnswer3());
+            questionAnswers.add(testQuestion.getAnswer4());
+
+            Collections.shuffle(questionAnswers);
+            testQuestion.setAnswer1(questionAnswers.get(0));
+            testQuestion.setAnswer2(questionAnswers.get(1));
+            testQuestion.setAnswer3(questionAnswers.get(2));
+            testQuestion.setAnswer4(questionAnswers.get(3));
 
 
             testQuestions.add(testQuestion);
         }
-
-        return new Test(testQuestions);
+        Collections.shuffle(testQuestions);
+        return new Test(testQuestions, setId);
     }
 
-
-    @GetMapping("/test/{setId}")
+    @GetMapping("/tests/{setId}")
     public String showTest(@PathVariable long setId, Model model) {
         model.addAttribute("test", generateTest(setId));
         return "tests/show";

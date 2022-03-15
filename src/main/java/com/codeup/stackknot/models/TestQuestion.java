@@ -3,17 +3,17 @@ package com.codeup.stackknot.models;
 public class TestQuestion {
 
     private String question;
-    private String correctAnswer;
-    private String wrongAnswer1;
-    private String wrongAnswer2;
-    private String wrongAnswer3;
+    private String Answer1;
+    private String Answer2;
+    private String Answer3;
+    private String Answer4;
 
-    public TestQuestion(String question, String correctAnswer, String wrongAnswer1, String wrongAnswer2, String wrongAnswer3) {
+    public TestQuestion(String question, String answer1, String answer2, String answer3, String answer4) {
         this.question = question;
-        this.correctAnswer = correctAnswer;
-        this.wrongAnswer1 = wrongAnswer1;
-        this.wrongAnswer2 = wrongAnswer2;
-        this.wrongAnswer3 = wrongAnswer3;
+        Answer1 = answer1;
+        Answer2 = answer2;
+        Answer3 = answer3;
+        Answer4 = answer4;
     }
 
     public TestQuestion() {
@@ -27,35 +27,35 @@ public class TestQuestion {
         this.question = question;
     }
 
-    public String getCorrectAnswer() {
-        return correctAnswer;
+    public String getAnswer1() {
+        return Answer1;
     }
 
-    public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
+    public void setAnswer1(String answer1) {
+        Answer1 = answer1;
     }
 
-    public String getWrongAnswer1() {
-        return wrongAnswer1;
+    public String getAnswer2() {
+        return Answer2;
     }
 
-    public void setWrongAnswer1(String wrongAnswer1) {
-        this.wrongAnswer1 = wrongAnswer1;
+    public void setAnswer2(String answer2) {
+        Answer2 = answer2;
     }
 
-    public String getWrongAnswer2() {
-        return wrongAnswer2;
+    public String getAnswer3() {
+        return Answer3;
     }
 
-    public void setWrongAnswer2(String wrongAnswer2) {
-        this.wrongAnswer2 = wrongAnswer2;
+    public void setAnswer3(String answer3) {
+        Answer3 = answer3;
     }
 
-    public String getWrongAnswer3() {
-        return wrongAnswer3;
+    public String getAnswer4() {
+        return Answer4;
     }
 
-    public void setWrongAnswer3(String wrongAnswer3) {
-        this.wrongAnswer3 = wrongAnswer3;
+    public void setAnswer4(String answer4) {
+        Answer4 = answer4;
     }
 }

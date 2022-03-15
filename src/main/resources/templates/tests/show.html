@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <th:block th:include="/partials/header :: styling"></th:block>
+</head>
+<body>
+<div th:replace="/partials/navbar.html :: navbar"></div>
+
+<div>
+    <form th:action="@{/test/{setId}/edit (setId = ${test.getSetId()})}">
+
+        <div th:each="testquestion : ${test.testQuestions}">
+            <label th:for="${testquestion.question}" th:text="${testquestion.question}"></label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:name="${testquestion.question}" th:value="${testquestion.answer1}" th:id="${testquestion.answer1}" value="option1">
+                <label class="form-check-label" th:for="${testquestion.answer1}" th:text="${testquestion.answer1}"></label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:name="${testquestion.question}" th:value="${testquestion.answer2}" th:id="${testquestion.answer2}" value="option2">
+                <label class="form-check-label" th:for="${testquestion.answer2}" th:text="${testquestion.answer2}"></label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:name="${testquestion.question}" th:value="${testquestion.answer3}" th:id="${testquestion.answer3}" value="option1">
+                <label class="form-check-label" th:for="${testquestion.answer3}" th:text="${testquestion.answer3}"></label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:name="${testquestion.question}" th:value="${testquestion.answer4}" th:id="${testquestion.answer4}" value="option2">
+                <label class="form-check-label" th:for="${testquestion.answer4}" th:text="${testquestion.answer4}"></label>
+            </div>
+
+        </div>
+        <button type="submit">Submit your answers</button>
+    </form>
+</div>
+
+<th:block th:replace="/partials/header :: scripts"></th:block>
+</body>
+</html>
