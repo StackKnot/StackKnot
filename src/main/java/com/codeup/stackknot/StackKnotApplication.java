@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 //import java.util.concurrent.TimeUnit;
+import com.cloudinary.*;
 
 @SpringBootApplication
 public class StackKnotApplication {

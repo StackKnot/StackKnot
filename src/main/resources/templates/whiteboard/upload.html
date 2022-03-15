@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--Thymeleaf attribute -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>White Board Upload</title>
+    <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <!--    CKEDITOR SCRIPT -->
+    <script src="https://cdn.ckeditor.com/4.17.2/standard-all/ckeditor.js"></script>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+<form th:action="@{/whiteboard/upload}" th:method="post" th:object="${newBoard}">
+    <h3><span th:text="Question"></span></h3>
+    <input type="text" id="question" name="question" th:field="*{question}">
+
+    <h3><span th:text="Solutions"></span></h3>
+    <input type="file" id="jsImage" name="jsImage">
+<!--    <input type="file" id="javaImage" name="javaImage">-->
+    <button type="submit">Upload</button>
+</form>
+
+<!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
+<th:block th:replace="partials/footer :: styling"></th:block>
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
+</body>
+</html>

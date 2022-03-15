@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import com.cloudinary.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,7 +32,6 @@ import java.util.Map;
 //@RequestMapping(value="/whiteboard")
 public class WhiteboardController {
 
-
     @Value("${COM_CLOUDINARY_CLOUD_NAME}")
     String mCloudName;
 
@@ -41,6 +42,8 @@ public class WhiteboardController {
 
     @Value("${COM_CLOUDINARY_API_SECRET}")
     String mApiSecret;
+
+
 
     // DEPENDENCY INJECTION
     private UserRepository userDao;
@@ -64,12 +67,33 @@ public class WhiteboardController {
         return "whiteboard/whiteboard";
     }
 
-    // ADMIN UPLOAD ABILITY
-//    @GetMapping("/whiteboard/upload")
-//    public String uploadSolution(@ModelAttribute SolutionUpload solutionUpload, BindingResult result, ModelMap model) throws IOException {
-//        SolotuionUploadValidator validator = new SolutionUploadValidator();
-//        validator.validate(solutionUpload, result);
-//
-//
-//    }
+//     ADMIN UPLOAD ABILITY
+    @GetMapping("/whiteboard/upload")
+    public String uploadSolutionForm(Model model) {
+        model.addAttribute("newBoard", new Whiteboard());
+        return "whiteboard/upload";
+    }
+
+    @PostMapping("/whiteboard/upload")
+    public String uploadSolution(@ModelAttribute Whiteboard whiteboard, @RequestParam(name = "jsImage") File jsImage) throws IOException {
+        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+            "cloud_name", mCloudName,
+            "api_key", mApiKey,
+            "api_secret", mApiSecret,
+            "secure", true
+    ));
+        File fileJs = new File(String.valueOf(jsImage));
+//        File fileJava = new File(String.valueOf(javaImage));
+        Map jsUploadResult = cloudinary.uploader().upload("/desktop/" + fileJs, ObjectUtils.asMap("resources", "auto"));
+//        Map javaUploadResult = cloudinary.uploader().upload(fileJava, ObjectUtils.asMap("resources", "auto"));
+
+//        String javaUrl = (String) javaUploadResult.get("url");
+//        System.out.println(javaUrl);
+        String jsUrl = (String) jsUploadResult.get("url");
+        System.out.println(jsUrl);
+//        whiteboard.setJavaURL(javaUrl);
+        whiteboard.setJsURL(jsUrl);
+        whiteboardDao.save(whiteboard);
+        return "redirect:whiteboard";
+    }
 }
