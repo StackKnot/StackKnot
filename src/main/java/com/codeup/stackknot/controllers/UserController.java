@@ -34,11 +34,11 @@ public class UserController {
 
     // LOGIN MAPPING, DOESNT DO MUCH WILL MOVE THIS TO AUTHENTICATION CONTROLLER ONCE WE ARE CLOSER TO FINISHED PRODUCT AND
 
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "users/login";
-    }
-
+//    @GetMapping("/login")
+//    public String showLoginForm() {
+//        return "users/login";
+//    }
+//
 
     //USER REGISTRATION
     @GetMapping("/sign-up")
