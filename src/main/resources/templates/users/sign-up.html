@@ -12,6 +12,7 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="container">
 <h1>Create An Account</h1>
+
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
     <div class="form-group">
     <label for="username">Username</label>

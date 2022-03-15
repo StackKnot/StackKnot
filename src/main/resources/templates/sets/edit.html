@@ -24,6 +24,13 @@
     <textarea class="form-control" id="description" rows="5" name="description" th:field="*{description}"></textarea>
   </div>
 
+  <div class="form-group">
+  <label for="subject">Subject</label>
+  <select class="form-control" id="subject" th:field="*{subject}">
+    <option  th:each="subject : ${subjects}" th:value="${subject.id}" th:text="${subject.title}" ></option>
+  </select>
+  </div>
+
   <button type="submit">Submit</button>
 
 </form>

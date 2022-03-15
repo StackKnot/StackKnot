@@ -13,7 +13,6 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div>
 
-
     <form th:action="@{/profile/{id}/edit (id = ${user.getId()})}" method="POST" th:object="${user}">
 
         <label for="username">username</label>
@@ -33,11 +32,10 @@
         <button type="submit">submit</button>
     </form>
 
-
 </div>
 
 
-<th:block th:replace="partials/bootstrap :: scripts"></th:block>
 
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
 </body>
 </html>
