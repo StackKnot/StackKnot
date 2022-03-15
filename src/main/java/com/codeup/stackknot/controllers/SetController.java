@@ -46,7 +46,7 @@ public class SetController {
         set.setUser(userDao.getById(1L));
 //        set.setSubject(subject);
         setDao.save(set);
-        return "redirect:../cards/create";
+        return "redirect:../cards/create/" + set.getId();
 
     }
 

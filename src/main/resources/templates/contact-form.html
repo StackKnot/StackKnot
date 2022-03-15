@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- ... -->
+    </head>
+
+    <meta charset="UTF-8">
+    <title>Contact An Expert</title>
+    <!--    Templating-->
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header.html :: styling"></th:block>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="container">
+<h1>Contact An Expert</h1>
+    <form onsubmit="alert('The email successfully sent');return false" th:action="@{/contact-form}" method="POST">
+        <div class="form-group">
+            <label>Name</label><br>
+            <input type="text" class="form-control" name="name" id="name" required>
+        </div>
+        <div class="form-group">
+            <label>Email</label><br>
+            <input type="text" class="form-control" name="email" required>
+        </div>
+        <div class="form-group">
+            <label>Message</label><br>
+            <textarea name="message" class="form-control" cols="30" rows="10" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" th:action="alert">Send Email</button>
+
+    </form>
+</div>
+
+<!--<script>const btn = document.querySelector('button')-->
+<!--const inputs = document.querySelector('form')-->
+
+<!--require('dotenv').config();-->
+<!--const sgMail = require('@sendgrid/mail')-->
+<!--sgMail.setApiKey('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')-->
+
+
+<!--    const msg = {-->
+<!--        to: 'stackknot@gmail.com', // Change to your recipient-->
+<!--        from: 'stackknot@gmail.com', // Change to your verified sender-->
+<!--        subject: "Contact An Expert Inquiry",-->
+<!--        text: inputs.elements["message"].value + "<br>" + inputs.elements["name"].value + "<br>" + inputs.elements["email"].value,-->
+<!--        html: '<strong>and easy to do anywhere, even with Node.js</strong>',-->
+<!--    }-->
+<!--btn.addEventListener('click', () => {-->
+<!--    sgMail-->
+<!--        .send(msg)-->
+<!--        .then(() => {-->
+<!--            console.log('Email sent')-->
+<!--            alert("The email successfully sent")-->
+<!--        })-->
+<!--        .catch((error) => {-->
+<!--            console.error(error)-->
+<!--        })-->
+<!--})</script>-->
+
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
+
+</body>
+</html>

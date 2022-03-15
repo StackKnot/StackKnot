@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--Thymeleaf attribute -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>White Boarding Section</title>
+    <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <!--    CKEDITOR SCRIPT -->
+    <script src="https://cdn.ckeditor.com/4.17.2/standard-all/ckeditor.js"></script>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<p>This is the whiteboarding practice section. Once you click "Get Started" a randomly generated question will appear. Use the text editor to type out your solution in Java, Javascript, or both! Once complete click "Get Solution" to check your answer. Good Luck! </p>
+<div>
+    <input type="submit" value="Get Started" onclick="getNext()"/>
+</div>
+
+<!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
+<th:block th:replace="partials/footer :: styling"></th:block>
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
+<script>
+
+    function getNext() {
+        let randomQuestion = Math.floor((Math.random() * 3) + 1);
+        location.replace('/whiteboard/' + randomQuestion)
+    }
+</script>
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
+</body>
+</html>

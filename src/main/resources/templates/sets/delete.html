@@ -2,12 +2,17 @@
 <!--Thymeleaf attribute -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta charset="UTF-8">
     <title>Delete Set</title>
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
-    <th:block th:include="/partials/header :: styling"></th:block>
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
 </head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
 <form th:action="@{/sets/{id}/delete(id = ${set.getId()})}" th:method="POST" th:object="${set}">
     <div class="form-group">
         <label for="title">Title</label>
@@ -24,8 +29,7 @@
 </form>
 
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
-<th:block th:replace="/partials/header :: scripts"></th:block>
-
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
 
 </body>
 </html>

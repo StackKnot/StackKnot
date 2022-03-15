@@ -19,23 +19,29 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/subjects">Subjects</a>
+                <a class="nav-link" href="subjects/index">Subjects</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Flashcards
+                    Sets
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="cards/create">Create</a>
-                    <a class="dropdown-item" href="cards/edit">Edit</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="cards/delete">Delete</a>
+                    <a class="dropdown-item" href="/sets/create">Create</a>
+<!--                    <a class="dropdown-item" href="cards/edit">Edit</a>-->
+                    <div class="dropdown-divider"></div><!--                    <a class="dropdown-item" href="/sets/index">View all the sets</a>-->
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/whiteboard">Whiteboard</a>
+            </li>
         </ul>
-        <a class="navbar-brand mx-auto" href="/">
-            <img src="/img/stackKnot_Logo1copy.jpg" alt="StackKnot Logo">
+        <div class="LOGO">
+        <a class="navbar-brand" href="/">
+            <div class="logo-image">
+                <img src="/img/stackKnot_Logo1.jpg" class="img-fluid">
+            </div>
         </a>
+        </div>
         <form class="form-inline my-2 my-lg-0 ml-auto">
             <input class="form-control my-2 my-sm-0" type="search" placeholder="Search" aria-label="Search">
             <!--                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
