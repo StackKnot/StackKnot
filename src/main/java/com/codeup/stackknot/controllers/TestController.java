@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,8 +33,8 @@ public class TestController {
 
     public Test generateTest(@PathVariable long setId) {
         List<Card>questions = cardDao.findAllBySetId(setId);
-        List<String>answers;
-        List<TestQuestion>testQuestions;
+        List<String>answers = new ArrayList<>();
+        List<TestQuestion>testQuestions = new ArrayList<>();
 
         for (Card question : questions) {
             answers.add(question.getAnswer());
