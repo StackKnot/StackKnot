@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta charset="UTF-8">
     <title>Home</title>
-    <th:block th:include="/partials/header :: styling"></th:block>
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
 </head>
 <body>
-<div th:replace="/partials/navbar.html :: navbar"></div>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<h1>Subjects Page</h1>
 
 <div th:each="subject : ${subjects}">
     <h2 th:text="${subject.title}"></h2>
@@ -18,6 +24,6 @@
 
 </div>
 
-<th:block th:replace="/partials/header :: scripts"></th:block>
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
 </body>
 </html>

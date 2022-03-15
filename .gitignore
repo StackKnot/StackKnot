@@ -35,3 +35,15 @@ build/
 
 ### APPLICATION PROPERTIES ###
 src/main/resources/application.properties
+
+### KEYS JS ###
+/js/keys.js
+sendgrid.env
+sendgrid.env
+sendgrid.env
+sendgrid.env
+sendgrid.env
+sendgrid.env
+sendgrid.env
+sendgrid.env
+sendgrid.env

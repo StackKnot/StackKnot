@@ -2,12 +2,15 @@
 <!--Thymeleaf attribute -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta charset="UTF-8">
     <title>Set Index</title>
-    <th:block th:include="/partials/header :: styling"></th:block>
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
 </head>
 <body>
-<div th:replace="/partials/navbar.html :: navbar"></div>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
 <div th:each="set : ${allSets}">
 <!--I keep getting an error for a null value whenever this one was in just commenting out for testing -->
@@ -17,6 +20,6 @@
     <p th:text="${set.getUser().getFirstName()}"></p>
 </div>
 
-<th:block th:replace="/partials/header :: scripts"></th:block>
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
 </body>
 </html>

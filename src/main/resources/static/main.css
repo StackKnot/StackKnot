@@ -1,9 +1,44 @@
+/* Very small devices (phones and pocket devices, 300 and up) */
+@media screen and (min-width:300px) { /* ... */
+
+    .LOGO{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* Small devices (phones and pocket devices, 576 and up) */
+@media screen and (min-width:576px) { /* ... */
+
+    .LOGO{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width:768px) { /* ... */ }
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width:992px) { /* ... */ }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width:1200px) { /* ... */ }
+
 
 .navbar-brand {
     display: flex;
     justify-content: center;
     height: 90px;
     width: 50px;
+}
+
+.logo-image{
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -40px;
 }
 
 .user-icon {
