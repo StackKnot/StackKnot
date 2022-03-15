@@ -7,16 +7,18 @@
     <title>StackKnot Home Page</title>
     <!--    Templating-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
-    <th:block th:include="partials/header.html :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <h1>StackKnot Home Page</h1>
 
 
+
+
+
 <th:block th:replace="partials/footer :: styling"></th:block>
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
-
 
 </body>
 </html>

@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta charset="UTF-8">
     <title th:text="${user.username}"></title>
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
+
 </head>
 <body>
-<div th:include="partials/navbar :: navbar"></div>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
 <div>
-
-
     <form th:action="@{/profile/{id}/edit (id = ${user.getId()})}" th:method="GET"><button type="submit"></button></form>
     <h3 th:text="${user.username}"></h3>
     <h3 th:text="${user.firstName}"></h3>
@@ -25,6 +29,8 @@
     </div>
 
 </div>
+
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
 
 </body>
 </html>
