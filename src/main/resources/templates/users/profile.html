@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta charset="UTF-8">
     <title th:text="${user.username}"></title>
-    <th:block th:include="/partials/bootstrap :: styling"></th:block>
-
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
 </head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
-<div th:include="partials/navbar :: navbar"></div>
 <div>
 
     <form th:action="@{/profile/{id}/edit (id = ${user.getId()})}" th:method="GET"><button type="submit"></button></form>
@@ -25,6 +27,7 @@
 
 </div>
 
-<th:block th:replace="/partials/header :: scripts"></th:block>
+
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
 </body>
 </html>
