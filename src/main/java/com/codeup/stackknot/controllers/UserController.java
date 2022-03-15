@@ -7,6 +7,7 @@ import com.codeup.stackknot.repositories.SetRepository;
 import com.codeup.stackknot.repositories.UserRepository;
 //import com.codeup.stackknot.services.EmailService;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,24 +22,23 @@ public class UserController {
     private UserRepository usersDao;
     private CardRepository cardsDao;
     private SetRepository setsDao;
+    private PasswordEncoder passwordEncoder;
 //    private final EmailService emailService;
 
 
-    public UserController(UserRepository usersDao, CardRepository cardsDao, SetRepository setsDao) {
+//    public UserController(UserRepository usersDao, CardRepository cardsDao, SetRepository setsDao) {
+//        this.usersDao = usersDao;
+//        this.cardsDao = cardsDao;
+//        this.setsDao = setsDao;
+//        this.emailService = emailService;
+//    }
+
+    public UserController(UserRepository usersDao, CardRepository cardsDao, SetRepository setsDao, PasswordEncoder passwordEncoder) {
         this.usersDao = usersDao;
         this.cardsDao = cardsDao;
         this.setsDao = setsDao;
-//        this.emailService = emailService;
+        this.passwordEncoder = passwordEncoder;
     }
-
-
-    // LOGIN MAPPING, DOESNT DO MUCH WILL MOVE THIS TO AUTHENTICATION CONTROLLER ONCE WE ARE CLOSER TO FINISHED PRODUCT AND
-
-//    @GetMapping("/login")
-//    public String showLoginForm() {
-//        return "users/login";
-//    }
-//
 
     //USER REGISTRATION
     @GetMapping("/sign-up")
@@ -50,6 +50,8 @@ public class UserController {
     @PostMapping("/sign-up")
     public String saveUser(@ModelAttribute User user) {
 //        emailService.prepareAndSend(user, "Registration Confirmation", "Welcome To StacKKnot, Thank You For Registering!");
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
         usersDao.save(user);
         return "redirect:/login";
     }

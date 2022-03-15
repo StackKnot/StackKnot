@@ -38,8 +38,6 @@ public class CardController {
 
     @PostMapping("/cards/create")
     public String createCard(@ModelAttribute Card card) {
-//        card.setSet(setDao.getById(2L));
-//        Set id = setDao.getById(2L);
         cardDao.save(card);
         return "redirect:../sets/" + card.getSet().getId();
     }
@@ -48,19 +46,12 @@ public class CardController {
     @GetMapping("/cards/{id}/edit")
     public String editCardForm(@PathVariable long id, Model model) {
         Card card = cardDao.getById(id);
-//        Set correctSet = setDao.getById(2L);
-//        if (card.getSet().getId() == correctSet.getId()) {
             model.addAttribute("card", card);
             return "cards/edit";
-//        } else {
-//            return "redirect:../../sets/" + correctSet.getId();
-//        }
     }
 
     @PostMapping("/cards/{id}/edit")
     public String editCard(@ModelAttribute Card card, @PathVariable long id) {
-//        Set correctSet = setDao.getById(2L);
-//        card.setSet(correctSet);
         cardDao.save(card);
         return "redirect:../../sets/" + card.getSet().getId();
     }
@@ -69,20 +60,16 @@ public class CardController {
     @GetMapping("/cards/{id}/delete")
     public String deleteForm(@PathVariable long id, Model model) {
         Card card = cardDao.getById(id);
-//        Set correctSet = setDao.getById(2L);
-//        if (card.getSet().getId() == correctSet.getId()) {
             model.addAttribute("card", card);
             return "cards/delete";
-//        } else {
-//            return "redirect:../../sets/" + correctSet.getId();
-//        }
     }
 
     @PostMapping("cards/{id}/delete")
     public String deleteCard(@PathVariable long id) {
         Card card = cardDao.getById(id);
         cardDao.deleteById(id);
-//        Set correctSet = setDao.getById(2L);
         return  "redirect:../../sets/" + card.getSet().getId();
     }
+
+
 }

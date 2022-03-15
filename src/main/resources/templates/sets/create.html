@@ -26,8 +26,8 @@
 
     <div class="form-group">
         <label for="subject">Subject</label>
-        <select class="form-control" id="subject" th:field="*{subject}">
-            <option  th:each="subject : ${subjects}" th:value="${subject.id}" th:text="${subject.title}" ></option>
+        <select class="form-control" id="subject" name="subjectId">
+            <option  th:each="subject : ${subjects}" th:value="${subject.id}"  th:text="${subject.title}" ></option>
         </select>
     </div>
 
