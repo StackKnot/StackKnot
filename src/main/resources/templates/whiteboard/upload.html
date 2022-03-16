@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--Thymeleaf attribute -->
-<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -17,13 +17,67 @@
     <input type="text" id="question" name="question" th:field="*{question}">
 
     <h3><span th:text="Solutions"></span></h3>
-    <input type="file" id="jsImage" name="jsImage">
-<!--    <input type="file" id="javaImage" name="javaImage">-->
+    <label for="js-upload">Javascript Solution</label>
+    <input id="js-upload" type="file">
+    <p th:field="*{jsURL}" id="js-url"></p>
+    <label for="java-upload">Java Solution</label>
+    <input id="java-upload" type="file">
+    <p th:field="*{javaURL}" id="java-url"></p>
     <button type="submit">Upload</button>
 </form>
+
 
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="partials/footer :: styling"></th:block>
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
+
+<script>
+    // import {Cloudinary} from "@cloudinary/url-gen";
+    const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/smith-gary/upload';
+    // const {Cloudinary, URLConfig} = require("@cloudinary/url-gen");
+    // var cl = new Cloudinary({cloud: {cloudName: "smith-gary"}, url: {secure: true}});
+    // const urlConfig = new URLConfig({secure: true});
+    let jsUpload = document.getElementById('js-upload');
+    let jsUrl = document.getElementById('js-url');
+    let javaUpload = document.getElementById('java-upload');
+    let javaUrl = document.getElementById('java-url');
+    const CLOUDINARY_UPLOAD_PRESET = 'preset1';
+
+    jsUpload.addEventListener('change', function (event) {
+        const url = CLOUDINARY_URL;
+        const xhr = new XMLHttpRequest();
+        let file = event.target.files[0];
+        let formData = new FormData();
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.onreadystatechange = function(e) {
+            let response = JSON.parse(xhr.responseText);
+            let secureJsUrl = response.secure_url;
+            jsUrl.innerText = secureJsUrl;
+            console.log(secureJsUrl);
+        }
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        xhr.send(formData);
+    });
+    javaUpload.addEventListener('change', function (event) {
+        const url = CLOUDINARY_URL;
+        const xhr = new XMLHttpRequest();
+        let file = event.target.files[0];
+        let formData = new FormData();
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.onreadystatechange = function(e) {
+            let response = JSON.parse(xhr.responseText);
+            let secureJavaUrl = response.secure_url;
+            javaUrl.innerText = secureJavaUrl;
+            console.log(secureJavaUrl);
+        }
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        xhr.send(formData);
+    });
+
+</script>
 </body>
 </html>

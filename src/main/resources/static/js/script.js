@@ -1,3 +1,5 @@
+import {Cloudinary, URLConfig} from "@cloudinary/url-gen";
+
 
 // const btn = document.querySelector('button')
 // const inputs = document.querySelector('form')
@@ -72,3 +74,12 @@ const btn = document.querySelector('button')
                 console.error(error)
             })
     })
+
+
+// CLOUDINARY //
+// const cld = new Cloudinary({
+//     cloud: {
+//         cloudName: 'smith-gary'
+//     }
+// });
+// const urlConfig = new URLConfig({secure: true});
