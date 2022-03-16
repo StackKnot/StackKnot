@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <th:block th:include="/partials/header :: styling"></th:block>
+</head>
+<body>
+<div th:each="testQuestion : ${test.testQuestions}">
+    <h2 th:text="${testQuestion.question}"></h2>
+    <p th:text="${testQuestion.userChoice}"></p>
+</div>
+<th:block th:replace="/partials/header :: scripts"></th:block>
+</body>
+</html>

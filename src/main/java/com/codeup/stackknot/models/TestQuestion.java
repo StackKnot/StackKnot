@@ -7,6 +7,10 @@ public class TestQuestion {
     private String Answer2;
     private String Answer3;
     private String Answer4;
+    private String userChoice;
+    private String correctAnswer;
+    private Boolean correct;
+
 
     public TestQuestion(String question, String answer1, String answer2, String answer3, String answer4) {
         this.question = question;
@@ -14,6 +18,36 @@ public class TestQuestion {
         Answer2 = answer2;
         Answer3 = answer3;
         Answer4 = answer4;
+    }
+
+    public TestQuestion(String question, String answer1, String answer2, String answer3, String answer4, String userChoice) {
+        this.question = question;
+        Answer1 = answer1;
+        Answer2 = answer2;
+        Answer3 = answer3;
+        Answer4 = answer4;
+        this.userChoice = userChoice;
+    }
+
+    public TestQuestion(String question, String answer1, String answer2, String answer3, String answer4, String userChoice, String correctAnswer) {
+        this.question = question;
+        Answer1 = answer1;
+        Answer2 = answer2;
+        Answer3 = answer3;
+        Answer4 = answer4;
+        this.userChoice = userChoice;
+        this.correctAnswer = correctAnswer;
+    }
+
+    public TestQuestion(String question, String answer1, String answer2, String answer3, String answer4, String userChoice, String correctAnswer, Boolean correct) {
+        this.question = question;
+        Answer1 = answer1;
+        Answer2 = answer2;
+        Answer3 = answer3;
+        Answer4 = answer4;
+        this.userChoice = userChoice;
+        this.correctAnswer = correctAnswer;
+        this.correct = correct;
     }
 
     public TestQuestion() {
@@ -57,5 +91,29 @@ public class TestQuestion {
 
     public void setAnswer4(String answer4) {
         Answer4 = answer4;
+    }
+
+    public String getUserChoice() {
+        return userChoice;
+    }
+
+    public void setUserChoice(String userChoice) {
+        this.userChoice = userChoice;
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public Boolean getCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(Boolean correct) {
+        this.correct = correct;
     }
 }

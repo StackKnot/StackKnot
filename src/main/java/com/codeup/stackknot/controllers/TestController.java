@@ -7,7 +7,9 @@ import com.codeup.stackknot.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.swing.plaf.basic.BasicDesktopIconUI;
 import java.util.ArrayList;
@@ -49,6 +51,7 @@ public class TestController {
 
             testQuestion.setQuestion(question.getQuestion());
             testQuestion.setAnswer1(question.getAnswer());
+            testQuestion.setCorrectAnswer(question.getAnswer());
 
             do {
                 Collections.shuffle(answers);
@@ -77,12 +80,43 @@ public class TestController {
         return new Test(testQuestions, setId);
     }
 
+    public Test gradeTest(Test test){
+
+        double totalQuestions = 0;
+        double totalCorrect = 0;
+
+        for (TestQuestion question : test.getTestQuestions()){
+            if (question.getUserChoice().equals(question.getCorrectAnswer())) {
+                question.setCorrect(true);
+                totalCorrect++;
+            } else {
+                question.setCorrect(false);
+            }
+            totalQuestions++;
+        }
+        double userGrade = (totalQuestions / totalCorrect) * 100;
+
+
+    }
+
+
     @GetMapping("/tests/{setId}")
     public String showTest(@PathVariable long setId, Model model) {
         model.addAttribute("test", generateTest(setId));
         return "tests/show";
     }
 
+    @PostMapping("/tests/{setId}")
+    public String gradeTest (@ModelAttribute Test test, Model model){
+        model.addAttribute("test", test);
+        return "redirect:tests/grade";
+    }
+
+    @GetMapping("/tests/{setId}/grade")
+    public String showgGradedTest(@ModelAttribute Test test, Model model) {
+        model.addAttribute("test", test);
+        return "tests/grade";
+    }
 
 
 
