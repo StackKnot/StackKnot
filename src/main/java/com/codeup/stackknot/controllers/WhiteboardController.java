@@ -32,6 +32,7 @@ import java.util.Map;
 //@RequestMapping(value="/whiteboard")
 public class WhiteboardController {
 
+
     @Value("${COM_CLOUDINARY_CLOUD_NAME}")
     String mCloudName;
 
@@ -42,6 +43,7 @@ public class WhiteboardController {
 
     @Value("${COM_CLOUDINARY_API_SECRET}")
     String mApiSecret;
+
 
 
 
