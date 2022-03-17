@@ -59,15 +59,55 @@ public class WhiteboardController {
         return "whiteboard/whiteboardStart";
     }
 
+    //    public Test generateTest(@PathVariable long setId) {
+//        List<Card>questions = cardDao.findAllBySetId(setId);
+//        List<String>answers = new List<String>() {
+//        };
+//        List<TestQuestion>testQuestions = new ;
+//
+//        for (Card question : questions) {
+//            answers.add(question.getAnswer());
+//        }
+//
+//        for (Card question : questions ) {
+//
+//            TestQuestion testQuestion = new TestQuestion();
+//
+//            testQuestion.setQuestion(question.getQuestion());
+//            testQuestion.setCorrectAnswer(question.getAnswer());
+//
+//            do {
+//                Collections.shuffle(answers);
+//                testQuestion.setWrongAnswer1(answers.get(1));
+//                testQuestion.setWrongAnswer2(answers.get(2));
+//                testQuestion.setWrongAnswer3(answers.get(3));
+//            } while ( testQuestion.getCorrectAnswer().equals(testQuestion.getWrongAnswer1()) || testQuestion.getCorrectAnswer().equals( testQuestion.getWrongAnswer2()) || testQuestion.getCorrectAnswer().equals(testQuestion.getWrongAnswer3())
+//            || testQuestion.getWrongAnswer1().equals(testQuestion.getWrongAnswer2()) || testQuestion.getWrongAnswer2().equals(testQuestion.getWrongAnswer3()) || testQuestion.getWrongAnswer1().equals(testQuestion.getWrongAnswer3()));
+//
+//
+//            testQuestions.add(testQuestion);
+//        }
+//
+//        return new Test(testQuestions);
+//    }
+    public Whiteboard shuffleBoards(@PathVariable Long id) {
+        List<Whiteboard> allBoardIds = whiteboardDao.findAllById(id);
+        List<Long> ids = new ArrayList<>();
+        List<Long> randomId = new ArrayList<>();
+        for (Whiteboard board : allBoardIds) {
+            ids.add(board.getId());
+        }
+        Collections.shuffle(ids);
+        Whiteboard singleWhiteboard = new Whiteboard();
+        singleWhiteboard.setId(ids.get(0));
+
+        return singleWhiteboard;
+
+    }
+
     @GetMapping("/whiteboard/{id}")
     public String showEditor(@PathVariable long id, Model model) {
-        List<Whiteboard> shuffleBoards = whiteboardDao.findAll();
-        Collections.shuffle(shuffleBoards);
-
-        System.out.println(shuffleBoards.get(0).getId());
-
-
-        model.addAttribute("whiteboard", whiteboardDao.getById(id));
+        model.addAttribute("whiteboard", shuffleBoards(id));
         return "whiteboard/whiteboard";
     }
 
