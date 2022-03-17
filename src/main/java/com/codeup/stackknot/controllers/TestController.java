@@ -96,7 +96,7 @@ public class TestController {
         }
         double userGrade = (totalQuestions / totalCorrect) * 100;
 
-
+        return test;
     }
 
 
