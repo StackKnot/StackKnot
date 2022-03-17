@@ -75,8 +75,8 @@ public class WhiteboardController {
     }
 
     @PostMapping("/whiteboard/upload")
-    public String uploadSolution(@ModelAttribute Whiteboard whiteboard, @RequestParam(name = "js-url") String jsUrl) {
+    public String uploadSolution(@ModelAttribute Whiteboard whiteboard) {
         whiteboardDao.save(whiteboard);
-        return "redirect:whiteboard";
+        return "redirect:/whiteboard";
     }
 }

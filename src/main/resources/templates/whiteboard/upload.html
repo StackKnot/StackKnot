@@ -13,20 +13,26 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <form th:action="@{/whiteboard/upload}" th:method="post" th:object="${newBoard}">
+    <div>
     <h3><span th:text="Question"></span></h3>
     <input type="text" id="question" name="question" th:field="*{question}">
+    </div>
 
+    <div>
     <h3><span th:text="Solutions"></span></h3>
     <label for="js-upload">Javascript Solution</label>
     <input id="js-upload" type="file">
-    <p th:field="*{jsURL}" id="js-url" name="js-url"></p>
+    <input type="text" th:field="*{jsURL}" id="js-url" style="display:none">
+    </div>
+
+    <div>
     <label for="java-upload">Java Solution</label>
     <input id="java-upload" type="file">
-    <p th:field="*{javaURL}" id="java-url"></p>
+    <input type="text" th:field="*{javaURL}" id="java-url" style="display:none">
+    </div>
+
     <button type="submit">Save</button>
 </form>
-
-
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="partials/footer :: styling"></th:block>
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
@@ -46,10 +52,10 @@
         let formData = new FormData();
         xhr.open('POST', url, true);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.onreadystatechange = function(e) {
+        xhr.onreadystatechange = function (e) {
             let response = JSON.parse(xhr.responseText);
             let secureJsUrl = response.secure_url;
-            jsUrl.innerHTML = secureJsUrl;
+            jsUrl.value = secureJsUrl;
             console.log(secureJsUrl);
         }
         formData.append('file', file);
@@ -63,10 +69,10 @@
         let formData = new FormData();
         xhr.open('POST', url, true);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.onreadystatechange = function(e) {
+        xhr.onreadystatechange = function (e) {
             let response = JSON.parse(xhr.responseText);
             let secureJavaUrl = response.secure_url;
-            javaUrl.innerHTML = secureJavaUrl;
+            javaUrl.value = secureJavaUrl;
             console.log(secureJavaUrl);
         }
         formData.append('file', file);
