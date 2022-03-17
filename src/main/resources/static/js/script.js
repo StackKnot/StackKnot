@@ -74,12 +74,3 @@ const btn = document.querySelector('button')
                 console.error(error)
             })
     })
-
-
-// CLOUDINARY //
-// const cld = new Cloudinary({
-//     cloud: {
-//         cloudName: 'smith-gary'
-//     }
-// });
-// const urlConfig = new URLConfig({secure: true});

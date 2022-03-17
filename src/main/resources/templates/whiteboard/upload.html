@@ -19,11 +19,11 @@
     <h3><span th:text="Solutions"></span></h3>
     <label for="js-upload">Javascript Solution</label>
     <input id="js-upload" type="file">
-    <p th:field="*{jsURL}" id="js-url"></p>
+    <p th:field="*{jsURL}" id="js-url" name="js-url"></p>
     <label for="java-upload">Java Solution</label>
     <input id="java-upload" type="file">
     <p th:field="*{javaURL}" id="java-url"></p>
-    <button type="submit">Upload</button>
+    <button type="submit">Save</button>
 </form>
 
 
@@ -32,11 +32,7 @@
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 
 <script>
-    // import {Cloudinary} from "@cloudinary/url-gen";
     const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/smith-gary/upload';
-    // const {Cloudinary, URLConfig} = require("@cloudinary/url-gen");
-    // var cl = new Cloudinary({cloud: {cloudName: "smith-gary"}, url: {secure: true}});
-    // const urlConfig = new URLConfig({secure: true});
     let jsUpload = document.getElementById('js-upload');
     let jsUrl = document.getElementById('js-url');
     let javaUpload = document.getElementById('java-upload');
@@ -53,7 +49,7 @@
         xhr.onreadystatechange = function(e) {
             let response = JSON.parse(xhr.responseText);
             let secureJsUrl = response.secure_url;
-            jsUrl.innerText = secureJsUrl;
+            jsUrl.innerHTML = secureJsUrl;
             console.log(secureJsUrl);
         }
         formData.append('file', file);
@@ -70,7 +66,7 @@
         xhr.onreadystatechange = function(e) {
             let response = JSON.parse(xhr.responseText);
             let secureJavaUrl = response.secure_url;
-            javaUrl.innerText = secureJavaUrl;
+            javaUrl.innerHTML = secureJavaUrl;
             console.log(secureJavaUrl);
         }
         formData.append('file', file);

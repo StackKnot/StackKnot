@@ -75,24 +75,7 @@ public class WhiteboardController {
     }
 
     @PostMapping("/whiteboard/upload")
-    public String uploadSolution(@ModelAttribute Whiteboard whiteboard, @RequestParam(name = "jsImage") File jsImage) throws IOException {
-        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-            "cloud_name", mCloudName,
-            "api_key", mApiKey,
-            "api_secret", mApiSecret,
-            "secure", true
-    ));
-        File fileJs = new File(String.valueOf(jsImage));
-//        File fileJava = new File(String.valueOf(javaImage));
-        Map jsUploadResult = cloudinary.uploader().upload("/desktop/" + fileJs, ObjectUtils.asMap("resources", "auto"));
-//        Map javaUploadResult = cloudinary.uploader().upload(fileJava, ObjectUtils.asMap("resources", "auto"));
-
-//        String javaUrl = (String) javaUploadResult.get("url");
-//        System.out.println(javaUrl);
-        String jsUrl = (String) jsUploadResult.get("url");
-        System.out.println(jsUrl);
-//        whiteboard.setJavaURL(javaUrl);
-        whiteboard.setJsURL(jsUrl);
+    public String uploadSolution(@ModelAttribute Whiteboard whiteboard, @RequestParam(name = "js-url") String jsUrl) {
         whiteboardDao.save(whiteboard);
         return "redirect:whiteboard";
     }
