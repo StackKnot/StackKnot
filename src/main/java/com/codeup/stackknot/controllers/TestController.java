@@ -2,6 +2,7 @@ package com.codeup.stackknot.controllers;
 
 import com.codeup.stackknot.models.*;
 import com.codeup.stackknot.repositories.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,18 +23,16 @@ public class TestController {
     private SubjectRepository subjectDao;
     private UserRepository userDao;
     private ProgressionRepository progressionDao;
-    private UsetSetProgRepository usetSetProgDao;
+    private UsetSetProgRepository userSetProgDao;
 
-    public TestController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao) {
+    public TestController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao, UsetSetProgRepository userSetProgDao) {
         this.setDao = setDao;
         this.cardDao = cardDao;
         this.subjectDao = subjectDao;
         this.userDao = userDao;
         this.progressionDao = progressionDao;
+        this.userSetProgDao = userSetProgDao;
     }
-
-
-
 
     public Test generateTest(@PathVariable long setId) {
         List<Card>questions = cardDao.findAllBySetId(setId);
@@ -99,17 +98,18 @@ public class TestController {
         }
         double userGradePercentage = (totalCorrect / totalQuestions) * 100;
         test.setGrade(userGradePercentage);
-//        UserSetProg setProg = new UserSetProg();
-//        setProg.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(););
-//        setProg.setSet(setDao.getById(test.getSetId()));
-//        if (userGradePercentage > 90F){
-//            setProg.setProgression(progressionDao.getByStatus("Mastered"));
-//        } else if ( userGradePercentage >70) {
-//            setProg.setProgression(progressionDao.getByStatus("Satisfactory"));
-//        } else {
-//            setProg.setProgression(progressionDao.getByStatus("Needs Work"));
-//        }
-//        usetSetProgDao.save(setProg);
+        UserSetProg setProg = new UserSetProg();
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        setProg.setUser(loggedInUser);
+        setProg.setSet(setDao.getById(test.getSetId()));
+        if (userGradePercentage > 90F){
+            setProg.setProgression(progressionDao.getByStatus("Mastered"));
+        } else if ( userGradePercentage >70) {
+            setProg.setProgression(progressionDao.getByStatus("Satisfactory"));
+        } else {
+            setProg.setProgression(progressionDao.getByStatus("Needs Work"));
+        }
+//        userSetProgDao.save(setProg);
         return test;
     }
 
