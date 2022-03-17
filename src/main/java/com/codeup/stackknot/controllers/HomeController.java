@@ -1,11 +1,7 @@
 package com.codeup.stackknot.controllers;
 
 import org.springframework.stereotype.Controller;
-
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
@@ -14,10 +10,12 @@ public class HomeController {
         return "homepage";
     }
 
+
     @GetMapping("/about-us")
     public String showAboutUs() {
         return "about-us";
     }
+
 
     @GetMapping("/contact-form")
     public String showContactAnExpert() {
