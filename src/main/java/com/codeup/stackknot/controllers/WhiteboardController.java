@@ -19,14 +19,13 @@ import org.springframework.web.bind.annotation.*;
 import com.cloudinary.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityNotFoundException;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 //@RequestMapping(value="/whiteboard")
@@ -44,7 +43,6 @@ public class WhiteboardController {
     String mApiSecret;
 
 
-
     // DEPENDENCY INJECTION
     private UserRepository userDao;
     private WhiteboardRepository whiteboardDao;
@@ -54,7 +52,7 @@ public class WhiteboardController {
         this.whiteboardDao = whiteboardDao;
     }
 
-//     SHOW WHITEBOARD SECTION
+    //     SHOW WHITEBOARD SECTION
     @GetMapping("/whiteboard")
     public String getStartedPage() {
         whiteboardDao.findAll();
@@ -63,11 +61,17 @@ public class WhiteboardController {
 
     @GetMapping("/whiteboard/{id}")
     public String showEditor(@PathVariable long id, Model model) {
+        List<Whiteboard> shuffleBoards = whiteboardDao.findAll();
+        Collections.shuffle(shuffleBoards);
+
+        System.out.println(shuffleBoards.get(0).getId());
+
+
         model.addAttribute("whiteboard", whiteboardDao.getById(id));
         return "whiteboard/whiteboard";
     }
 
-//     ADMIN UPLOAD ABILITY
+    //     ADMIN UPLOAD ABILITY
     @GetMapping("/whiteboard/upload")
     public String uploadSolutionForm(Model model) {
         model.addAttribute("newBoard", new Whiteboard());

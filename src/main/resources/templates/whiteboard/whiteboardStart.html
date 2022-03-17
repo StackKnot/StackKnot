@@ -28,8 +28,10 @@
 <script>
 
     function getNext() {
-        let randomQuestion = Math.floor((Math.random() * 3) + 1);
+        let randomQuestion = Math.floor((Math.random() * 100) + 1);
+        if (randomQuestion != null) {
         location.replace('/whiteboard/' + randomQuestion);
+        }
     }
 
     function showAdminButton() {
