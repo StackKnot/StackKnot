@@ -10,6 +10,13 @@ public class HomeController {
         return "homepage";
     }
 
+
+    @GetMapping("/about-us")
+    public String showAboutUs() {
+        return "about-us";
+    }
+
+
     @GetMapping("/contact-form")
     public String showContactAnExpert() {
         return "/contact-form";

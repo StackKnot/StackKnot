@@ -25,7 +25,7 @@ public class SubjectController {
     }
 
     // THIS IS THE SUBJECT INDEX PAGE< SHOWS ALL THE SUBJECTS AND THEIR CORRESPONDING SETS
-    @GetMapping("/subjects/index")
+    @GetMapping("/subjects")
     public String allSubjects(Model model) {
         model.addAttribute("subjects", subjectsDao.findAll());
         return "subjects/index";

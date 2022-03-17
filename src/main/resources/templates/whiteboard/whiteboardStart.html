@@ -18,6 +18,10 @@
     <input type="submit" value="Get Started" onclick="getNext()"/>
 </div>
 
+<div>
+    <input type="submit" value="Admin Upload" onclick="adminUpload()"/>
+</div>
+
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="partials/footer :: styling"></th:block>
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
@@ -25,7 +29,14 @@
 
     function getNext() {
         let randomQuestion = Math.floor((Math.random() * 3) + 1);
-        location.replace('/whiteboard/' + randomQuestion)
+        location.replace('/whiteboard/' + randomQuestion);
+    }
+
+    function showAdminButton() {
+
+    }
+    function adminUpload() {
+        location.replace('/whiteboard/upload');
     }
 </script>
 <!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
