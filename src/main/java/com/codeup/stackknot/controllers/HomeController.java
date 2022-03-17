@@ -14,7 +14,8 @@ public class HomeController {
         return "homepage";
     }
 
-    public String showLoginForm() {
+    @GetMapping("/about-us")
+    public String showAboutUs() {
         return "about-us";
     }
 

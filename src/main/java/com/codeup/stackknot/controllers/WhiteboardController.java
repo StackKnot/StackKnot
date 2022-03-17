@@ -31,16 +31,16 @@ import java.util.Map;
 public class WhiteboardController {
 
 
-    @Value("${COM_CLOUDINARY_CLOUD_NAME}")
-    String mCloudName;
-
-
-    @Value("${COM_CLOUDINARY_API_KEY}")
-    String mApiKey;
-
-
-    @Value("${COM_CLOUDINARY_API_SECRET}")
-    String mApiSecret;
+//    @Value("${COM_CLOUDINARY_CLOUD_NAME}")
+//    String mCloudName;
+//
+//
+//    @Value("${COM_CLOUDINARY_API_KEY}")
+//    String mApiKey;
+//
+//
+//    @Value("${COM_CLOUDINARY_API_SECRET}")
+//    String mApiSecret;
 
     // DEPENDENCY INJECTION
     private UserRepository userDao;

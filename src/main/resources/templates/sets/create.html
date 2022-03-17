@@ -13,6 +13,7 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
+<div class="container">
 <form th:action="@{/sets/create}" th:method="POST" th:object="${newSet}">
     <div class="form-group">
         <label for="title">Title</label>
@@ -31,10 +32,10 @@
         </select>
     </div>
 
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
 
 </form>
-
+</div>
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 
