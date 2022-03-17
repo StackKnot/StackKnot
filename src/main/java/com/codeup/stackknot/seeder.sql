@@ -12,6 +12,8 @@ INSERT INTO whiteboards (javaurl, jsurl, question) VALUES ("https://res.cloudina
 ("https://res.cloudinary.com/smith-gary/image/upload/v1647287764/Screen_Shot_2022-03-14_at_2.55.31_PM_ma6rkd.png", "https://res.cloudinary.com/smith-gary/image/upload/v1647286602/Screen_Shot_2022-03-14_at_2.35.12_PM_lsu5ou.png", "Create function to check whether or not the input string is a Palindrome."),
                                                           ("https://res.cloudinary.com/smith-gary/image/upload/v1647291293/Screen_Shot_2022-03-14_at_3.54.31_PM_uod4fb.png", "https://res.cloudinary.com/smith-gary/image/upload/v1647289820/Screen_Shot_2022-03-14_at_3.29.54_PM_rsltna.png", "Create a function that returns the nth entry in the Fibonacci sequence, where n is the number you pass in as an argument .");
 
+# TO CREATE FULLTEXT INDEX FOR SET SEARCH
+ALTER TABLE sets ADD FULLTEXT (title, description);
 
 
 # ("https://res.cloudinary.com/smith-gary/image/upload/v1647289188/Screen_Shot_2022-03-14_at_3.19.08_PM_hxyctz.png","https://res.cloudinary.com/smith-gary/image/upload/v1647288249/Screen_Shot_2022-03-14_at_3.03.40_PM_usvzlg.png

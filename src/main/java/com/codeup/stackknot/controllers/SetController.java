@@ -4,7 +4,7 @@ import com.codeup.stackknot.models.Set;
 import com.codeup.stackknot.models.Subject;
 import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.repositories.*;
-//import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +20,7 @@ public class SetController {
     private SubjectRepository subjectDao;
     private UserRepository userDao;
     private ProgressionRepository progressionDao;
+
 
     public SetController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao) {
         this.setDao = setDao;
@@ -104,4 +105,15 @@ public class SetController {
         setDao.deleteById(id);
         return "redirect:/sets";
     }
+
+    //SEARCH SETS BY TITLE/DESCRIPTION
+    @GetMapping("/search")
+    public String search(@Param("keyword") String keyword, Model model) {
+        List<Set> searchResult = setDao.search(keyword);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("searchResult", searchResult);
+        return "sets/search";
+    }
+
+
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="UTF-8">
+    <title>StackKnot Search Results</title>
+    <!--    Templating-->
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+<h3>Search Results for '[[${keyword}]]' </h3>
+
+<div class="row">
+    <div class="col" th:each="set : ${searchResult}">
+        <h3 th:text="${set.getTitle()}"></h3>
+        <p th:text="${set.getDescription()}"></p>
+    </div>
+</div>
+
+
+
+
+<th:block th:replace="partials/footer :: styling"></th:block>
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
+
+</body>
+</html>
