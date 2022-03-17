@@ -4,13 +4,11 @@ import com.codeup.stackknot.models.Set;
 import com.codeup.stackknot.models.Subject;
 import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.repositories.*;
-//import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,7 @@ public class SetController {
     private SubjectRepository subjectDao;
     private UserRepository userDao;
     private ProgressionRepository progressionDao;
+
 
     public SetController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao) {
         this.setDao = setDao;
@@ -40,11 +39,11 @@ public class SetController {
     }
 
     @PostMapping("/sets/create")
-    public String createSet(@ModelAttribute Set set, @ModelAttribute Subject subject) {
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        set.setUser(loggedInUser);
-        set.setUser(userDao.getById(1L));
-//        set.setSubject(subject);
+    public String createSet(@ModelAttribute Set set, @RequestParam(name = "subjectId") long subjectId) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Subject subject = subjectDao.getById(subjectId);
+        set.setUser(loggedInUser);
+        set.setSubject(subject);
         setDao.save(set);
         return "redirect:../cards/create/" + set.getId();
 
@@ -69,11 +68,10 @@ public class SetController {
     @GetMapping("/sets/{id}/edit")
     public String editSetFrom(@PathVariable long id, Model model) {
         Set set = setDao.getById(id);
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User loggedInUser = userDao.getById(1L);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        if (set.getUser().getId() == loggedInUser.getId()) {
-            model.addAttribute("set", set);
-            model.addAttribute("subjects", subjectDao.findAll());
+//            model.addAttribute("set", set);
+//            model.addAttribute("subjects", subjectDao.findAll());
             return "sets/edit";
 //        } else {
 //            return "redirect:/sets";
@@ -82,8 +80,7 @@ public class SetController {
 
     @PostMapping("/sets/{id}/edit")
     public String submitEdit(@ModelAttribute Set set, @PathVariable long id) {
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User loggedInUser = userDao.getById(1L);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         set.setUser(loggedInUser);
         setDao.save(set);
         return "redirect:/sets/{id}";
@@ -94,8 +91,7 @@ public class SetController {
     @GetMapping("/sets/{id}/delete")
     public String confirmDelete(@PathVariable long id, Model model){
         Set set = setDao.getById(id);
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User loggedInUser = userDao.getById(1L);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (set.getUser().getId() == loggedInUser.getId()) {
             model.addAttribute("set", set);
             return "sets/delete";
@@ -105,10 +101,19 @@ public class SetController {
     }
 
     @PostMapping("/sets/{id}/delete")
-    public String deleteSet(@ModelAttribute Set set, @PathVariable long id) {
-        User loggedInUser = userDao.getById(1L);
-        set.setUser(loggedInUser);
+    public String deleteSet(@PathVariable long id) {
         setDao.deleteById(id);
         return "redirect:/sets";
     }
+
+    //SEARCH SETS BY TITLE/DESCRIPTION
+    @GetMapping("/search")
+    public String search(@Param("keyword") String keyword, Model model) {
+        List<Set> searchResult = setDao.search(keyword);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("searchResult", searchResult);
+        return "sets/search";
+    }
+
+
 }

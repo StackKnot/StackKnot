@@ -19,6 +19,7 @@
     <p><span th:text="${singleSet.getDescription()}"></span></p>
     <a th:href="@{/profile/{username} (username = ${singleSet.user.username})}" th:text="${singleSet.user.username}"></a>
     <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}"><button type="submit">Add a card</button></form>
+    <form th:action="@{/tests/{setId} (setId = ${singleSet.id})}"><button type="submit">Take a test</button></form>
 </div>
 <div>
     <ul th:each="card : ${cards}">
