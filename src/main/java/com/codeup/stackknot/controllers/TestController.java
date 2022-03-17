@@ -1,8 +1,6 @@
 package com.codeup.stackknot.controllers;
 
-import com.codeup.stackknot.models.Card;
-import com.codeup.stackknot.models.Test;
-import com.codeup.stackknot.models.TestQuestion;
+import com.codeup.stackknot.models.*;
 import com.codeup.stackknot.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +22,7 @@ public class TestController {
     private SubjectRepository subjectDao;
     private UserRepository userDao;
     private ProgressionRepository progressionDao;
+    private UsetSetProgRepository usetSetProgDao;
 
     public TestController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao) {
         this.setDao = setDao;
@@ -86,6 +85,10 @@ public class TestController {
         double totalCorrect = 0;
 
         for (TestQuestion question : test.getTestQuestions()){
+
+            String correctAnswer = cardDao.getByQuestionAndSetId(question.getQuestion(), test.getSetId()).getAnswer();
+            question.setCorrectAnswer(correctAnswer);
+
             if (question.getUserChoice().equals(question.getCorrectAnswer())) {
                 question.setCorrect(true);
                 totalCorrect++;
@@ -94,8 +97,19 @@ public class TestController {
             }
             totalQuestions++;
         }
-        double userGrade = (totalQuestions / totalCorrect) * 100;
-
+        double userGradePercentage = (totalCorrect / totalQuestions) * 100;
+        test.setGrade(userGradePercentage);
+//        UserSetProg setProg = new UserSetProg();
+//        setProg.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(););
+//        setProg.setSet(setDao.getById(test.getSetId()));
+//        if (userGradePercentage > 90F){
+//            setProg.setProgression(progressionDao.getByStatus("Mastered"));
+//        } else if ( userGradePercentage >70) {
+//            setProg.setProgression(progressionDao.getByStatus("Satisfactory"));
+//        } else {
+//            setProg.setProgression(progressionDao.getByStatus("Needs Work"));
+//        }
+//        usetSetProgDao.save(setProg);
         return test;
     }
 
@@ -114,7 +128,7 @@ public class TestController {
 
     @GetMapping("/tests/{setId}/grade")
     public String showgGradedTest(@ModelAttribute Test test, Model model) {
-        model.addAttribute("test", test);
+        model.addAttribute("test", gradeTest(test));
         return "tests/grade";
     }
 
