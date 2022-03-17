@@ -13,7 +13,7 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <h3 th:text="${whiteboard.getQuestion()}"></h3>
-<form th:action="@{/whiteboard/{id}/next}" th:method="post">
+<form th:action="@{/whiteboard-next}" th:method="post">
     <button type="submit">Next Problem</button>
 </form>
 
