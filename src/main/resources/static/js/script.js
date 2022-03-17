@@ -27,7 +27,7 @@ import {Cloudinary, URLConfig} from "@cloudinary/url-gen";
 //
 // require('dotenv').config();
 // const sgMail = require('@sendgrid/mail')
-// sgMail.setApiKey('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')
+// sgMail.setApiKey('')
 //
 // btn.addEventListener('click', () => {
 // const msg = {
