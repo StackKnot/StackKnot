@@ -18,8 +18,10 @@
         <button type="submit">Edit</button>
     </form>
     <h2><span th:text="${singleSet.subject.title}"></span></h2>
-    <h3><span th:text="${singleSet.getTitle()}"></span></h3>
-    <p><span th:text="${singleSet.getDescription()}"></span></p>
+    <h3><span th:text="${singleSet.title}"></span></h3>
+    <p><span th:text="${singleSet.description}"></span></p>
+    <p>Likes:  <span th:text="${singleSet.likes}"></span></p>
+    <form name="likeform" method="post" th:action="@{/sets/{id}/like (id = ${singleSet.id})}"><button type="submit">Like</button></form>
     <a th:href="@{/profile/{username} (username = ${singleSet.user.username})}"
        th:text="${singleSet.user.username}"></a>
     <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}">
@@ -31,8 +33,8 @@
 </div>
 <div>
     <ul th:each="card : ${cards}">
-        <li th:text="${card.getQuestion()}"></li>
-        <li th:text="${card.getAnswer()}"></li>
+        <li th:text="${card.question}"></li>
+        <li th:text="${card.answer}"></li>
         <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
             <button type="submit">Edit</button>
         </form>
@@ -46,5 +48,11 @@
 
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
+<script>
+    $("<iframe id='test' />").appendTo(document.body);
+    $("likeform").attr("target", "test");
+
+
+</script>
 </body>
 </html>

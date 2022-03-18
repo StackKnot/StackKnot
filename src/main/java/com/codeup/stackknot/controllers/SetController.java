@@ -50,6 +50,14 @@ public class SetController {
 
     }
 
+//    LIKE A SET
+    @PostMapping("/sets/{id}/like")
+    public void like(@PathVariable long id) {
+        Set setToLike = setDao.getById(id);
+        setToLike.setLikes(setToLike.getLikes() + 1);
+        setDao.save(setToLike);
+    }
+
     // SHOW SPECIFIC SET BY ID
     @GetMapping("/sets/{id}")
     public String setById(@PathVariable long id, Model model) {
