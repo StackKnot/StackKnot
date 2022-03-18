@@ -98,7 +98,7 @@ public class TestController {
         double userGradePercentage = (totalCorrect / totalQuestions) * 100;
         test.setGrade(userGradePercentage);
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserSetProg existingProg = userSetProgDao.findByUserAndAndSet(loggedInUser, setDao.getById(test.getSetId()));
+        UserSetProg existingProg = userSetProgDao.findByUserAndSet(loggedInUser, setDao.getById(test.getSetId()));
         if (existingProg == null) {
             UserSetProg setProg = new UserSetProg();
             setProg.setUser(loggedInUser);

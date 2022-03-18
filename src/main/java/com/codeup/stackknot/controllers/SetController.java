@@ -20,14 +20,15 @@ public class SetController {
     private SubjectRepository subjectDao;
     private UserRepository userDao;
     private ProgressionRepository progressionDao;
+    private UserSetProgRepository userSetProgDao;
 
-
-    public SetController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao) {
+    public SetController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao, UserSetProgRepository userSetProgDao) {
         this.setDao = setDao;
         this.cardDao = cardDao;
         this.subjectDao = subjectDao;
         this.userDao = userDao;
         this.progressionDao = progressionDao;
+        this.userSetProgDao = userSetProgDao;
     }
 
     // CREATE SET
@@ -69,13 +70,9 @@ public class SetController {
     public String editSetFrom(@PathVariable long id, Model model) {
         Set set = setDao.getById(id);
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        if (set.getUser().getId() == loggedInUser.getId()) {
-//            model.addAttribute("set", set);
-//            model.addAttribute("subjects", subjectDao.findAll());
-            return "sets/edit";
-//        } else {
-//            return "redirect:/sets";
-//        }
+
+        return "sets/edit";
+
     }
 
     @PostMapping("/sets/{id}/edit")
@@ -83,13 +80,13 @@ public class SetController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         set.setUser(loggedInUser);
         setDao.save(set);
-        return "redirect:/sets/{id}";
+        return "redirect:/sets";
     }
 
     // DELETE SPECIFIC SET BY ID
 
     @GetMapping("/sets/{id}/delete")
-    public String confirmDelete(@PathVariable long id, Model model){
+    public String confirmDelete(@PathVariable long id, Model model) {
         Set set = setDao.getById(id);
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (set.getUser().getId() == loggedInUser.getId()) {
