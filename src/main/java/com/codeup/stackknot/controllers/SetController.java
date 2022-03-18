@@ -52,10 +52,11 @@ public class SetController {
 
 //    LIKE A SET
     @PostMapping("/sets/{id}/like")
-    public void like(@PathVariable long id) {
+    public String like(@PathVariable long id) {
         Set setToLike = setDao.getById(id);
         setToLike.setLikes(setToLike.getLikes() + 1);
         setDao.save(setToLike);
+        return "redirect:/sets/" + setToLike.getId();
     }
 
     // SHOW SPECIFIC SET BY ID

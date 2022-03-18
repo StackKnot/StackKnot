@@ -49,9 +49,12 @@
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 <script>
-    $("<iframe id='test' />").appendTo(document.body);
-    $("likeform").attr("target", "test");
-
+    $(function() {
+        $('#likeform').submit(function(event) {
+            event.preventDefault();
+            $(this).submit();
+        });
+    });
 
 </script>
 </body>
