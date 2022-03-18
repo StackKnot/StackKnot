@@ -11,18 +11,35 @@
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>    <!--    CKEDITOR SCRIPT -->
-    <script src="https://cdn.ckeditor.com/4.17.2/standard-all/ckeditor.js"></script>
+<!--    <script src="https://cdn.ckeditor.com/4.17.2/standard-all/ckeditor.js"></script>-->
+
+    <style media="screen">
+        .editor {
+            margin: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <h3 th:text="${whiteboard.getQuestion()}"></h3>
-<form th:action="@{/whiteboard-next}" th:method="post">
+<form th:action="@{/whiteboard}" th:method="post">
     <button type="submit">Next Problem</button>
 </form>
 
-<label>
-    <textarea name="editor"></textarea>
-</label>
+<!--<label>-->
+<!--    <textarea name="editor"></textarea>-->
+<!--</label>-->
+
+<div id="editor">function foo(items) {
+    var x = "All this is syntax highlighted";
+    return x;
+</div>
+
 <div>
     <input type="submit" value="Get Solution" onclick="showImage()"/>
 </div>
@@ -34,13 +51,17 @@
 
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
-
+<script src="../../static/js/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
-    CKEDITOR.replace('editor', {
-        height: 260,
-        width: 700,
-        removeButtons: 'PasteFromWord'
-    });
+    // CKEDITOR.replace('editor', {
+    //     height: 260,
+    //     width: 700,
+    //     removeButtons: 'PasteFromWord'
+    // });
+
+    let editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
 
 
     function showImage() {

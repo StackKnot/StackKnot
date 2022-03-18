@@ -67,10 +67,10 @@ public class WhiteboardController {
         return "whiteboard/whiteboard";
     }
 
-    @PostMapping("/whiteboard-next")
+    @PostMapping("/")
     public String sendToNextWhiteboard() {
         Long nextId = shuffleBoards(whiteboardDao.findAll());
-        return "redirect:whiteboard/" + nextId;
+        return "redirect:/" + nextId;
     }
 
     //     ADMIN UPLOAD ABILITY
