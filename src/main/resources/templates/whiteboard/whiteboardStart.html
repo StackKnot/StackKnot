@@ -15,10 +15,10 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<p>This is the whiteboarding practice section. Once you click "Get Started" a randomly generated question will appear. Use the text editor to type out your solution in Java, Javascript, or both! Once complete click "Get Solution" to check your answer. Good Luck! </p>
-<div>
-    <input type="submit" value="Get Started" onclick="getNext()"/>
-</div>
+<p>This is the white-boarding practice section. Once you click "Get Started" a randomly generated question will appear. Use the text editor to type out your solution in Java, Javascript, or both! Once complete click "Get Solution" to check your answer. Good Luck! </p>
+<form th:action="@{/whiteboardStart}" th:method="post">
+    <button type="submit">Get Started</button>
+</form>
 
 <div>
     <input type="submit" value="Admin Upload" onclick="adminUpload()"/>
@@ -28,11 +28,6 @@
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 
 <script>
-
-    function getNext() {
-        let randomQuestion = Math.floor((Math.random() * 3) + 1);
-        location.replace('/whiteboard/' + randomQuestion);
-    }
 
     function showAdminButton() {
 
