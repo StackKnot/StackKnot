@@ -25,6 +25,11 @@
         <form th:action="@{/sets/{id}(id = ${set.getId()})}"><button type="submit">Edit</button></form>
     </div>
 
+    <div  th:each=" setStudied : ${setsStudied}">
+        <h2 th:text="${setStudied.set.title}"></h2>
+        <h2 th:text="${setStudied.progression.status}"></h2>
+    </div>
+
 </div>
 
 

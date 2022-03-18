@@ -17,7 +17,7 @@
 <div th:each="subject : ${subjects}">
     <h2 th:text="${subject.title}"></h2>
     <div th:each=" set : ${subject.sets}">
-        <h3 th:text="${set.title}"></h3>
+        <a th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
         <p th:text="${set.description}"></p>
         <p th:text="${set.user.username}"></p>
     </div>

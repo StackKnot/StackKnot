@@ -2,6 +2,7 @@ package com.codeup.stackknot.controllers;
 
 import com.codeup.stackknot.models.*;
 import com.codeup.stackknot.repositories.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.swing.plaf.basic.BasicDesktopIconUI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,29 +22,27 @@ public class TestController {
     private SubjectRepository subjectDao;
     private UserRepository userDao;
     private ProgressionRepository progressionDao;
-    private UsetSetProgRepository usetSetProgDao;
+    private UserSetProgRepository userSetProgDao;
 
-    public TestController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao) {
+    public TestController(SetRepository setDao, CardRepository cardDao, SubjectRepository subjectDao, UserRepository userDao, ProgressionRepository progressionDao, UserSetProgRepository userSetProgDao) {
         this.setDao = setDao;
         this.cardDao = cardDao;
         this.subjectDao = subjectDao;
         this.userDao = userDao;
         this.progressionDao = progressionDao;
+        this.userSetProgDao = userSetProgDao;
     }
 
-
-
-
     public Test generateTest(@PathVariable long setId) {
-        List<Card>questions = cardDao.findAllBySetId(setId);
-        List<String>answers = new ArrayList<>();
-        List<TestQuestion>testQuestions = new ArrayList<>();
+        List<Card> questions = cardDao.findAllBySetId(setId);
+        List<String> answers = new ArrayList<>();
+        List<TestQuestion> testQuestions = new ArrayList<>();
 
         for (Card question : questions) {
             answers.add(question.getAnswer());
         }
 
-        for (Card question : questions ) {
+        for (Card question : questions) {
 
             TestQuestion testQuestion = new TestQuestion();
 
@@ -57,8 +55,8 @@ public class TestController {
                 testQuestion.setAnswer2(answers.get(1));
                 testQuestion.setAnswer3(answers.get(2));
                 testQuestion.setAnswer4(answers.get(3));
-            } while ( testQuestion.getAnswer1().equals(testQuestion.getAnswer2()) || testQuestion.getAnswer1().equals( testQuestion.getAnswer3()) || testQuestion.getAnswer1().equals(testQuestion.getAnswer4())
-            || testQuestion.getAnswer2().equals(testQuestion.getAnswer3()) || testQuestion.getAnswer3().equals(testQuestion.getAnswer4()) || testQuestion.getAnswer2().equals(testQuestion.getAnswer4()));
+            } while (testQuestion.getAnswer1().equals(testQuestion.getAnswer2()) || testQuestion.getAnswer1().equals(testQuestion.getAnswer3()) || testQuestion.getAnswer1().equals(testQuestion.getAnswer4())
+                    || testQuestion.getAnswer2().equals(testQuestion.getAnswer3()) || testQuestion.getAnswer3().equals(testQuestion.getAnswer4()) || testQuestion.getAnswer2().equals(testQuestion.getAnswer4()));
 
             List<String> questionAnswers = new ArrayList<>();
             questionAnswers.add(testQuestion.getAnswer1());
@@ -79,12 +77,12 @@ public class TestController {
         return new Test(testQuestions, setId);
     }
 
-    public Test gradeTest(Test test){
+    public Test gradeTest(Test test) {
 
         double totalQuestions = 0;
         double totalCorrect = 0;
 
-        for (TestQuestion question : test.getTestQuestions()){
+        for (TestQuestion question : test.getTestQuestions()) {
 
             String correctAnswer = cardDao.getByQuestionAndSetId(question.getQuestion(), test.getSetId()).getAnswer();
             question.setCorrectAnswer(correctAnswer);
@@ -99,20 +97,35 @@ public class TestController {
         }
         double userGradePercentage = (totalCorrect / totalQuestions) * 100;
         test.setGrade(userGradePercentage);
-//        UserSetProg setProg = new UserSetProg();
-//        setProg.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(););
-//        setProg.setSet(setDao.getById(test.getSetId()));
-//        if (userGradePercentage > 90F){
-//            setProg.setProgression(progressionDao.getByStatus("Mastered"));
-//        } else if ( userGradePercentage >70) {
-//            setProg.setProgression(progressionDao.getByStatus("Satisfactory"));
-//        } else {
-//            setProg.setProgression(progressionDao.getByStatus("Needs Work"));
-//        }
-//        usetSetProgDao.save(setProg);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserSetProg existingProg = userSetProgDao.findByUserAndSet(loggedInUser, setDao.getById(test.getSetId()));
+        if (existingProg == null) {
+            UserSetProg setProg = new UserSetProg();
+            setProg.setUser(loggedInUser);
+            setProg.setSet(setDao.getById(test.getSetId()));
+            if (userGradePercentage > 90F) {
+                setProg.setProgression(progressionDao.getByStatus("Mastered"));
+            } else if (userGradePercentage > 70) {
+                setProg.setProgression(progressionDao.getByStatus("Satisfactory"));
+            } else {
+                setProg.setProgression(progressionDao.getByStatus("Needs Work"));
+            }
+            userSetProgDao.save(setProg);
+        } else {
+            if (!existingProg.getProgression().getStatus().equals("Mastered")) {
+                if (userGradePercentage > 90F) {
+                    existingProg.setProgression(progressionDao.getByStatus("Mastered"));
+                } else if (userGradePercentage > 70) {
+                    existingProg.setProgression(progressionDao.getByStatus("Satisfactory"));
+                } else {
+                    existingProg.setProgression(progressionDao.getByStatus("Needs Work"));
+                }
+                userSetProgDao.save(existingProg);
+            }
+
+        }
         return test;
     }
-
 
     @GetMapping("/tests/{setId}")
     public String showTest(@PathVariable long setId, Model model) {
@@ -121,7 +134,7 @@ public class TestController {
     }
 
     @PostMapping("/tests/{setId}")
-    public String gradeTest (@ModelAttribute Test test, Model model){
+    public String gradeTest(@ModelAttribute Test test, Model model) {
         model.addAttribute("test", test);
         return "redirect:tests/grade";
     }
@@ -131,7 +144,6 @@ public class TestController {
         model.addAttribute("test", gradeTest(test));
         return "tests/grade";
     }
-
 
 
 }

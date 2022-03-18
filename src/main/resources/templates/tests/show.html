@@ -10,6 +10,7 @@
 
 <div>
     <form th:action="@{/tests/{setId}/grade (setId = ${test.getSetId()})}" th:method="GET" th:object="${test}">
+        <input type="hidden" th:value="${test.setId}" th:field="*{setId}">
 
         <div th:each="testquestion, i : ${test.testQuestions}">
             <label th:for="${testquestion.question}" th:text="${testquestion.question}"></label>
