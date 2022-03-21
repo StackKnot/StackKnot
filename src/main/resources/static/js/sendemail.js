@@ -4,8 +4,8 @@
 // javascript
 
 const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey('')
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+// sgMail.setApiKey('') PLUG IN API KEY DIRECTLY TO SEND EMAIL WITH NODE JS, DELETE AFTER SENT
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 
 const msg = {
