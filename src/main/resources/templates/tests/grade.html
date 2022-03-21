@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <th:block th:include="/partials/header :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
 </head>
 <body>
 <h1 th:text="${test.grade}"></h1>
@@ -20,6 +20,6 @@
 </div>
 
 
-<th:block th:replace="/partials/header :: scripts"></th:block>
+<th:block th:replace="partials/header :: scripts"></th:block>
 </body>
 </html>
