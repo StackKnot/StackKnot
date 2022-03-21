@@ -1,9 +1,13 @@
 /* Very small devices (phones and pocket devices, 300 and up) */
-@media screen and (min-width:300px) { /* ... */
+@media screen and (min-width:200px) { /* ... */
 
     .LOGO{
         display: flex;
         justify-content: center;
+    }
+
+    #CARDTEXTTITLE {
+        font-size: 15px;
     }
 }
 
@@ -14,27 +18,30 @@
         display: flex;
         justify-content: center;
     }
+    #CARDTEXTTITLE {
+        font-size: 15px;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width:768px) { /* ... */
 
     #CARDTEXT{
-        font-size: 20px;
+        font-size: 16px;
     }
-    #CARDTEXTH3{
-        font-size: 35px;
+    #CARDTEXTTITLE {
+        font-size: 20px;
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width:992px) { /* ... */
     #CARDTEXT {
-        font-size: 30px;
+        font-size: 25px;
     }
 
-    #CARDTEXTH3 {
-        font-size: 45px;
+    #CARDTEXTTITLE {
+        font-size: 30px;
     }
 }
 
@@ -42,15 +49,13 @@
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width:1200px) { /* ... */
     #CARDTEXT {
+        font-size: 30px;
+    }
+
+    #CARDTEXTTITLE {
         font-size: 35px;
     }
-
-    #CARDTEXTH3 {
-        font-size: 50px;
-    }
 }
-
-
 
 .navbar-brand {
     display: flex;
@@ -72,78 +77,3 @@
     height: 50px;
     width: 50px;
 }
-
-/*FLEX CARDS*/
-
-/*html {*/
-/*    box-sizing: border-box;*/
-/*}*/
-
-/**, *:before, *:after {*/
-/*    box-sizing: inherit;*/
-/*}*/
-
-/*body {*/
-/*    font-family: sans-serif;*/
-/*    margin: 0;*/
-/*    background-color: #b4d455;*/
-/*}*/
-
-/*a {*/
-/*    color: white;*/
-/*}*/
-
-/*.container {*/
-/*    max-width: 750px;*/
-/*    margin: 0 auto;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-
-/*    !* TODO: Make this a flex container and align it's items to the center*!*/
-/*}*/
-
-/*.card {*/
-/*    background: rgba(255, 255, 255, 0.2);*/
-/*    margin: 20px;*/
-/*    padding: 20px;*/
-/*    border-radius: 4px;*/
-/*    text-align: center;*/
-/*    flex-basis: 100%;*/
-/*    !*  TODO: Change this flex items basis to 100% of the page  *!*/
-/*}*/
-
-/*.card-title {*/
-/*    text-transform: uppercase;*/
-/*    color: white;*/
-/*    letter-spacing: 2px;*/
-/*    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);*/
-/*}*/
-
-/*.card-body {*/
-/*    padding-bottom: 1em;*/
-/*}*/
-
-/*.feature-list {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    list-style: none;*/
-/*}*/
-
-/*.feature-item {*/
-/*    border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
-/*    padding: 10px;*/
-/*}*/
-
-/*.price {*/
-/*    font-size: 50px;*/
-/*    font-family: serif;*/
-/*    margin: 10px 0;*/
-/*}*/
-
-/*.btn-primary {*/
-/*    text-decoration: none;*/
-/*    background: #847477;*/
-/*    padding: 10px;*/
-/*    color: white;*/
-/*    border-radius: 4px;*/
-/*}*/
