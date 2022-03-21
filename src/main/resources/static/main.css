@@ -98,6 +98,15 @@
 }
 
 
+.blanket-err {
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin-top: 25vh;
+    font-size: 9rem;
+    animation: animate2 2s linear infinite alternate;
+}
+
 /* Small devices (phones and pocket devices, 576 and up) */
 @media screen and (min-width:576px) { /* ... */
 
