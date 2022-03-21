@@ -2,11 +2,14 @@ package com.codeup.stackknot.controllers;
 
 import com.codeup.stackknot.models.Set;
 import com.codeup.stackknot.models.User;
+import com.codeup.stackknot.models.UserSetProg;
 import com.codeup.stackknot.repositories.CardRepository;
 import com.codeup.stackknot.repositories.SetRepository;
 import com.codeup.stackknot.repositories.UserRepository;
 //import com.codeup.stackknot.services.EmailService;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import com.codeup.stackknot.repositories.UserSetProgRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,24 +24,16 @@ public class UserController {
     private UserRepository usersDao;
     private CardRepository cardsDao;
     private SetRepository setsDao;
-//    private final EmailService emailService;
+    private PasswordEncoder passwordEncoder;
+    private UserSetProgRepository userSetProgDao;
 
-
-    public UserController(UserRepository usersDao, CardRepository cardsDao, SetRepository setsDao) {
+    public UserController(UserRepository usersDao, CardRepository cardsDao, SetRepository setsDao, PasswordEncoder passwordEncoder, UserSetProgRepository userSetProgDao) {
         this.usersDao = usersDao;
         this.cardsDao = cardsDao;
         this.setsDao = setsDao;
-//        this.emailService = emailService;
+        this.passwordEncoder = passwordEncoder;
+        this.userSetProgDao = userSetProgDao;
     }
-
-
-    // LOGIN MAPPING, DOESNT DO MUCH WILL MOVE THIS TO AUTHENTICATION CONTROLLER ONCE WE ARE CLOSER TO FINISHED PRODUCT AND
-
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "users/login";
-    }
-
 
     //USER REGISTRATION
     @GetMapping("/sign-up")
@@ -50,6 +45,8 @@ public class UserController {
     @PostMapping("/sign-up")
     public String saveUser(@ModelAttribute User user) {
 //        emailService.prepareAndSend(user, "Registration Confirmation", "Welcome To StacKKnot, Thank You For Registering!");
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
         usersDao.save(user);
         return "redirect:/login";
     }
@@ -59,8 +56,10 @@ public class UserController {
     public String showProfile(@PathVariable String username, Model model) {
         User user = usersDao.findByUsername(username);
         List<Set> sets = setsDao.findAllByUserId(user.getId());
+        List<UserSetProg> setsStudied = userSetProgDao.findAllByUser(user);
         model.addAttribute("user", user);
         model.addAttribute("sets", sets);
+        model.addAttribute("setsStudied", setsStudied);
         return "users/profile";
     }
 

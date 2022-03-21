@@ -13,15 +13,11 @@ public class Set {
     private String title;
     @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
+    private int likes;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "set")
     private List<Card> cards;
-
-    public Set(String title, String description, User user, Subject subject) {
-        this.title = title;
-        this.description = description;
-        this.user = user;
-        this.subject = subject;
-    }
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -40,18 +36,31 @@ public class Set {
     }
 
     public Set() {
+        this.likes = 0;
     }
 
     public Set(String title, String description) {
         this.title = title;
         this.description = description;
+        this.likes = 0;
     }
 
     public Set(long id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.likes = 0;
     }
+
+    public Set(String title, String description, User user, Subject subject) {
+        this.title = title;
+        this.description = description;
+        this.user = user;
+        this.subject = subject;
+        this.likes = 0;
+    }
+
+
 
     public List<Card> getCards() {
         return cards;
@@ -85,7 +94,19 @@ public class Set {
         this.description = description;
     }
 
-    public User getUser(){return user;}
+    public User getUser() {
+        return user;
+    }
 
-    public void setUser(User user) {this.user = user;}
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 }

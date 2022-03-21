@@ -63,6 +63,16 @@ public class User {
         this.sets = sets;
     }
 
+    public User(User copy) {
+        id = copy.id;
+        username = copy.username;
+        email = copy.email;
+        password = copy.password;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        isAdmin = copy.isAdmin;
+    }
+
     public long getId() {
         return id;
     }

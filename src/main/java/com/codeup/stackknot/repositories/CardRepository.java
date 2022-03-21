@@ -8,4 +8,8 @@ import java.util.List;
 
 public interface CardRepository extends JpaRepository<Card, Long> {
     List<Card> findAllBySetId(long set_id);
+
+    Card getByQuestion(String question);
+
+    Card getByQuestionAndSetId(String question, long setId);
 }

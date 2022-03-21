@@ -4,8 +4,10 @@ import com.codeup.stackknot.Spring.Twilio.EmailRequest;
 import com.codeup.stackknot.Spring.Twilio.service.EmailService;
 import org.springframework.stereotype.Controller;
 
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 public class HomeController {
@@ -19,10 +21,12 @@ public class HomeController {
         return "homepage";
     }
 
+
     @GetMapping("/about-us")
     public String showAboutUs() {
         return "about-us";
     }
+
 
     @GetMapping("/contact-form")
     public String showContactAnExpert(Model model) {

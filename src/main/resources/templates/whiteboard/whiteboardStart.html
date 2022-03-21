@@ -15,9 +15,13 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<p>This is the whiteboarding practice section. Once you click "Get Started" a randomly generated question will appear. Use the text editor to type out your solution in Java, Javascript, or both! Once complete click "Get Solution" to check your answer. Good Luck! </p>
+<p>This is the white-boarding practice section. Once you click "Get Started" a randomly generated question will appear. Use the text editor to type out your solution in Java, Javascript, or both! Once complete click "Get Solution" to check your answer. Good Luck! </p>
+<form th:action="@{/whiteboardStart}" th:method="post">
+    <button type="submit">Get Started</button>
+</form>
+
 <div>
-    <input type="submit" value="Get Started" onclick="getNext()"/>
+    <input type="submit" value="Admin Upload" onclick="adminUpload()"/>
 </div>
 
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
@@ -25,9 +29,11 @@
 
 <script>
 
-    function getNext() {
-        let randomQuestion = Math.floor((Math.random() * 3) + 1);
-        location.replace('/whiteboard/' + randomQuestion)
+    function showAdminButton() {
+
+    }
+    function adminUpload() {
+        location.replace('/whiteboard/upload');
     }
 </script>
 <!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->

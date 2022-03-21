@@ -8,24 +8,39 @@
     <title>Single Set</title>
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
-    <th:block th:include="partials/header :: styling"></th:block></head>
+    <th:block th:include="partials/header :: styling"></th:block>
+</head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div>
-    <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}"><button type="submit">Edit</button></form>
+    <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
+        <button type="submit">Edit</button>
+    </form>
     <h2><span th:text="${singleSet.subject.title}"></span></h2>
-    <h3><span th:text="${singleSet.getTitle()}"></span></h3>
-    <p><span th:text="${singleSet.getDescription()}"></span></p>
-    <a th:href="@{/profile/{username} (username = ${singleSet.user.username})}" th:text="${singleSet.user.username}"></a>
-    <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}"><button type="submit">Add a card</button></form>
+    <h3><span th:text="${singleSet.title}"></span></h3>
+    <p><span th:text="${singleSet.description}"></span></p>
+    <p>Likes:  <span th:text="${singleSet.likes}"></span></p>
+    <form name="likeform" method="post" th:action="@{/sets/{id}/like (id = ${singleSet.id})}"><button type="submit">Like</button></form>
+    <a th:href="@{/profile/{username} (username = ${singleSet.user.username})}"
+       th:text="${singleSet.user.username}"></a>
+    <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}">
+        <button type="submit">Add a card</button>
+    </form>
+    <form th:action="@{/tests/{setId} (setId = ${singleSet.id})}">
+        <button type="submit">Take a test</button>
+    </form>
 </div>
 <div>
     <ul th:each="card : ${cards}">
-        <li th:text="${card.getQuestion()}"></li>
-        <li th:text="${card.getAnswer()}"></li>
-        <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}"><button type="submit">Edit</button></form>
-        <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}"><button type="submit">Delete</button></form>
+        <li th:text="${card.question}"></li>
+        <li th:text="${card.answer}"></li>
+        <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
+            <button type="submit">Edit</button>
+        </form>
+        <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
+            <button type="submit">Delete</button>
+        </form>
 
     </ul>
 </div>
@@ -33,5 +48,14 @@
 
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
+<script>
+    $(function() {
+        $('#likeform').submit(function(event) {
+            event.preventDefault();
+            $(this).submit();
+        });
+    });
+
+</script>
 </body>
 </html>
