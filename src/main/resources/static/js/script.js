@@ -1,6 +1,3 @@
-import {Cloudinary, URLConfig} from "@cloudinary/url-gen";
-
-
 // const btn = document.querySelector('button')
 // const inputs = document.querySelector('form')
 // btn.addEventListener('click', () => {
