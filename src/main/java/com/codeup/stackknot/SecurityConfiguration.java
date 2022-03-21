@@ -46,15 +46,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/sets", "/sets/{id: [\\d+]}", "/subjects")
+                .antMatchers("/",
+                        "/sets", "/sets/{id: [\\d+]}",
+                        "/subjects", "/subjects/{id: [\\d+]}", "/subjects/{title}",
+                        "/cards/create/{id: [\\d+]}",
+                        "/about-us", "/contact-form", "/search", "/sign-up",
+                        "/whiteboard", "/whiteboardStart", "/whiteboard/{id: [\\d+]}", "/whiteboard-next"
+                        )
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
                 .antMatchers(
                         "/sets/create",
-                        "/sets/{id}/edit",
-                        "/cards/{id}/edit"
+                        "/sets/{id: [\\d+]}/edit", "/sets/{id: [\\d+]}/delete",
+                        "/cards/{id: [\\d+]}/edit", "/cards/{id}/delete",
+                        "/tests/{id: [\\d+]}", "/tests/{id: [\\d+]}/grade",
+                        "/profile/{username}", "/profile/{id: [\\d+]}/edit",
+                        "/whiteboard/upload"
                 )
                 .authenticated()
         ;
