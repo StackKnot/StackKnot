@@ -33,7 +33,7 @@ public class CardController {
         Card card = new Card();
         Set set = setDao.getById(setId);
         card.setSet(set);
-        model.addAttribute("newCard", card);
+        model.addAttribute("card", card);
         return "cards/create";
     }
 

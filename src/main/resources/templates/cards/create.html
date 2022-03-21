@@ -14,7 +14,7 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="container">
     <h1>Create A Card</h1>
-<form th:action="@{/cards/create}" th:method="POST" th:object="${newCard}">
+<form th:action="@{/cards/create}" th:method="POST" th:object="${card}">
     <div class="form-group">
         <label for="question">Term/Question</label>
         <input type="text" class="form-control" id="question" name="question" th:field="*{question}">
@@ -25,7 +25,7 @@
         <textarea class="form-control" id="answer" rows="5" name="answer" th:field="*{answer}"></textarea>
     </div>
 
-    <input type="hidden" th:value="${newCard.set}" th:field="*{set}">
+    <input type="hidden" th:value="${card.set}" th:field="*{set}">
 
     <button type="submit" class="btn btn-primary btn-block">Submit</button>
 
