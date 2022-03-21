@@ -5,23 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Subjects</title>
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-
-<h1>Subjects Page</h1>
-
-<div th:each="subject : ${subjects}">
-    <h2 th:text="${subject.title}"></h2>
-    <div th:each=" set : ${subject.sets}">
-        <a th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
-        <p th:text="${set.description}"></p>
-        <p th:text="${set.user.username}"></p>
+<div class="d-flex justify-content-center mt-5">
+    <h1>Subjects</h1>
+</div>
+<div class="card m-3" th:each="subject : ${subjects}">
+    <h2 class="card-header" th:text="${subject.title}"></h2>
+    <div class="card-body" th:each=" set : ${subject.sets}">
+        <div class="card">
+            <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
+            <div class="card-body">
+                <h4>Description:</h4>
+                <p class="card-title" th:text="${set.description}"></p>
+                <h4>User:</h4>
+                <p class="card-text" th:text="${set.user.username}"></p>
+            </div>
+        </div>
     </div>
-
 </div>
 
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
