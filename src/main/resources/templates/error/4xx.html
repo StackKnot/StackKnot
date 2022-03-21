@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="'Oops, ' + ${error}"></title>
+  <th:block th:include="partials/bootstrap :: styling"></th:block>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body class="background">
+<nav th:replace="partials/navbar :: navbar"></nav>
+<div class="sky">
+  <div class="stars"></div>
+</div>
+
+<div class="err-container">
+<th:block th:switch="${error}">
+
+  <div th:case="'Not Found'">
+      <h1 class="num">
+        <span class="number">4</span>
+        <i class="fas fa-cog" id="wheel"></i>
+        <span class="number">4</span>
+      </h1>
+      <p class="err4">Oops, you got lost. Page was not found...</p>
+</div>
+
+
+  <div th:case="'Forbidden'">
+    <h1 class="num">
+      <span class="number">4</span>
+      <i class="fa solid fa-ban" id="ban"></i>
+      <span class="number">4</span>
+    </h1>
+    <p class="err4">You don't have permission to view this page.</p>
+  </div>
+
+
+</th:block>
+</div>
+
+<th:block th:replace="partials/footer :: styling"></th:block>
+<th:block th:include="partials/bootstrap :: scripts"></th:block>
+
+</body>
+</html>
