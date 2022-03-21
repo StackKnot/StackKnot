@@ -1,78 +1,76 @@
 <!DOCTYPE html>
 <!--Thymeleaf attribute -->
-<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
-
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta charset="UTF-8">
     <title>White Boarding Problems</title>
+    <link rel="stylesheet" href="../../static/js/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="../../static/js/codemirror/theme/dracula.css">
+    <style>
+
+    </style>
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
-    <th:block th:include="partials/header :: styling"></th:block>    <!--    CKEDITOR SCRIPT -->
-<!--    <script src="https://cdn.ckeditor.com/4.17.2/standard-all/ckeditor.js"></script>-->
+    <th:block th:include="partials/header :: styling"></th:block>
 
-    <style media="screen">
-        .editor {
-            margin: 0;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-    </style>
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<h3 th:text="${whiteboard.getQuestion()}"></h3>
-<form th:action="@{/whiteboard}" th:method="post">
-    <button type="submit">Next Problem</button>
-</form>
+<!--<h3 th:text="${whiteboard.getQuestion()}"></h3>-->
+<!--<form th:action="@{/whiteboard-next}" th:method="post">-->
+<!--    <button type="submit">Next Problem</button>-->
+<!--</form>-->
 
-<!--<label>-->
-<!--    <textarea name="editor"></textarea>-->
-<!--</label>-->
+<!--<div>-->
+<!--    <input type="submit" value="Get Solution" onclick="showImage()"/>-->
+<!--</div>-->
 
-<div id="editor">function foo(items) {
-    var x = "All this is syntax highlighted";
-    return x;
-</div>
+<!--<div class="editor-wrapper">-->
+<!--    <label for="code-editor"></label>-->
+<!--    <textarea id="code-editor" class="codemirror-textarea"></textarea>-->
+<!--</div>-->
 
-<div>
-    <input type="submit" value="Get Solution" onclick="showImage()"/>
-</div>
-
-<div>
-<img id="solutionJava" th:src="${whiteboard.getJavaURL()}" th:target="_blank" alt="Java Solution" style="visibility: hidden"/>
-<img id="solutionJS" th:src="${whiteboard.getJsURL()}" th:target="_blank" alt="JS Solution" style="visibility: hidden"/>
+<!--<div>-->
+<!--    <img id="solutionJava" th:src="${whiteboard.getJavaURL()}" th:target="_blank" alt="Java Solution"-->
+<!--         style="visibility: hidden"/>-->
+<!--    <img id="solutionJS" th:src="${whiteboard.getJsURL()}" th:target="_blank" alt="JS Solution"-->
+<!--         style="visibility: hidden"/>-->
+<!--</div>-->
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${whiteboard.getQuestion()}"></h5>
+            <form th:action="@{/whiteboard-next}" th:method="post">
+                <button type="submit" class="btn btn-primary">Next Problem</button>
+            </form>
+            <button class="btn btn-primary" onclick="showImage()">Get Solution</button>
+            <label for="code-editor"></label>
+            <textarea id="code-editor" class="codemirror-textarea card-text"></textarea>
+        </div>
+        <div>
+            <h5>Java Solution</h5>
+        <img id="solutionJava" th:src="${whiteboard.getJavaURL()}" th:target="_blank" alt="Java Solution" style="visibility: hidden"/>
+        </div>
+        <div>
+            <h5>Javascript Solution</h5>
+        <img id="solutionJS" th:src="${whiteboard.getJsURL()}" th:target="_blank" alt="JS Solution" style="visibility: hidden"/>
+        </div>
+    </div>
 </div>
 
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="../../static/js/codemirror/lib/codemirror.js"></script>
+<script src="../../static/js/editor.js"></script>
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
-<script src="../../static/js/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
-    // CKEDITOR.replace('editor', {
-    //     height: 260,
-    //     width: 700,
-    //     removeButtons: 'PasteFromWord'
-    // });
-
-    let editor = ace.edit("editor");
-    editor.setTheme("ace/theme/twilight");
-    editor.session.setMode("ace/mode/javascript");
-
 
     function showImage() {
-        document.getElementById('solutionJava').style.visibility='visible';
-        document.getElementById('solutionJS').style.visibility='visible';
+        document.getElementById('solutionJava').style.visibility = 'visible';
+        document.getElementById('solutionJS').style.visibility = 'visible';
     }
 </script>
-<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
-<!--<script src="../../js/js.js"></script>-->
-
-
-
 </body>
 </html>
