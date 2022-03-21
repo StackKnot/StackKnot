@@ -8,7 +8,7 @@
     <title>Create Card</title>
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
-    <th:block th:include="/partials/header :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
@@ -32,7 +32,7 @@
 </form>
 </div>
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
-<th:block th:replace="/partials/header :: scripts"></th:block>
+<th:block th:replace="partials/header :: scripts"></th:block>
 
 
 </body>
