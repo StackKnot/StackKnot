@@ -1,9 +1,11 @@
 package com.codeup.stackknot.controllers;
 
+import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.models.Whiteboard;
 import com.codeup.stackknot.repositories.UserRepository;
 import com.codeup.stackknot.repositories.WhiteboardRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -74,6 +76,15 @@ public class WhiteboardController {
     }
 
     //     ADMIN UPLOAD ABILITY
+    @PostMapping("/whiteboard-upload")
+    public String redirectToUpload(@ModelAttribute User user) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user.setAdmin(loggedInUser.getAdmin());
+        if (user.getAdmin()) {
+        return "redirect:whiteboard/upload";
+        }
+        return "redirect:whiteboard";
+    }
     @GetMapping("/whiteboard/upload")
     public String uploadSolutionForm(Model model) {
         model.addAttribute("newBoard", new Whiteboard());

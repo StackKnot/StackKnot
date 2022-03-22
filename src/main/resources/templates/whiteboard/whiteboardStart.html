@@ -14,7 +14,7 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container-fluid">
+<div class="container-fluid mt-5">
 <div class=" mx-auto mt-5" style="width: 800px;">
     <h5 class="text-center">This is the white-boarding practice section. Once you click "Get Started" a randomly generated question will
         appear. Use the text editor to type out your solution in Java, Javascript, or both! Once complete click "Get
@@ -26,8 +26,10 @@
     </form>
     </div>
 
-    <div>
-        <input type="submit" value="Admin Upload" onclick="adminUpload()"/>
+    <div sec:authorize="isAuthenticated()">
+        <form th:action="@{/whiteboard-upload}" th:method="post">
+        <input type="submit" value="Admin Upload"/>
+        </form>
     </div>
 </div>
 
@@ -35,7 +37,6 @@
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 
 <script>
-
     function showAdminButton() {
 
     }
