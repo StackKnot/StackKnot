@@ -14,10 +14,16 @@
 
 <h1 th:text="${subject.title}"></h1>
 
-<div th:each=" set : ${subject.sets}">
-    <h3 th:text="${set.title}"></h3>
-    <p th:text="${set.description}"></p>
-    <p th:text="${set.user.username}"></p>
+<div class="card-body" th:each=" set : ${subject.sets}">
+<div class="card">
+    <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
+    <div class="card-body">
+        <h4>Description:</h4>
+        <p class="card-title" th:text="${set.description}"></p>
+        <h4>User:</h4>
+        <p class="card-text" th:text="${set.user.username}"></p>
+    </div>
+</div>
 </div>
 
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
