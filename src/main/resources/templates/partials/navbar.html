@@ -49,7 +49,7 @@
 
 
         <!--        Login and Sign-Up links are visible to visitors only-->
-                <<ul class="navbar-nav ml-3" th:if="!${#request.userPrincipal}">
+                <ul class="navbar-nav ml-3" th:if="!${#request.userPrincipal}">
                 <li class="nav item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
