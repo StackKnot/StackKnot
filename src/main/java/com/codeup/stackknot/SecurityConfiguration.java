@@ -63,7 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/cards/{id: [\\d+]}/edit", "/cards/{id}/delete",
                         "/tests/{id: [\\d+]}", "/tests/{id: [\\d+]}/grade",
                         "/profile/{username}", "/profile/{id: [\\d+]}/edit",
-                        "/whiteboard/upload"
+                        "/whiteboard/upload", "/whiteboard/whiteboard-upload"
                 )
                 .authenticated()
         ;

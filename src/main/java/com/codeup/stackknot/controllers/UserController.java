@@ -47,6 +47,7 @@ public class UserController {
 //        emailService.prepareAndSend(user, "Registration Confirmation", "Welcome To StacKKnot, Thank You For Registering!");
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+        user.setAdmin(false);
         usersDao.save(user);
         return "redirect:/login";
     }
