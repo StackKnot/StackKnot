@@ -15,24 +15,9 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="container">
-<h1>Contact An Expert</h1>
-    <form th:action="@{/contact-form}" method="post" th:object="${emailRequest}">
-        <div class="form-group">
-            <label>Name</label><br>
-            <input th:field="*{subject}" type="text" class="form-control" name="subject" id="name" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label><br>
-            <input th:field="*{from}" type="text" class="form-control" name="from" id="email" required>
-        </div>
-        <div class="form-group">
-            <label>Message</label><br>
-            <textarea th:field="*{body}" name="body" class="form-control" cols="30" rows="10" id="message" required></textarea>
-        </div>
-        <input type="submit" class="btn btn-primary btn-block" value="Send Email" />
+<div class="d-flex justify-content-center" style="margin-top: 25px">
+    <iframe width="560" height="640" src="https://cdn.forms-content.sg-form.com/7c465b6f-a979-11ec-b7c9-a210770c2b18" loading="lazy" allowfullscreen/>
 
-    </form>
 </div>
 
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
