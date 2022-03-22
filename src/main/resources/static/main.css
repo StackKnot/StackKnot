@@ -98,6 +98,11 @@
     justify-content: center;
 }
 
+.frown {
+    color: #0e2744;
+    font-size: 30px;
+}
+
 #bugs {
     margin: 0 12px;
     height: 100%;
