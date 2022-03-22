@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,18 +38,17 @@
 <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4">
     <div class="col mb-4 d-flex CARD1">
         <div class="card" style="width: 15rem; border-width: 10px">
-            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+            <img th:src="@{/img/gary-photo.jpg}" th:target="_blank" alt="Picture of Gary Smith" class="card-img-top"  />
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Gary Smith</h5>
                 <p class="card-text">
-                    This is a longer card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.
+                    Full Stack Web Developer
                 </p>
             </div>
             <div class="card-body">
-                <a href="#" class="card-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="card-link"><i class="fab fa-github"></i></a>
-                <a href="#" class="card-link"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/gary-d-smith" class="card-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/smith-gary" class="card-link"><i class="fab fa-github"></i></a>
+                <a href="mailto:gary.d.smith99@gmail.com" class="card-link"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </div>
