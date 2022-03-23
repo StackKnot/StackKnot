@@ -19,6 +19,8 @@
     }
 }
 
+/*CUSTOM ERROR PAGES CSS*/
+
 .background {
     background: linear-gradient(to top, #283E51, #0A2342);
 }
@@ -96,6 +98,11 @@
     justify-content: center;
 }
 
+.frown {
+    color: #0e2744;
+    font-size: 30px;
+}
+
 #bugs {
     margin: 0 12px;
     height: 100%;
@@ -109,6 +116,18 @@
     margin-top: 25vh;
     font-size: 9rem;
     animation: animate2 2s linear infinite alternate;
+}
+
+/*VALIDATION ERROR MESSAGES CSS*/
+
+.form-err {
+    margin-top: 5px;
+    color: red;
+}
+
+label.error {
+    color: red;
+    font-size: small;
 }
 
 /* Small devices (phones and pocket devices, 576 and up) */

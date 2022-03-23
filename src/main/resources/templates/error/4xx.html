@@ -38,6 +38,17 @@
     <p class="err4">You don't have permission to view this page.</p>
   </div>
 
+  <div th:default>
+    <h1 class="num">
+    <span th:text="${error}"></span>
+    </h1>
+    <p class="err4">Oops, something went wrong...</p>
+    <p class="err4">We're sorry for the error </p>
+    <p class="err4"><i class="fas fa-frown frown"></i></p>
+  </div>
+
+
+
 
 </th:block>
 </div>
