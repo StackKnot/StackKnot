@@ -9,4 +9,5 @@ public class AuthenticationController {
     public String showLoginForm() {
         return "users/login";
     }
+
 }
