@@ -127,6 +127,7 @@
 
 label.error {
     color: red;
+    font-size: small;
 }
 
 /* Small devices (phones and pocket devices, 576 and up) */
