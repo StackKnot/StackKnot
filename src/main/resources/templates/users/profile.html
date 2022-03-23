@@ -18,16 +18,36 @@
     <h3 th:text="${user.firstName}"></h3>
     <h3 th:text="${user.lastName}"></h3>
     <h3 th:text="${user.email}"></h3>
-    
-    <div th:each="set : ${sets}">
-        <h2 th:text="${set.title}" ></h2>
-        <p th:text="${set.description}"></p>
-        <form th:action="@{/sets/{id}(id = ${set.getId()})}"><button type="submit">Edit</button></form>
+
+    <div class="card-body" th:each=" set : ${sets}">
+        <div class="card">
+            <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
+            <div class="card-body">
+                <h4>Description:</h4>
+                <p class="card-title" th:text="${set.description}"></p>
+                <h4>Subject:</h4>
+                <p class="card-text" th:text="${set.subject.title}" ></p>
+                <h4>User:</h4>
+                <p class="card-text" th:text="${set.user.username}"></p>
+            </div>
+        </div>
     </div>
 
-    <div  th:each=" setStudied : ${setsStudied}">
-        <h2 th:text="${setStudied.set.title}"></h2>
-        <h2 th:text="${setStudied.progression.status}"></h2>
+    <div class="card-body" th:each=" set : ${setsStudied}">
+        <div class="card">
+            <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.set.title}"></h3></a>
+            <div class="card-body">
+                <h4>Description:</h4>
+                <p class="card-title" th:text="${set.set.description}"></p>
+                <h4>Subject:</h4>
+                <p class="card-text" th:text="${set.set.subject.title}" ></p>
+                <h4>Progress:</h4>
+                <p class="card-text" th:text="${set.progression.status}"></p>
+                <h4>User:</h4>
+                <p class="card-text" th:text="${set.set.user.username}"></p>
+
+            </div>
+        </div>
     </div>
 
 </div>

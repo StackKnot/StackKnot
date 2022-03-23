@@ -12,12 +12,18 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<div th:each="set : ${allSets}">
-<!--I keep getting an error for a null value whenever this one was in just commenting out for testing -->
-<!--    <h2 th:text="${set.getSubject().getTitle()}"></h2>-->
-    <h3 th:text="${set.getTitle()}"></h3>
-    <p th:text="${set.getDescription()}"></p>
-    <p th:text="${set.getUser().getFirstName()}"></p>
+<div class="card-body" th:each=" set : ${allSets}">
+    <div class="card">
+        <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
+        <div class="card-body">
+            <h4>Description:</h4>
+            <p class="card-title" th:text="${set.description}"></p>
+            <h4>Subject:</h4>
+            <p class="card-text" th:text="${set.subject.title}" ></p>
+            <h4>User:</h4>
+            <p class="card-text" th:text="${set.user.username}"></p>
+        </div>
+    </div>
 </div>
 
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
