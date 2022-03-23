@@ -4,9 +4,9 @@ DROP TABLE IF EXISTS cards;
 
 DROP TABLE IF EXISTS user_set_prog;
 
-DROP TABLE IF EXISTS users;
-
 DROP TABLE IF EXISTS sets;
+
+DROP TABLE IF EXISTS users;
 
 DROP TABLE IF EXISTS subjects;
 
@@ -31,17 +31,12 @@ create table users
     unique (username)
 );
 
-## USER SET PROGRESSION
-create table user_set_prog
+## SUBJECTS
+create table subjects
 (
-    id             bigint auto_increment
+    id    bigint auto_increment
         primary key,
-    progression_id bigint null,
-    set_id         bigint null,
-    user_id        bigint null,
-    foreign key (user_id) references users (id),
-    foreign key (progression_id) references progression (id),
-    foreign key (set_id) references sets (id)
+    title varchar(75) not null
 );
 
 ## SETS
@@ -61,12 +56,25 @@ create table sets
 create fulltext index title
     on sets (title, description);
 
-## SUBJECTS
-create table subjects
+## PROGRESSION
+create table progression
 (
-    id    bigint auto_increment
+    id     bigint auto_increment
         primary key,
-    title varchar(75) not null
+    status varchar(50) null
+);
+
+## USER SET PROGRESSION
+create table user_set_prog
+(
+    id             bigint auto_increment
+        primary key,
+    progression_id bigint null,
+    set_id         bigint null,
+    user_id        bigint null,
+    foreign key (user_id) references users (id),
+    foreign key (progression_id) references progression (id),
+    foreign key (set_id) references sets (id)
 );
 
 ## CARDS
@@ -88,14 +96,6 @@ create table whiteboards
     javaurl  text         not null,
     jsurl    text         not null,
     question varchar(255) not null
-);
-
-## PROGRESSION
-create table progression
-(
-    id     bigint auto_increment
-        primary key,
-    status varchar(50) null
 );
 
 ## INSERT BASE INFO INTO ALL TABLES
@@ -127,9 +127,9 @@ VALUES ("Basics of HTML", "HTML", 1, null, 0),
 
 INSERT INTO cards (answer, question, set_id)
 VALUES
-#        ("Semantic HTML means using the most appropriate tag for the task at hand. It means using meaningful elements such as <form>, <article>, and <table> instead of only using <div> and <span>.", "What is semantic HTML?", 1),
-#        ("Web Accessibility means making sure the web is usable by people with a wide range of disabilities. It includes making sure keyboard-only users can navigate your site while also making certain people who have difficulties hearing or seeing can use it as well.", "What is web accessibility?
-# ", 1),
+       ("Semantic HTML means using the most appropriate tag for the task at hand. It means using meaningful elements such as <form>, <article>, and <table> instead of only using <div> and <span>.", "What is semantic HTML?", 1),
+       ("Web Accessibility means making sure the web is usable by people with a wide range of disabilities. It includes making sure keyboard-only users can navigate your site while also making certain people who have difficulties hearing or seeing can use it as well.", "What is web accessibility?
+", 1),
        ("HTML tags are elements. Think <a>, <button>, and <div>. HTML attributes describe characteristics of elements. Think src, class, and id.", "What is the difference between a tag and an attribute?", 1),
        ("Inline elements cannot have a height or width. Examples of inline elements include span, a, and img. Block elements get their own line and take up the full width available. Examples of block elements are div, p, and h1.", "What is the difference between inline and block elements?", 1),
        ("The CSS box model refers to the way CSS handles layout. Each element is composed of its content, padding, border, and margin.
@@ -172,11 +172,11 @@ VALUES
        ("Order by specifies the order in which the data is viewed. Group by groups results by data in columns and allows duplicates to be removed.", "Explain the differences between Order By and Group By", 11),
        ("AS", "What is the keyword needed to assign an alias to a query?", 11),
        ("Structured Query Language.", "What does SQL stand for in MySQL.", 11),
-       ("", "", 11),
-       ("", "", 12),
-       ("", "", 12),
-       ("", "", 12),
-       ("", "", 12),
+       ("Describe returns the structure of the specified table.", "What does the Describe keyword return?", 11),
+       ("Server side Java template engine. Has the ability to work on both web and non-web environments.", "What is Thymeleaf?", 12),
+       ("Chunks of code that will be reused. Those chunks can be included in other templates.", "What are fragments in Thymeleaf?", 12),
+       ("The variable used will automatically be escaped. ", "What is a feature of using th:text?", 12),
+       ("${...} : Variable expressions. *{...} : Selection expressions. #{...} : Message (i18n) expressions. @{...} : Link (URL) expressions. ~{...} : Fragment expressions.", "What are the 5 types of standard expressions in Thymeleaf?", 12);
 
 
 INSERT INTO whiteboards (javaurl, jsurl, question)
@@ -188,15 +188,7 @@ VALUES ("https://res.cloudinary.com/smith-gary/image/upload/v1647969304/r2bbcwcc
         "Write in the console the numbers from 1 to 100, where multiples of 3 are fizz, multiples of 5 are buzz, and multiples of both 3 and 5 are fizzbuzz."),
        ("https://res.cloudinary.com/smith-gary/image/upload/v1647976673/ugyrugtqmizooo4zr6io.png",
         "https://res.cloudinary.com/smith-gary/image/upload/v1647976752/rdrknjrq0vzgd0qs9p5b.png",
-        "Create a function that returns the nth entry in the Fibonacci sequence, where n is the number you pass in as an argument .");
+        "Create a function that returns the nth entry in the Fibonacci sequence, where n is the number you pass in as an argument."),
+       ("https://res.cloudinary.com/smith-gary/image/upload/v1648052773/osmltxz0wv0umirg6z2p.png", "https://res.cloudinary.com/smith-gary/image/upload/v1648052621/xlasi3yuurncoxchwab7.png", "Write a function that takes a string as an argument an returns the number of vowels contained in that string."),
+  ("https://res.cloudinary.com/smith-gary/image/upload/v1648056048/cgswphmyakn2zo6eqeqb.png", "https://res.cloudinary.com/smith-gary/image/upload/v1648055230/eggtgz7eju5cyu6trcis.png", "Write a function that will take a given string and reverse the order of the words. Expected output of 'The words in this string have been reversed' to be 'reversed been have string this in words The'.");
 
-
-
-
-
-# ("https://res.cloudinary.com/smith-gary/image/upload/v1647289188/Screen_Shot_2022-03-14_at_3.19.08_PM_hxyctz.png","https://res.cloudinary.com/smith-gary/image/upload/v1647288249/Screen_Shot_2022-03-14_at_3.03.40_PM_usvzlg.png
-# # ", "Console logs the numbers from 1 to n, where n is the integer the function takes as its parameter
-# # logs /fizz/ instead of the number for multiples of 3
-# # logs /buzz/ instead of the number for multiples of 5
-# # logs /fizzbuzz/ for numbers that are multiples of both 3 and 5");
-#
