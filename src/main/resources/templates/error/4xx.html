@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title th:text="'Oops, ' + ${error}"></title>
   <th:block th:include="partials/bootstrap :: styling"></th:block>
+  <th:block th:include="partials/header :: styling"></th:block>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
@@ -38,7 +39,7 @@
     <p class="err4">You don't have permission to view this page.</p>
   </div>
 
-  <div th:default>
+  <div th:case="*">
     <h1 class="num">
     <span th:text="${error}"></span>
     </h1>
@@ -46,8 +47,6 @@
     <p class="err4">We're sorry for the error </p>
     <p class="err4"><i class="fas fa-frown frown"></i></p>
   </div>
-
-
 
 
 </th:block>

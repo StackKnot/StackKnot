@@ -12,6 +12,7 @@
     .LOGO{
         display: flex;
         justify-content: center;
+        margin-top: 25px;
     }
 
     #CARDTEXTTITLE {
@@ -106,16 +107,6 @@
 #bugs {
     margin: 0 12px;
     height: 100%;
-}
-
-
-.blanket-err {
-    display: flex;
-    justify-content: center;
-    color: black;
-    margin-top: 25vh;
-    font-size: 9rem;
-    animation: animate2 2s linear infinite alternate;
 }
 
 /*VALIDATION ERROR MESSAGES CSS*/
