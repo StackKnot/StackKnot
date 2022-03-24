@@ -15,7 +15,7 @@
 
 <div>
     <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
-        <button type="submit">Edit</button>
+        <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit</button>
     </form>
     <h2><span th:text="${singleSet.subject.title}"></span></h2>
     <h3><span th:text="${singleSet.title}"></span></h3>
@@ -38,8 +38,8 @@
         <div class="card-body">
             <h5 class="card-title" th:text="${card.question}"></h5>
 
-            <button class="btn btn-primary" type="button" data-toggle="collapse" th:data-target = "'#collapse'+${card.id}"
-                    aria-expanded="false" th:attr= "aria-controls= '#collapse'+${card.id}">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" th:data-target="'#collapse'+${card.id}"
+                    aria-expanded="false" th:attr="aria-controls= '#collapse'+${card.id}">
                 Show Answer
             </button>
 
@@ -48,13 +48,14 @@
                     <h5 th:text="${card.answer}"></h5>
                 </div>
             </div>
-
-            <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
-                <button type="submit">Edit</button>
-            </form>
-            <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
-                <button type="submit">Delete</button>
-            </form>
+            <div sec:authorize="isAuthenticated()">
+                <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
+                    <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit</button>
+                </form>
+                <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
+                    <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -25,8 +25,11 @@ public class WhiteboardController {
 
     //     SHOW WHITEBOARD SECTION
     @GetMapping("/whiteboard")
-    public String getStartedPage() {
-        whiteboardDao.findAll();
+    public String getStartedPage(Model model) {
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
+            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            model.addAttribute("user", loggedInUser);
+        }
         return "whiteboard/whiteboardStart";
     }
 
@@ -62,12 +65,7 @@ public class WhiteboardController {
     //     ADMIN UPLOAD ABILITY
     @PostMapping("/whiteboard-upload")
     public String redirectToUpload(@ModelAttribute User user) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        user.setAdmin(loggedInUser.getAdmin());
-        if (user.getAdmin()) {
         return "redirect:whiteboard/upload";
-        }
-        return "redirect:whiteboard";
     }
     @GetMapping("/whiteboard/upload")
     public String uploadSolutionForm(Model model) {

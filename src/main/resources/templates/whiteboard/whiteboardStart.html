@@ -28,7 +28,7 @@
 
     <div sec:authorize="isAuthenticated()">
         <form th:action="@{/whiteboard-upload}" th:method="post">
-        <input type="submit" value="Admin Upload"/>
+        <input type="submit" value="Admin Upload" th:if="${user.admin}"/>
         </form>
     </div>
 </div>

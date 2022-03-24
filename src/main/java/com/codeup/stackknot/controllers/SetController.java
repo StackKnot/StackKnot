@@ -5,6 +5,7 @@ import com.codeup.stackknot.models.Subject;
 import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.repositories.*;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +48,6 @@ public class SetController {
         set.setSubject(subject);
         setDao.save(set);
         return "redirect:../cards/create/" + set.getId();
-
     }
 
 //    LIKE A SET
@@ -61,9 +61,13 @@ public class SetController {
 
     // SHOW SPECIFIC SET BY ID
     @GetMapping("/sets/{id}")
-    public String setById(@PathVariable long id, Model model) {
+    public String setById(@PathVariable long id, Model model, User user) {
         model.addAttribute("singleSet", setDao.getById(id));
         model.addAttribute("cards", cardDao.findAllBySetId(id));
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
+            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            model.addAttribute("user", loggedInUser);
+        }
         return "sets/show";
     }
 
@@ -76,10 +80,8 @@ public class SetController {
 
     // EDIT SPECIFIC SET BY ID
     @GetMapping("/sets/{id}/edit")
-    public String editSetFrom(@PathVariable long id, Model model) {
-        Set set = setDao.getById(id);
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+    public String editSetFrom(@PathVariable long id, Model model, @ModelAttribute User user) {
+        model.addAttribute("set", setDao.getById(id));
         return "sets/edit";
 
     }
@@ -87,9 +89,9 @@ public class SetController {
     @PostMapping("/sets/{id}/edit")
     public String submitEdit(@ModelAttribute Set set, @PathVariable long id) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        set.setUser(loggedInUser);
-        setDao.save(set);
-        return "redirect:/sets";
+            set.setUser(loggedInUser);
+            setDao.save(set);
+            return "redirect:/sets";
     }
 
     // DELETE SPECIFIC SET BY ID
@@ -120,6 +122,4 @@ public class SetController {
         model.addAttribute("searchResult", searchResult);
         return "sets/search";
     }
-
-
 }
