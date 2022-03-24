@@ -12,7 +12,7 @@
 </head>
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <form th:action="@{/whiteboard/upload}" th:method="post" th:object="${newBoard}">
         <div class="form-group">
             <h3>Enter a New Problem</h3>

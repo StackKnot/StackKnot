@@ -59,6 +59,16 @@ body {
     }
 }
 
+#about2 {
+    font-size: 1.24rem;
+}
+
+#pic1{
+    /*display: flex;*/
+    /*justify-items: auto;*/
+    height: 295px;
+    width: 236px;
+}
 /*CUSTOM ERROR PAGES CSS*/
 
 .background {

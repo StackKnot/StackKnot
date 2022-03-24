@@ -9,6 +9,7 @@ import com.codeup.stackknot.repositories.UserRepository;
 //import com.codeup.stackknot.services.EmailService;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import com.codeup.stackknot.repositories.UserSetProgRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,6 +58,12 @@ public class UserController {
         user.setAdmin(false);
         usersDao.save(user);
         return "redirect:/login";
+    }
+
+    @GetMapping("/profile")
+    public String profile(){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return "redirect:/profile/" + loggedInUser.getUsername();
     }
 
     //INDIVIDUAL PROFILE PAGES, THIS WILL BE LOCKED DOWN LATER WHEN WE ARE ACTUALLY CHECKING AGAINST THE SESSION
