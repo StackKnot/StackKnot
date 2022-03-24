@@ -17,7 +17,7 @@
             <input type="hidden" th:value="${testquestion.question}"
                    th:field="*{testQuestions[__${i.index}__].question}">
             <div class="form-row">
-                <div class="col-auto">
+                <div class="col-6">
                     <div class="form-check">
                         <label class="form-check-label" th:for="${testquestion.answer1}"
                                th:text="${testquestion.answer1}"></label>
@@ -28,7 +28,7 @@
                                th:field="*{testQuestions[__${i.index}__].answer1}">
                     </div>
                 </div>
-                <div class="col-auto">
+                <div class="col-6">
                     <div class="form-check">
                         <label class="form-check-label" th:for="${testquestion.answer2}"
                                th:text="${testquestion.answer2}"></label>
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="col-auto">
+                <div class="col-6">
                     <div class="form-check">
                         <label class="form-check-label" th:for="${testquestion.answer3}"
                                th:text="${testquestion.answer3}"></label>
@@ -52,7 +52,7 @@
                                th:field="*{testQuestions[__${i.index}__].answer3}">
                     </div>
                 </div>
-                <div class="col-auto">
+                <div class="col-6">
                     <div class="form-check">
                         <label class="form-check-label" th:for="${testquestion.answer4}"
                                th:text="${testquestion.answer4}"></label>
