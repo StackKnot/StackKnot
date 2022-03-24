@@ -2,6 +2,9 @@ package com.codeup.stackknot.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -10,16 +13,32 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(nullable = false, length = 30, unique = true)
+    @NotBlank(message = "username cannot be blank")
+    @Size(min = 3, message = "username must be at least 3 characters")
     private String username;
+
     @Column(nullable = false, unique = true)
+    @NotBlank(message = "email cannot be blank")
+    @Email(message = "invalid email, please try again")
     private String email;
+
     @Column(nullable = false)
+    @NotBlank(message = "password cannot be blank")
+    @Size(min = 7, message = "password must be at least 7 characters")
     private String password;
+
     @Column(length = 50)
+    @NotBlank(message = "first name cannot be blank")
+    @Size(min = 1, message = "first name must be at least 1 character")
     private String firstName;
+
     @Column(length = 50)
+    @NotBlank(message = "last name cannot be blank")
+    @Size(min = 1, message = "username must be at least 1 character")
     private String lastName;
+
     @Column
     private Boolean isAdmin;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")

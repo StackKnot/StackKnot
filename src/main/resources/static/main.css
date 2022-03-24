@@ -51,12 +51,15 @@ body {
     .LOGO{
         display: flex;
         justify-content: center;
+        margin-top: 25px;
     }
 
     #CARDTEXTTITLE {
         font-size: 15px;
     }
 }
+
+/*CUSTOM ERROR PAGES CSS*/
 
 .background {
     background: linear-gradient(to top, #283E51, #0A2342);
@@ -135,19 +138,26 @@ body {
     justify-content: center;
 }
 
+.frown {
+    color: #0e2744;
+    font-size: 30px;
+}
+
 #bugs {
     margin: 0 12px;
     height: 100%;
 }
 
+/*VALIDATION ERROR MESSAGES CSS*/
 
-.blanket-err {
-    display: flex;
-    justify-content: center;
-    color: black;
-    margin-top: 25vh;
-    font-size: 9rem;
-    animation: animate2 2s linear infinite alternate;
+.form-err {
+    margin-top: 5px;
+    color: red;
+}
+
+label.error {
+    color: red;
+    font-size: small;
 }
 
 /* Small devices (phones and pocket devices, 576 and up) */
