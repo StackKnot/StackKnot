@@ -111,18 +111,18 @@ INSERT INTO subjects (title)
 VALUES ("HTML"), ("CSS"), ("Bootstrap"), ("JavaScript"), ("jQuery"), ("Java"), ("Spring"), ("MySQL"), ("Thymeleaf");
 
 INSERT INTO sets (description, title, subject_id, user_id, likes)
-VALUES ("Basics of HTML", "HTML", 1, null, 0),
-       ("Basics of CSS", "CSS I", 2, null, 0),
-       ("Front-end framework that applies CSS", "BootStrap", 3, null, 0),
-       ("Basics of javascript", "Javascript I", 4, null, 0),
-       ("Javascript library for easier scripting of HTML", "Jquery", 5, null, 0),
-       ("More in-depth javascript", "Javascript II", 4, null, 0),
-       ("Basics of java", "Java I", 6, null, 0),
-       ("Java and Object oriented programming", "Java II", 6, null, 0),
-       ("Java and the web", "Java III", 6, null, 0),
-       ("Understanding the Spring framework", "Spring", 7, null, 0),
-       ("Understanding MySQL", "MySQL", 8, null, 0),
-       ("Understanding Thymeleaf", "Thymeleaf", 9, null, 0);
+VALUES ("Basics of HTML", "HTML", 1, 1, 0),
+       ("Basics of CSS", "CSS I", 2, 1, 0),
+       ("Front-end framework that applies CSS", "BootStrap", 3, 1, 0),
+       ("Basics of javascript", "Javascript I", 4, 1, 0),
+       ("Javascript library for easier scripting of HTML", "Jquery", 5, 1, 0),
+       ("More in-depth javascript", "Javascript II", 4, 1, 0),
+       ("Basics of java", "Java I", 6, 1, 0),
+       ("Java and Object oriented programming", "Java II", 6, 1, 0),
+       ("Java and the web", "Java III", 6, 1, 0),
+       ("Understanding the Spring framework", "Spring", 7, 1, 0),
+       ("Understanding MySQL", "MySQL", 8, 1, 0),
+       ("Understanding Thymeleaf", "Thymeleaf", 9, 1, 0);
 
 
 INSERT INTO cards (answer, question, set_id)
