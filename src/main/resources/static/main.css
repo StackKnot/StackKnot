@@ -64,8 +64,10 @@ body {
 }
 
 #pic1{
-    /*height: 275px;*/
-    /*width: 220px;*/
+    /*display: flex;*/
+    /*justify-items: auto;*/
+    height: 295px;
+    width: 236px;
 }
 /*CUSTOM ERROR PAGES CSS*/
 
