@@ -11,7 +11,7 @@
   <th:block th:include="partials/header :: styling"></th:block>
 
 </head>
-<body>
+<body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <form th:action="@{/cards/{id}/edit(id = ${card.getId()})}" th:method="POST" th:object="${card}">
   <div class="form-group">

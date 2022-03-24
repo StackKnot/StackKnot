@@ -12,13 +12,13 @@
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header.html :: styling"></th:block>
 </head>
-<body>
+<body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-
 <div class="d-flex justify-content-center" style="margin-top: 25px">
     <iframe width="560" height="640" src="https://cdn.forms-content.sg-form.com/7c465b6f-a979-11ec-b7c9-a210770c2b18" loading="lazy" allowfullscreen/>
 
 </div>
+
 
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 

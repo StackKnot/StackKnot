@@ -8,9 +8,13 @@
     <th:block th:include="partials/bootstrap.html :: styling"></th:block>
     <th:block th:include="partials/header.html :: styling"></th:block>
 </head>
-<body>
+<body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container">
+
+
+<div class="d-flex justify-content-end row">
+
+<div  style="padding-right: 120px; margin-top: 100px; margin-bottom: 100px">
 <h1>Create An Account</h1>
 
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
@@ -38,6 +42,10 @@
 
 </form>
 </div>
+    <div style="padding-left: 50px"><img src="/img/registerImage.jpg" alt="register" height="350px"></div>
+</div>
+
+
 
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 

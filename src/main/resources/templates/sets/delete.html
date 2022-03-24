@@ -10,7 +10,7 @@
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
-<body>
+<body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <form th:action="@{/sets/{id}/delete(id = ${set.getId()})}" th:method="POST" th:object="${set}">
