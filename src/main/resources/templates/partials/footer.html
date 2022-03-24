@@ -22,13 +22,29 @@
                     </ul>
 
                     <p class="">
-                    <form action="sign-up" method="get">
+                    <form action="sign-up" method="get" th:if="!${#request.userPrincipal}">
                         <span class="me-3" style="padding-right: 10px">Register for free</span>
                         <button type="submit" class="btn btn-outline-light btn-rounded">
                             Sign up!
                         </button>
                         </form>
                     </p>
+
+
+                    <p class="">
+                    <form th:method="POST" th:action="@{/profile}" th:if="${#request.userPrincipal}">
+                        <button class="btn btn-outline-light btn-rounded" type="submit">Profile
+                        </button>
+                    </form>
+
+                    <form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}">
+                        <button class="btn btn-outline-light btn-rounded" type="submit">Logout
+                        </button>
+                        <span class="me-3 text-muted" style="padding-right: 10px">You are logged in...</span>
+                    </form>
+                    </p>
+
+
                     <img src="/img/stackKnot_Logo1copy.jpg" width="20%" height="20%" style="padding-left: 40px">
                 </section>
                 <!-- Section: CTA -->
