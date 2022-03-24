@@ -46,12 +46,12 @@ body {
 
 
 /* Very small devices (phones and pocket devices, 300 and up) */
-@media screen and (min-width:200px) { /* ... */
+@media screen and (max-width:576px) { /* ... */
 
     .LOGO{
         display: flex;
         justify-content: center;
-        margin-top: 25px;
+        margin-top: -100px;
     }
 
     #CARDTEXTTITLE {
@@ -176,6 +176,7 @@ label.error {
     .LOGO{
         display: flex;
         justify-content: center;
+        margin-top: -100px;
     }
     #CARDTEXTTITLE {
         font-size: 15px;
@@ -184,6 +185,12 @@ label.error {
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width:768px) { /* ... */
+
+    .LOGO{
+        display: flex;
+        justify-content: center;
+        margin-top: -100px;
+    }
 
     #CARDTEXT{
         font-size: 16px;
@@ -195,6 +202,13 @@ label.error {
 
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width:992px) { /* ... */
+
+    .LOGO{
+        display: flex;
+        justify-content: center;
+        margin-top: 0px;
+    }
+
     #CARDTEXT {
         font-size: 25px;
     }
@@ -207,6 +221,13 @@ label.error {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width:1200px) { /* ... */
+
+    .LOGO{
+        display: flex;
+        justify-content: center;
+        margin-top: 0px;
+    }
+
     #CARDTEXT {
         font-size: 30px;
     }

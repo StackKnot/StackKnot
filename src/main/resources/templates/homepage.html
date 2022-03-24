@@ -51,7 +51,7 @@
         <div class="col-6">
             <div style="margin-left: 50px">
                 <h1>Get Started With Whiteboard</h1>
-                <img src="/img/stackKnot_Logow.jpg" alt="Logo" width="120px">
+                <img src="/img/stackKnot_Logow.png" alt="Logo" width="120px">
                 <p>Also, do you dread the whiteboard? <br>We have a section for that!. Set with questions and picture answers for Javascript and Java! In the white-boarding practice section, once you click "Get Started" a randomly generated question will appear. Use the text editor to type out your solution in Java, Javascript, or both! Once complete click "Get Solution" to check your answer. Good Luck!<br><br>
 
                     Please remember to subscribe and login to receive optimum use of all resources StackKnot has to offer. Don't forget to submit a contact form in order to subscribe to our application. We inform our subscribers when any knew features have been added and improved or even just to say a quick hello. We keep our members in the loop about all we do. Subscribe today so you don't miss any news.
@@ -90,8 +90,13 @@
                 </div>
 
                 <div class="card-footer">
-                    <a href="/login" class="btn btn-info">Choose Junior</a>
-                </div>
+                    <a href="/login" class="btn btn-info" th:if="!${#request.userPrincipal}">Choose Junior</a>
+<!--                </div>-->
+<!--                        <div class="card-footer">-->
+                            <form class="form-inline" th:method="POST" th:action="@{/profile}" th:if="${#request.userPrincipal}">
+                                <button class="btn btn-info" type="submit">Profile</button>
+                            </form>
+                        </div>
                 </div>
                 </div>
             </div>
@@ -116,8 +121,13 @@
                     <p class="price"><strong>Free</strong></p>
                 </div>
                     <div class="card-footer">
-                    <a href="/login" class="btn btn-warning">Choose Advanced</a>
-                </div>
+                    <a href="/login" class="btn btn-warning" th:if="!${#request.userPrincipal}">Choose Advanced</a>
+<!--                </div>-->
+<!--                        <div class="card-footer">-->
+                            <form class="form-inline" th:method="POST" th:action="@{/profile}" th:if="${#request.userPrincipal}">
+                                <button class="btn btn-warning" type="submit">Profile</button>
+                            </form>
+                        </div>
                     </div>
                     <div style="margin-left: 200px"><img src="/img/expertImage.png" alt="register" height="250px"></div>
 
@@ -145,8 +155,13 @@
                     <p class="price"><strong>Free</strong></p>
                 </div>
                 <div class="card-footer">
-                    <a href="/login" class="btn btn-info">Choose Intermediate</a>
-                </div>
+                    <a href="/login" class="btn btn-info" th:if="!${#request.userPrincipal}">Choose Intermediate</a>
+<!--                </div>-->
+<!--                        <div class="card-footer">-->
+                        <form class="form-inline" th:method="POST" th:action="@{/profile}" th:if="${#request.userPrincipal}">
+                            <button class="btn btn-info" type="submit">Profile</button>
+                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

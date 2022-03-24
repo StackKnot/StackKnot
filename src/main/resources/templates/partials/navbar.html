@@ -38,6 +38,7 @@
                 <a class="nav-link" href="/whiteboard">Whiteboard</a>
             </li>
         </ul>
+
         <div class="LOGO">
             <a class="navbar-brand" href="/">
                 <div class="logo-image">
@@ -45,11 +46,13 @@
                 </div>
             </a>
         </div>
+
         <form class="form-inline my-2 my-lg-0 ml-auto" th:action="@{/search}" method="get">
             <input class="form-control my-2 my-sm-0" type="search" name="keyword" placeholder="Search"
                    aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+
 
 
         <!--        Login and Sign-Up links are visible to visitors only-->
@@ -69,7 +72,9 @@
 
         <ul class="navbar-nav" th:if="${#request.userPrincipal}">
             <li class="nav item">
+
                 <form class="form-inline m-2" th:method="GET" th:action="@{/profile}">
+
                     <button class="btn btn-primary" type="submit">Profile</button>
                 </form>
             </li>
