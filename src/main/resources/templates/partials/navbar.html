@@ -54,22 +54,27 @@
 
         <!--        Login and Sign-Up links are visible to visitors only-->
 
-        <ul class="navbar-nav ml-3" th:if="!${#request.userPrincipal}">
+        <ul class="navbar-nav" th:if="!${#request.userPrincipal}">
             <li class="nav item">
-                <a class="nav-link" href="/login">Login</a>
+                <form class="form-inline m-2" th:method="GET" th:action="@{/login}">
+                    <button class="btn btn-primary" type="submit">Login</button>
+                </form>
             </li>
             <li>
-                <a class="nav-link" href="/sign-up">Sign Up</a>
+                <form class="form-inline m-2" th:method="GET" th:action="@{/sign-up}">
+                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                </form>
             </li>
         </ul>
 
-        <ul class="navbar-nav ml-3" th:if="${#request.userPrincipal}">
+        <ul class="navbar-nav" th:if="${#request.userPrincipal}">
             <li class="nav item">
-                <form class="form-inline" th:method="GET" th:action="@{/profile}">
+                <form class="form-inline m-2" th:method="GET" th:action="@{/profile}">
                     <button class="btn btn-primary" type="submit">Profile</button>
                 </form>
-
-                <form class="form-inline" th:method="POST" th:action="@{/logout}">
+            </li>
+            <li>
+                <form class="form-inline m-2" th:method="POST" th:action="@{/logout}">
                     <button class="btn btn-primary" type="submit">Logout</button>
                 </form>
             </li>
