@@ -4,7 +4,6 @@ import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.models.Whiteboard;
 import com.codeup.stackknot.repositories.UserRepository;
 import com.codeup.stackknot.repositories.WhiteboardRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,22 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @Controller
-//@RequestMapping(value="/whiteboard")
 public class WhiteboardController {
-
-
-//    @Value("${COM_CLOUDINARY_CLOUD_NAME}")
-//    String mCloudName;
-//
-//
-//    @Value("${COM_CLOUDINARY_API_KEY}")
-//    String mApiKey;
-//
-//
-//    @Value("${COM_CLOUDINARY_API_SECRET}")
-//    String mApiSecret;
-
-
 
     // DEPENDENCY INJECTION
     private UserRepository userDao;
@@ -96,4 +80,5 @@ public class WhiteboardController {
         whiteboardDao.save(whiteboard);
         return "redirect:/whiteboard";
     }
+
 }

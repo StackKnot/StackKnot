@@ -10,26 +10,32 @@
     <th:block th:include="partials/header.html :: styling"></th:block>
 
 </head>
-<body>
+<body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container">
-    <h1>Please Log In</h1>
+<div class="d-flex row">
+
+    <div style="padding-right: 50px"><img src="/img/loginImage.jpg" alt="Login" width="700px"></div>
+    <div style="padding-left: 120px; margin-top: 100px">
+    <h1>Please Log In To Start</h1>
 <form th:action="@{/login}" method="post">
     <div class="form-group">
     <label for="username">Username</label>
-    <input id="username" name="username" class="form-control" type="text" />
+    <input id="username" name="username" class="form-control" type="text" required/>
     </div>
     <div class="form-group">
     <label for="password">Password</label>
-    <input id="password" name="password" class="form-control" type="password" />
+    <input id="password" name="password" class="form-control" type="password" required/>
     </div>
     <input type="submit" class="btn btn-primary btn-block" value="Log In" />
 </form><br>
     <small>Don't have an account? <a href="/sign-up">Register here!</a></small>
 </div>
+</div>
 
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
-
+<!--JQUERY CDN-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script th:src="@{/js/err-msg-login.js}" type="text/javascript"></script>
 
 </body>
 </html>

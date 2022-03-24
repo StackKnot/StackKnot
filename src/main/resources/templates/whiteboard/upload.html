@@ -10,7 +10,7 @@
     <!--    CKEDITOR SCRIPT -->
     <script src="https://cdn.ckeditor.com/4.17.2/standard-all/ckeditor.js"></script>
 </head>
-<body>
+<body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="container-fluid">
     <form th:action="@{/whiteboard/upload}" th:method="post" th:object="${newBoard}">
