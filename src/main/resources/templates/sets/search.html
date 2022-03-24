@@ -15,11 +15,11 @@
 
 <div class="row">
     <div class="col" th:each="set : ${searchResult}">
+        <a th:href="@{/sets/{id} (id = ${set.id})}"/>
         <h3 th:text="${set.getTitle()}"></h3>
         <p th:text="${set.getDescription()}"></p>
     </div>
 </div>
-
 
 
 
