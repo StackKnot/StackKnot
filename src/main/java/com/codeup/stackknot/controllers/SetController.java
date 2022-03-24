@@ -61,9 +61,11 @@ public class SetController {
 
     // SHOW SPECIFIC SET BY ID
     @GetMapping("/sets/{id}")
-    public String setById(@PathVariable long id, Model model) {
+    public String setById(@PathVariable long id, Model model, User user) {
         model.addAttribute("singleSet", setDao.getById(id));
         model.addAttribute("cards", cardDao.findAllBySetId(id));
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         return "sets/show";
     }
 
@@ -76,7 +78,7 @@ public class SetController {
 
     // EDIT SPECIFIC SET BY ID
     @GetMapping("/sets/{id}/edit")
-    public String editSetFrom(@PathVariable long id, Model model) {
+    public String editSetFrom(@PathVariable long id, Model model, @ModelAttribute User user) {
         Set set = setDao.getById(id);
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -87,9 +89,11 @@ public class SetController {
     @PostMapping("/sets/{id}/edit")
     public String submitEdit(@ModelAttribute Set set, @PathVariable long id) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        set.setUser(loggedInUser);
-        setDao.save(set);
-        return "redirect:/sets";
+        if (loggedInUser.getId() == set.getUser().getId()) {
+            set.setUser(loggedInUser);
+            setDao.save(set);
+        }
+            return "redirect:/sets";
     }
 
     // DELETE SPECIFIC SET BY ID
