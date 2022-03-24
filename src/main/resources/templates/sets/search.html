@@ -13,6 +13,7 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <h3>Search Results for '[[${keyword}]]' </h3>
 
+
 <div class="card-body" th:each=" set : ${searchResult}">
     <div class="card">
         <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
@@ -24,6 +25,7 @@
             <h4>User:</h4>
             <p class="card-text" th:text="${set.user.username}"></p>
         </div>
+
     </div>
 </div>
 
