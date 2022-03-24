@@ -65,8 +65,8 @@
 
         <ul class="navbar-nav ml-3" th:if="${#request.userPrincipal}">
             <li class="nav item">
-                <form class="form-inline" th:method="POST" th:action="@{/profile}">
-                    <button class="btn btn-primary" type="submit">ProfileI</button>
+                <form class="form-inline" th:method="GET" th:action="@{/profile}">
+                    <button class="btn btn-primary" type="submit">Profile</button>
                 </form>
 
                 <form class="form-inline" th:method="POST" th:action="@{/logout}">
