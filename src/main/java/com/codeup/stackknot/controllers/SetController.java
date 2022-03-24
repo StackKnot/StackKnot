@@ -5,6 +5,7 @@ import com.codeup.stackknot.models.Subject;
 import com.codeup.stackknot.models.User;
 import com.codeup.stackknot.repositories.*;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +48,6 @@ public class SetController {
         set.setSubject(subject);
         setDao.save(set);
         return "redirect:../cards/create/" + set.getId();
-
     }
 
 //    LIKE A SET
@@ -64,8 +64,10 @@ public class SetController {
     public String setById(@PathVariable long id, Model model, User user) {
         model.addAttribute("singleSet", setDao.getById(id));
         model.addAttribute("cards", cardDao.findAllBySetId(id));
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
+            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            model.addAttribute("user", loggedInUser);
+        }
         return "sets/show";
     }
 
@@ -79,9 +81,7 @@ public class SetController {
     // EDIT SPECIFIC SET BY ID
     @GetMapping("/sets/{id}/edit")
     public String editSetFrom(@PathVariable long id, Model model, @ModelAttribute User user) {
-        Set set = setDao.getById(id);
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+        model.addAttribute("set", setDao.getById(id));
         return "sets/edit";
 
     }
@@ -89,10 +89,8 @@ public class SetController {
     @PostMapping("/sets/{id}/edit")
     public String submitEdit(@ModelAttribute Set set, @PathVariable long id) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (loggedInUser.getId() == set.getUser().getId()) {
             set.setUser(loggedInUser);
             setDao.save(set);
-        }
             return "redirect:/sets";
     }
 
@@ -124,6 +122,4 @@ public class SetController {
         model.addAttribute("searchResult", searchResult);
         return "sets/search";
     }
-
-
 }

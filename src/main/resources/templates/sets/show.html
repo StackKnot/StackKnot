@@ -15,7 +15,7 @@
 
 <div>
     <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
-        <button type="submit">Edit</button>
+        <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit</button>
     </form>
     <h2><span th:text="${singleSet.subject.title}"></span></h2>
     <h3><span th:text="${singleSet.title}"></span></h3>
@@ -48,12 +48,12 @@
                     <h5 th:text="${card.answer}"></h5>
                 </div>
             </div>
-            <div sec:authorize="isAuthenticated()" th:object="${session.}">
+            <div sec:authorize="isAuthenticated()">
                 <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
-                    <button type="submit" th:if="${loggedInUser} == ${set.getUser.getId }">Edit</button>
+                    <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit</button>
                 </form>
                 <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
-                    <button type="submit">Delete</button>
+                    <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete</button>
                 </form>
             </div>
         </div>
