@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta charset="UTF-8">
+
     <title>StackKnot Home Page</title>
+
     <!--    Templating-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
-<body>
+<body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="d-flex justify-content-center">
@@ -30,32 +31,35 @@
                 </div>
         </div>
     </div>
-</div><br><br><br>
+</div>
+<button class="darkButton" onclick="myFunction()">Toggle dark mode</button>
+<br><br><br>
     <h2 style="text-align: center">100% of developers use StackKnot to sharpen their skills</h2>
 
 <div class="container-fluid my-5">
     <div class="row align-items-center">
-        <div class="col-3">
-            <div>
+        <div class="col-4">
+            <div style="margin-left: 75px">
                 <h1> Trained Experts</h1>
                 <img src="/img/contact.png" alt="Logo" width="120px">
-                <p>Lorem ipsum dolor sit amet, at quod imperdiet conclusionemque cum, eu mea minim dignissim mediocritatem. An sit illud debet, ne assum dictas vivendum pro. Nec ne meis natum eripuit, eu cum stet virtute detraxit, lorem labores civibus eu vis. Sed ne amet tacimates pertinacia. Quo ceteros propriae mandamus an. Cu vel cibo omnis, omnium quaerendum nec cu. Novum persius alterum eam et.
+                <p>Need a little help?<br>Our experts are Codeup Certified, highly trained and available 24 hours a day, 7 days a week. Codeup is a fully-immersive, project-based, and intensive 22-week Full-Stack Java Career Accelerator that provides students with 670 hours of expert instruction in software development. If you are interested in knowing more about our experts, check out the "About Us" page down below. It is filled with information about our expert developers to include business profile, project portfolio and how to contact them.
                 </p>
                 <a href="/contact-form" class="nav-link px-2 text-muted">Expert Assistance...</a>
             </div>
         </div>
 
         <div class="col-6">
-            <div>
-                <h1> Registration One Click Away</h1>
+            <div style="margin-left: 50px">
+                <h1>Get Started With Whiteboard</h1>
                 <img src="/img/stackKnot_Logow.jpg" alt="Logo" width="120px">
-                <p>Lorem ipsum dolor sit amet, at quod imperdiet conclusionemque cum, eu mea minim dignissim mediocritatem. An sit illud debet, ne assum dictas vivendum pro. Nec ne meis natum eripuit, eu cum stet virtute detraxit, lorem labores civibus eu vis. Sed ne amet tacimates pertinacia. Quo ceteros propriae mandamus an. Cu vel cibo omnis, omnium quaerendum nec cu. Novum persius alterum eam et.
+                <p>Also, do you dread the whiteboard? <br>We have a section for that!. Set with questions and picture answers for Javascript and Java! In the white-boarding practice section, once you click "Get Started" a randomly generated question will appear. Use the text editor to type out your solution in Java, Javascript, or both! Once complete click "Get Solution" to check your answer. Good Luck!<br><br>
 
-                    Has accusam dolores aliquando cu, eam feugiat patrioque ne, eros philosophia cum cu. Est unum omnis inciderint te. Nam ut probo platonem, antiopam democritum ne quo. Case commodo suscipiantur te eum, facer admodum deleniti ad has. Quo causae prompta iracundia cu, elit nostro fastidii ad eam.
+                    Please remember to subscribe and login to receive optimum use of all resources StackKnot has to offer. Don't forget to submit a contact form in order to subscribe to our application. We inform our subscribers when any knew features have been added and improved or even just to say a quick hello. We keep our members in the loop about all we do. Subscribe today so you don't miss any news.
                 </p>
-                <a href="/sign-up" class="nav-link px-2 text-muted">Get Started...</a>
+                <a href="/whiteboard" class="nav-link px-2 text-muted">Head To Whiteboard...</a>
             </div>
         </div>
+
 <br>
         <div class="col-12 col-md-4">
             <ul class="d-flex flex-row flex-md-column justify-content-between list-unstyled">
@@ -65,12 +69,17 @@
             </ul>
         </div>
 
+<!--        CARDS-->
+<!--        CARD1-->
         <div class="container">
-            <div class="card" style="border-radius: 12px; border-color: lightgrey; border-width: 10px">
-                <div class="card-title">
+            <div class="" style="border-radius: 12px; border-color: lightgrey; border-width: 10px">
+                <div class="row d-flex align-items-center">
+                    <div style="margin-left: 100px"><img src="/img/textEdit1.png" alt="register" height="250px"></div>
+                    <div style="margin-left: 200px">
+                <div class="card-title" style="margin-left: 50px">
                     <h2>Junior dev</h2>
                 </div>
-                <div class="card-body">
+                    <div class="card-body" style="padding-left: 50px">
                     <p>Excellent for junior developers</p>
                     <ul class="feature-list">
                         <li class="feature-item">Unlimited open source repositories</li>
@@ -79,11 +88,20 @@
                     </ul>
                     <p class="price"><strong>Free</strong></p>
                 </div>
+
                 <div class="card-footer">
                     <a href="/login" class="btn btn-info">Choose Junior</a>
                 </div>
+                </div>
+                </div>
             </div>
-            <div class="card" style="border-radius: 12px; border-color: lightgrey; border-width: 10px">
+
+            <hr>
+
+<!--                    CARD2-->
+            <div class="" style="border-radius: 12px; border-color: lightgrey; border-width: 10px">
+                <div class="d-flex align-items-center row">
+                    <div style="margin-left: 150px">
                 <div class="card-title">
                     <h2>Advanced dev</h2>
                 </div>
@@ -97,15 +115,27 @@
                     </ul>
                     <p class="price"><strong>Free</strong></p>
                 </div>
-                <div class="card-footer">
+                    <div class="card-footer">
                     <a href="/login" class="btn btn-warning">Choose Advanced</a>
                 </div>
+                    </div>
+                    <div style="margin-left: 200px"><img src="/img/expertImage.png" alt="register" height="250px"></div>
+
+                </div>
             </div>
-            <div class="card" style="border-radius: 12px; border-color: lightgrey; border-width: 10px">
-                <div class="card-title">
+
+            <hr>
+
+<!--                    CARD3-->
+            <div class="" style="border-radius: 12px; border-color: lightgrey; border-width: 10px">
+                <div class="d-flex align-items-center row">
+                    <div style="margin-left: 100px"><img src="/img/cpu1.png" alt="register" height="250px"></div>
+                    <div style="margin-left: 200px">
+                <div class="card-title" style="margin-left: 50px">
                     <h2>Intermediate dev</h2>
                 </div>
-                <div class="card-body">
+
+                <div class="card-body" style="padding-left: 50px">
                     <p>Excellent for companies with small teams</p>
                     <ul class="feature-list">
                         <li class="feature-item">Unlimited additions</li>
@@ -116,6 +146,8 @@
                 </div>
                 <div class="card-footer">
                     <a href="/login" class="btn btn-info">Choose Intermediate</a>
+                </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,7 +166,6 @@
         </div>
     </div>
 </div>
-
 
 
 

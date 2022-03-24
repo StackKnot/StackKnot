@@ -12,7 +12,7 @@
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header.html :: styling"></th:block>
 </head>
-<body>
+<body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="d-flex justify-content-center" style="margin-top: 5px">
@@ -56,15 +56,15 @@
         <div class="card" style="width: 15rem; border-width: 10px">
             <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp" class="card-img-top" alt="Palm Springs Road"/>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
+                <h5 class="card-title" style="color: grey">Card title</h5>
+                <p class="card-text" style="color: grey">
                     This is a longer card with supporting text below as a natural lead-in to
                     additional content. This content is a little bit longer.
                 </p>
             </div>
             <div class="card-body">
-                <a href="#" class="card-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="card-link"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" rel="noreferrer noopener" class="card-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" rel="noreferrer noopener" class="card-link"><i class="fab fa-github"></i></a>
                 <a href="#" class="card-link"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
@@ -73,12 +73,12 @@
         <div class="card" style="width: 15rem; border-width: 10px">
             <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp" class="card-img-top" alt="Los Angeles Skyscrapers"/>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title" style="color: grey">Card title</h5>
+                <p class="card-text" style="color: grey">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
             <div class="card-body">
-                <a href="#" class="card-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="card-link"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" rel="noreferrer noopener" class="card-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" rel="noreferrer noopener" class="card-link"><i class="fab fa-github"></i></a>
                 <a href="#" class="card-link"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
@@ -87,14 +87,14 @@
         <div class="card" style="width: 15rem; border-width: 10px">
             <img src="/img/codeup10-21-0163.jpg" class="card-img-top" alt="Skyscrapers"/>
             <div class="card-body">
-                <h5 class="card-title">Juan Longoria</h5>
-                <p class="card-text">
+                <h5 class="card-title" style="color: grey">Juan Longoria</h5>
+                <p class="card-text" style="color: grey">
                     Full Stack Developer
                 </p>
             </div>
             <div class="card-body">
-                <a href="https://www.linkedin.com/in/juan-longoria-developer" class="card-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/juanlongoria" class="card-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/juan-longoria-developer" target="_blank" rel="noreferrer noopener" class="card-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/juanlongoria" target="_blank" rel="noreferrer noopener" class="card-link"><i class="fab fa-github"></i></a>
                 <a href="mailto:juan.a.longoria66@gmail.com?subject=User at StackKnot" class="card-link"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
