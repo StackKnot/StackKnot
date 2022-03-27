@@ -64,28 +64,15 @@ body {
 }
 
 #pic1{
-    /*display: flex;*/
-    /*justify-items: auto;*/
     height: 295px;
     width: 236px;
 }
+
 /*CUSTOM ERROR PAGES CSS*/
 
 .background {
-    background: linear-gradient(to top, #283E51, #0A2342);
-}
-
-.stars {
-    position: absolute;
-    top:110px;
-    left:0;
-    right:0;
-    bottom:0;
-    width:100%;
-    height:100%;
-    display:block;
-    background:url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat center;
-    z-index:0;
+    background-image:url(http://www.script-tutorials.com/demos/360/images/stars.png),
+    linear-gradient(to top, #283E51, #0A2342);
 }
 
 .err-container{
@@ -99,9 +86,17 @@ body {
     display: flex;
     justify-content: center;
     color: black;
-    margin-top: 25vh;
-    font-size: 9rem;
+    margin-top: 50vh;
+    font-size: 6rem;
     animation: animate2 2s linear infinite alternate;
+}
+
+.blanket-err {
+    font-size: 3rem;
+}
+
+.last-err {
+    margin-bottom: 50vh;
 }
 
 #wheel {
