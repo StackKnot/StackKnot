@@ -15,7 +15,7 @@
     <h1>Subjects</h1>
 </div>
 <div class="card m-3" th:each="subject : ${subjects}">
-    <h2 class="card-header" th:text="${subject.title}"></h2>
+    <h2 class="card-header bg-info" th:text="${subject.title}"></h2>
     <div class="card-body" th:each=" set : ${subject.sets}">
         <div class="card">
             <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
