@@ -1,3 +1,21 @@
+.action .menu {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.action .menu.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.action .menu ul li a {
+    text-decoration: none;
+}
+
+.action .menu ul li:hover a {
+    color: #00c4ff;
+}
+
 body {
     background-color: white;
     color: black;
@@ -14,7 +32,7 @@ body {
     color: #eeeeee;
     cursor: pointer;
     display: inline-block;
-    padding: 3px 10px;
+    padding: 2px 7px;
     text-align: center;
     text-decoration: none;
 }
@@ -184,6 +202,17 @@ label.error {
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width:768px) { /* ... */
 
+
+    .register{
+        margin-left: 50px;
+    }
+
+    .LOGO{
+        display: flex;
+        justify-content: center;
+        margin-top: -100px;
+    }
+
     #CARDTEXT{
         font-size: 16px;
     }
@@ -194,6 +223,17 @@ label.error {
 
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width:992px) { /* ... */
+
+
+    .register{
+        margin-left: 120px;
+    }
+
+    .LOGO{
+        display: flex;
+        justify-content: center;
+        margin-top: 0px;
+    }
 
     #CARDTEXT {
         font-size: 25px;
@@ -207,6 +247,17 @@ label.error {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width:1200px) { /* ... */
+
+
+    .register{
+        margin-left: 180px;
+    }
+
+    .LOGO{
+        display: flex;
+        justify-content: center;
+        margin-top: 0px;
+    }
 
     #CARDTEXT {
         font-size: 30px;
