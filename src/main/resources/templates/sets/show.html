@@ -12,52 +12,81 @@
 </head>
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
+<div class="container-fluid bg-light">
 
-<div>
-    <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
-        <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit</button>
-    </form>
-    <h2><span th:text="${singleSet.subject.title}"></span></h2>
-    <h3><span th:text="${singleSet.title}"></span></h3>
-    <p><span th:text="${singleSet.description}"></span></p>
-    <p>Likes: <span th:text="${singleSet.likes}"></span></p>
-    <form name="likeform" method="post" th:action="@{/sets/{id}/like (id = ${singleSet.id})}">
-        <button type="submit">Like</button>
-    </form>
-    <a th:href="@{/profile/{username} (username = ${singleSet.user.username})}"
-       th:text="${singleSet.user.username}"></a>
-    <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}">
-        <button type="submit">Add a card</button>
-    </form>
-    <form th:action="@{/tests/{setId} (setId = ${singleSet.id})}">
-        <button type="submit">Take a test</button>
-    </form>
-</div>
-<div>
-    <div class="card" th:each="card : ${cards}">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${card.question}"></h5>
+    <!--    <h2><span th:text="${singleSet.subject.title}"></span></h2>-->
+    <div class="mt-3">
+        <h3><span th:text="${singleSet.title}"></span></h3>
+        <p><span th:text="${singleSet.description}"></span></p>
+        <p>Created by: <a th:href="@{/profile/{username} (username = ${singleSet.user.username})}"
+                          th:text="${singleSet.user.username}"></a></p>
+        <p>Likes: <span th:text="${singleSet.likes}"></span></p>
+    </div>
+    <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <form name="likeform" method="post" th:action="@{/sets/{id}/like (id = ${singleSet.id})}">
+                <button type="submit" class="btn btn-success">Like</button>
+            </form>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+            <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}">
+                <button type="submit" class="btn btn-success">Add a card</button>
+            </form>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Third group">
+            <form th:action="@{/tests/{setId} (setId = ${singleSet.id})}">
+                <button type="submit" class="btn btn-success">Take a test</button>
+            </form>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Fourth group">
+            <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
+                <button class="btn btn-outline-secondary" type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">
+                    Edit
+                </button>
+            </form>
+        </div>
+    </div>
 
-            <button class="btn btn-primary" type="button" data-toggle="collapse" th:data-target="'#collapse'+${card.id}"
-                    aria-expanded="false" th:attr="aria-controls= '#collapse'+${card.id}">
-                Show Answer
-            </button>
+    <div>
+        <div class="card m-3" th:each="card : ${cards}">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${card.question}"></h5>
 
-            <div class="collapse" th:id="'collapse'+${card.id}">
-                <div class="card card-body">
-                    <h5 th:text="${card.answer}"></h5>
+                <button class="btn btn-info m-2" type="button" data-toggle="collapse"
+                        th:data-target="'#collapse'+${card.id}"
+                        aria-expanded="false" th:attr="aria-controls= '#collapse'+${card.id}">
+                    Show Answer
+                </button>
+
+                <div class="collapse m-2" th:id="'collapse'+${card.id}">
+                    <div class="card card-body">
+                        <h5 th:text="${card.answer}"></h5>
+                    </div>
                 </div>
-            </div>
-            <div sec:authorize="isAuthenticated()">
-                <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
-                    <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit</button>
-                </form>
-                <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
-                    <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete</button>
-                </form>
+
+                <!-- EDIT AND DELETE BUTTONS ONLY SHOWN IF THE USER CREATED OR USER IS ADMIN -->
+                <div sec:authorize="isAuthenticated()">
+                    <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
+                                <button class="btn btn-outline-secondary" type="submit"
+                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit
+                                </button>
+                            </form>
+                        </div>
+                        <div class="btn-group mr-2" role="group" aria-label="Second group">
+                            <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
+                                <button class="btn btn-outline-danger" type="submit"
+                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
@@ -70,7 +99,6 @@
             $(this).submit();
         });
     });
-
 </script>
 </body>
 </html>
