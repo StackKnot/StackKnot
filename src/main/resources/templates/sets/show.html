@@ -12,99 +12,53 @@
 </head>
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container-fluid">
-    <div>
-        <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
-            <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit</button>
-        </form>
-    </div>
-        <h2><span th:text="${singleSet.subject.title}"></span></h2>
+<div class="container-fluid bg-light">
+
+    <!--    <h2><span th:text="${singleSet.subject.title}"></span></h2>-->
+    <div class="mt-3">
         <h3><span th:text="${singleSet.title}"></span></h3>
         <p><span th:text="${singleSet.description}"></span></p>
+        <p>Created by: <a th:href="@{/profile/{username} (username = ${singleSet.user.username})}"
+                          th:text="${singleSet.user.username}"></a></p>
         <p>Likes: <span th:text="${singleSet.likes}"></span></p>
-        <form name="likeform" method="post" th:action="@{/sets/{id}/like (id = ${singleSet.id})}">
-            <button type="submit">Like</button>
-        </form>
-        <a th:href="@{/profile/{username} (username = ${singleSet.user.username})}"
-           th:text="${singleSet.user.username}"></a>
-        <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}">
-            <button type="submit">Add a card</button>
-        </form>
-        <form th:action="@{/tests/{setId} (setId = ${singleSet.id})}">
-            <button type="submit">Take a test</button>
-        </form>
     </div>
-
-    <!-- BUTTON FOR FLASH CARD MODAL -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#flashcardModal">
-        Flash Cards
-    </button>
-
-    <!-- MODAL FOR FLASH CARDS -->
-<div class="container-fluid">
-    <div class="modal fade" id="flashcardModal" tabindex="-1" aria-labelledby="flashcardModal" aria-hidden="true">
-        <div class="modal-dialog-centered modal-xl">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <!-- CAROUSEL FOR FLASH CARDS -->
-                    <div id="flashCardControls" class="carousel slide carousel-fade" data-interval="false">
-                        <tr class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="question-answer"  th:with="firstQ=${cards[0]}">
-                                    <h5 class="question" th:text="${firstQ.question}"></h5>
-                                    <h5 class="answer" th:text="${firstQ.answer}"></h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="question-answer"  th:with="secondQ=${cards[1]}">
-                                    <h5 class="question" th:text="${secondQ.question}"></h5>
-                                    <h5 class="answer" th:text="${secondQ.answer}"></h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="question-answer"  th:with="thirdQ=${cards[2]}">
-                                    <h5 class="question" th:text="${thirdQ.question}"></h5>
-                                    <h5 class="answer" th:text="${thirdQ.answer}"></h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="question-answer"  th:with="fourthQ=${cards[3]}">
-                                    <h5 class="question" th:text="${fourthQ.question}"></h5>
-                                    <h5 class="answer" th:text="${fourthQ.answer}"></h5>
-                                </div>
-                            </div>
-                        </tr>
-                        <button class="carousel-control-prev" type="button" data-target="#flashCardControls" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-target="#flashCardControls" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
+    <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <form name="likeform" method="post" th:action="@{/sets/{id}/like (id = ${singleSet.id})}">
+                <button type="submit" class="btn btn-success">Like</button>
+            </form>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+            <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}">
+                <button type="submit" class="btn btn-success">Add a card</button>
+            </form>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Third group">
+            <form th:action="@{/tests/{setId} (setId = ${singleSet.id})}">
+                <button type="submit" class="btn btn-success">Take a test</button>
+            </form>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Fourth group">
+            <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
+                <button class="btn btn-outline-secondary" type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">
+                    Edit
+                </button>
+            </form>
         </div>
     </div>
-</div>
-
 
     <div>
-        <div class="card" th:each="card : ${cards}">
+        <div class="card m-3" th:each="card : ${cards}">
             <div class="card-body">
                 <h5 class="card-title" th:text="${card.question}"></h5>
 
-                <button class="btn btn-primary" type="button" data-toggle="collapse"
+                <button class="btn btn-info m-2" type="button" data-toggle="collapse"
                         th:data-target="'#collapse'+${card.id}"
                         aria-expanded="false" th:attr="aria-controls= '#collapse'+${card.id}">
                     Show Answer
                 </button>
 
-                <div class="collapse" th:id="'collapse'+${card.id}">
+                <div class="collapse m-2" th:id="'collapse'+${card.id}">
                     <div class="card card-body">
                         <h5 th:text="${card.answer}"></h5>
                     </div>
@@ -112,16 +66,27 @@
 
                 <!-- EDIT AND DELETE BUTTONS ONLY SHOWN IF THE USER CREATED OR USER IS ADMIN -->
                 <div sec:authorize="isAuthenticated()">
-                    <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
-                        <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit</button>
-                    </form>
-                    <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
-                        <button type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete</button>
-                    </form>
+                    <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
+                                <button class="btn btn-outline-secondary" type="submit"
+                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit
+                                </button>
+                            </form>
+                        </div>
+                        <div class="btn-group mr-2" role="group" aria-label="Second group">
+                            <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
+                                <button class="btn btn-outline-danger" type="submit"
+                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
@@ -134,14 +99,6 @@
             $(this).submit();
         });
     });
-
-    $(function () {
-        $('.answer').hide();
-        $('.question-answer').click(function () {
-            $('.question, .answer').toggle();
-        });
-    });
-
 </script>
 </body>
 </html>
