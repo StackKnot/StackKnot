@@ -65,8 +65,9 @@ body {
 }
 
 #pic1{
-    height: 295px;
-    width: 236px;
+    position: relative;
+    width: 14.75rem;
+    height: 18.46rem;
 }
 
 /*CUSTOM ERROR PAGES CSS*/
