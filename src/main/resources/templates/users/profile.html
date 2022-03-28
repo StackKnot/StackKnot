@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta charset="UTF-8">
-    <title th:text="${user.username}"></title>
+    <title th:text="'StackKnot | '+${user.username}"></title>
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
