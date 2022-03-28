@@ -1,4 +1,9 @@
 //script.js
+function menuToggle(){
+    const toggleMenu = document.querySelector('.menu');
+    toggleMenu.classList.toggle('active')
+}
+
 
 function myFunction() {
     const wasDarkmode = localStorage.getItem('darkmode') === 'true';
