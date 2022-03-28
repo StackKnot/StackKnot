@@ -12,39 +12,39 @@
     <th:block th:include="partials/header :: styling"></th:block>
 
 </head>
-<body>
+<body class="bg-light">
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="container-fluid mt-4 bg-light">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title my-3" th:text="${whiteboard.getQuestion()}"></h4>
+            <h4 class="card-title my-3 text-center" th:text="${whiteboard.getQuestion()}"></h4>
             <!-- BUTTONS -->
-            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group mr-2" role="group" aria-label="First group">
+            <div class="btn-toolbar justify-content-center m-4" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-5" role="group" aria-label="First group">
                     <form th:action="@{/whiteboard-next}" th:method="post">
                         <button type="submit" class="btn btn-outline-secondary">Next Problem</button>
                     </form>
                 </div>
-                <div clas="btn-group mr-2" role="group" aria-label="Second group">
+                <div class="btn-group ml-5" role="group" aria-label="Second group">
                     <button class="btn btn-outline-success" onclick="showImage()">Get Solution</button>
                 </div>
             </div>
             <!-- CODE EDITOR -->
-            <div class="mx-auto container-fluid">
+            <div class="d-flex justify-content-center my-2">
                 <label for="code-editor"></label>
                 <textarea id="code-editor" class="codemirror-textarea"></textarea>
             </div>
         </div>
     </div>
     <!-- SOLUTION CARDS -->
-    <div class="card-group mt-4">
-        <div class="card m-1 p-2" id="solutionJava" style="visibility: hidden">
-            <h5 class="card-title">Java Solution</h5>
+    <div class="card-group mt-2">
+        <div class="card m-1 p-2 align-middle" id="solutionJava" style="visibility: hidden">
+            <h5 class="card-title mt-2 text-center">Java Solution</h5>
             <img th:src="${whiteboard.getJavaURL()}" th:target="_blank" alt="Java Solution"/>
         </div>
-        <div class="card m-1 p-2" id="solutionJS" style="visibility: hidden">
-            <h5 class="card-title">Javascript Solution</h5>
+        <div class="card m-1 p-2 align-middle" id="solutionJS" style="visibility: hidden">
+            <h5 class="card-title mt-2 text-center">Javascript Solution</h5>
             <img th:src="${whiteboard.getJsURL()}" th:target="_blank" alt="JS Solution"/>
         </div>
     </div>
