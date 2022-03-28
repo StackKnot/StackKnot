@@ -48,11 +48,12 @@ body {
 /* Very small devices (phones and pocket devices, 300 and up) */
 @media screen and (max-width:576px) { /* ... */
 
-    .LOGO{
-        display: flex;
-        justify-content: center;
-        margin-top: -100px;
+    .logo-image {
+        position: relative;
+        width: 60px;
+        max-height: 70px;
     }
+
 
     #CARDTEXTTITLE {
         font-size: 15px;
@@ -168,11 +169,12 @@ label.error {
 /* Small devices (phones and pocket devices, 576 and up) */
 @media screen and (min-width:576px) { /* ... */
 
-    .LOGO{
-        display: flex;
-        justify-content: center;
-        margin-top: -100px;
+    .logo-image {
+        position: relative;
+        width: 60px;
+        max-height: 70px;
     }
+
     #CARDTEXTTITLE {
         font-size: 15px;
     }
@@ -180,12 +182,6 @@ label.error {
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width:768px) { /* ... */
-
-    .LOGO{
-        display: flex;
-        justify-content: center;
-        margin-top: -100px;
-    }
 
     #CARDTEXT{
         font-size: 16px;
@@ -197,12 +193,6 @@ label.error {
 
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width:992px) { /* ... */
-
-    .LOGO{
-        display: flex;
-        justify-content: center;
-        margin-top: 0px;
-    }
 
     #CARDTEXT {
         font-size: 25px;
@@ -217,12 +207,6 @@ label.error {
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width:1200px) { /* ... */
 
-    .LOGO{
-        display: flex;
-        justify-content: center;
-        margin-top: 0px;
-    }
-
     #CARDTEXT {
         font-size: 30px;
     }
@@ -230,25 +214,4 @@ label.error {
     #CARDTEXTTITLE {
         font-size: 35px;
     }
-}
-
-.navbar-brand {
-    display: flex;
-    justify-content: center;
-    height: 90px;
-    width: 50px;
-}
-
-.logo-image{
-    width: 132px;
-    height: 132px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -40px;
-}
-
-.user-icon {
-    display: flex;
-    height: 50px;
-    width: 50px;
 }
