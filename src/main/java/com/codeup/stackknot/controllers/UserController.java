@@ -9,6 +9,7 @@ import com.codeup.stackknot.repositories.UserRepository;
 //import com.codeup.stackknot.services.EmailService;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import com.codeup.stackknot.repositories.UserSetProgRepository;
+import org.springframework.security.config.annotation.AlreadyBuiltException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -45,23 +48,38 @@ public class UserController {
         return "users/sign-up";
     }
 
+    // CHECK IF USERNAME OR EMAIL ALREADY EXISTS
+    public boolean checkIfUserExist(String username) {
+        return usersDao.findByUsername(username) != null;
+    }
+
+    public boolean checkIfEmailExists(String email) {
+        return usersDao.findByEmail(email) != null;
+    }
+
     @PostMapping("/sign-up")
-    public String saveUser(@Valid @ModelAttribute User user, Errors validation, Model model) {
+    public String saveUser(@Valid @ModelAttribute User user, Errors validation, Model model) throws AlreadyBuiltException {
 //        emailService.prepareAndSend(user, "Registration Confirmation", "Welcome To StacKKnot, Thank You For Registering!");
-        if(validation.hasErrors()) {
+        if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             return "users/sign-up";
         }
 
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        user.setAdmin(false);
-        usersDao.save(user);
-        return "redirect:/login";
+        if (checkIfUserExist(user.getUsername())) {
+            return "redirect:/sign-up/?failusername";
+        } else if (checkIfEmailExists(user.getEmail())) {
+            return "redirect:/sign-up/?failemail";
+        } else {
+            String hash = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hash);
+            user.setAdmin(false);
+            usersDao.save(user);
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/profile")
-    public String profile(){
+    public String profile() {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "redirect:/profile/" + loggedInUser.getUsername();
     }

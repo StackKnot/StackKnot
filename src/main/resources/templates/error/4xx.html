@@ -13,9 +13,6 @@
 
 <body class="background">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="sky">
-  <div class="stars"></div>
-</div>
 
 <div class="err-container">
 <th:block th:switch="${error}">
@@ -26,7 +23,7 @@
         <i class="fas fa-cog" id="wheel"></i>
         <span class="number">4</span>
       </h1>
-      <p class="err4">Oops, you got lost. Page was not found...</p>
+      <p class="err4 last-err">Oops, you got lost. Page was not found...</p>
 </div>
 
 
@@ -34,18 +31,18 @@
     <h1 class="num">
       <span class="number">4</span>
       <i class="fa solid fa-ban" id="ban"></i>
-      <span class="number">4</span>
+      <span class="number">3</span>
     </h1>
-    <p class="err4">You don't have permission to view this page.</p>
+    <p class="err4 last-err">You don't have permission to view this page.</p>
   </div>
 
   <div th:case="*">
     <h1 class="num">
-    <span th:text="${error}"></span>
+    <span class="blanket-err" th:text="${error}"></span>
     </h1>
     <p class="err4">Oops, something went wrong...</p>
     <p class="err4">We're sorry for the error </p>
-    <p class="err4"><i class="fas fa-frown frown"></i></p>
+    <p class="err4 last-err"><i class="fas fa-frown frown"></i></p>
   </div>
 
 

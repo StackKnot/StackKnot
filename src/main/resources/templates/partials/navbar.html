@@ -9,16 +9,20 @@
 <!--Thymeleaf template fragment for navbar partial-->
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
     <!--    navbar code-->
+
+    <!--    navbar logo-->
+        <a class="navbar-brand mr-3" href="/">
+            <img src="/img/stackKnot_Logo1copy.jpg" class="logo-image" alt="stackknot-logo">
+        </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
+<!--    links-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/subjects">Subjects</a>
             </li>
@@ -29,9 +33,12 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/sets/create">Create</a>
+
                     <!--                    <a class="dropdown-item" href="cards/edit">Edit</a>-->
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/sets">View</a>
                     <!--                    <a class="dropdown-item" href="/sets/index">View all the sets</a>-->
+
                 </div>
             </li>
             <li class="nav-item">
@@ -39,18 +46,9 @@
             </li>
         </ul>
 
-        <div class="LOGO">
-            <a class="navbar-brand" href="/">
-                <div class="logo-image">
-                    <img src="/img/stackKnot_Logo1.jpg" class="img-fluid">
-                </div>
-            </a>
-        </div>
-
-        <form class="form-inline my-2 my-lg-0 ml-auto" th:action="@{/search}" method="get">
-            <input class="form-control my-2 my-sm-0" type="search" name="keyword" placeholder="Search"
-                   aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+<!--        SEARCH-->
+        <form class="form-inline my-2 my-lg-0" th:action="@{/search}" method="get">
+            <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
         </form>
 
 
@@ -59,13 +57,13 @@
 
         <ul class="navbar-nav" th:if="!${#request.userPrincipal}">
             <li class="nav item">
-                <form class="form-inline m-2" th:method="GET" th:action="@{/login}">
-                    <button class="btn btn-primary" type="submit">Login</button>
+                <form class="form-inline mr-2 mb-1 mb-lg-0" th:method="GET" th:action="@{/login}">
+                    <button class="btn btn-outline-light btn-rounded" type="submit">Login</button>
                 </form>
             </li>
             <li>
-                <form class="form-inline m-2" th:method="GET" th:action="@{/sign-up}">
-                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                <form class="form-inline" th:method="GET" th:action="@{/sign-up}">
+                    <button class="btn btn-outline-light btn-rounded" type="submit">Sign Up</button>
                 </form>
             </li>
         </ul>
@@ -73,63 +71,22 @@
         <ul class="navbar-nav" th:if="${#request.userPrincipal}">
             <li class="nav item">
 
-                <form class="form-inline m-2" th:method="GET" th:action="@{/profile}">
+                <form class="form-inline mr-2 mb-1 mb-lg-0" th:method="GET" th:action="@{/profile}">
 
-                    <button class="btn btn-primary" type="submit">Profile</button>
+                    <button class="btn btn-outline-light btn-rounded" type="submit">Profile</button>
                 </form>
             </li>
             <li>
-                <form class="form-inline m-2" th:method="POST" th:action="@{/logout}">
-                    <button class="btn btn-primary" type="submit">Logout</button>
+                <form class="form-inline" th:method="POST" th:action="@{/logout}">
+                    <button class="btn btn-outline-light btn-rounded" type="submit">Logout</button>
                 </form>
             </li>
         </ul>
-
-
-        <!--        Profile features are available to authorized users-->
-        <!--                <div sec:authorize="hasRole('ROLE_USER')">-->
-        <!--        <<ul class="navbar-nav ml-3">-->
-        <!--        <li class="nav item">-->
-        <!--            <a class="nav-link user-icon" href="users/profile"> <img src="/img/user-icon.svg" alt="User Icon"></a>-->
-        <!--        </li>-->
-        <!--        <li class="nav-item dropdown my-2">-->
-        <!--            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-expanded="false">-->
-        <!--                Profile-->
-        <!--            </a>-->
-        <!--            <div class="dropdown-menu" aria-labelledby="profileDropdown">-->
-        <!--                <a class="dropdown-item" href="users/edit">Edit Profile</a>-->
-        <!--                <div class="dropdown-divider"></div>-->
-        <!--                <a class="dropdown-item" href="#">Logout</a>-->
-        <!--                &lt;!&ndash;        <form th:action="@{/logout}" th:method="post">&ndash;&gt;-->
-        <!--            </div>-->
-        <!--        </li>-->
-        <!--    </ul>-->
-        <!--    </div>-->
-
-
-        <!--        Admin Features in navbar-->
-        <!--        <div sec:authorize="hasRole('ROLE_ADMIN')">-->
-        <!--    <<ul class="navbar-nav ml-3">-->
-        <!--    <li class="nav item">-->
-        <!--        <a class="nav-link user-icon" href="users/profile"> <img src="/img/user-icon.svg" alt="User Icon"></a>-->
-        <!--    </li>-->
-        <!--    <li class="nav-item dropdown my-2">-->
-        <!--        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-expanded="false">-->
-        <!--            Users Profiles-->
-        <!--        </a>-->
-        <!--        <div class="dropdown-menu" aria-labelledby="adminDropdown">-->
-        <!--            <a class="dropdown-item" href="#">Create User Profile</a>-->
-        <!--            <a class="dropdown-item" href="#">Edit User Profile</a>-->
-        <!--            <a class="dropdown-item" href="#">Delete User Profile</a>-->
-        <!--            <div class="dropdown-divider"></div>-->
-        <!--            <a class="dropdown-item" href="#">Logout</a>-->
-        <!--            &lt;!&ndash;        <form th:action="@{/logout}" th:method="post">&ndash;&gt;-->
-        <!--        </div>-->
-        <!--    </li>-->
-        <!--</ul>-->
 
 
     </div>
 </nav>
 </body>
 </html>
+
+
