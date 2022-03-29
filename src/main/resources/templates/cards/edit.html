@@ -2,36 +2,33 @@
 <!--Thymeleaf attribute -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta charset="UTF-8">
-  <title>Edit Card</title>
-  <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
-  <th:block th:include="partials/bootstrap :: styling"></th:block>
-  <th:block th:include="partials/header :: styling"></th:block>
+    <meta charset="UTF-8">
+    <title>Edit Card</title>
+    <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+    <th:block th:include="partials/header :: styling"></th:block>
 
 </head>
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<form th:action="@{/cards/{id}/edit(id = ${card.getId()})}" th:method="POST" th:object="${card}">
-  <div class="form-group">
-    <label for="question">Term/Question</label>
-    <input type="text" class="form-control" id="question" name="question" th:field="*{question}">
-  </div>
-
-  <div class="form-group">
-    <label for="answer">Answer</label>
-    <textarea class="form-control" id="answer" rows="5" name="answer" th:field="*{answer}"></textarea>
-  </div>
-
-  <input type="hidden" th:field="*{set}">
-
-  <button type="submit">Submit</button>
-
-</form>
-
-
-
+<div class="container">
+    <div class="mt-5">
+        <form th:action="@{/cards/{id}/edit(id = ${card.getId()})}" th:method="POST" th:object="${card}">
+            <div class="form-group">
+                <label for="question">Term/Question</label>
+                <input type="text" class="form-control" id="question" name="question" th:field="*{question}">
+            </div>
+            <div class="form-group">
+                <label for="answer">Answer</label>
+                <textarea class="form-control" id="answer" rows="5" name="answer" th:field="*{answer}"></textarea>
+            </div>
+            <input type="hidden" th:field="*{set}">
+            <button class="btn" type="submit" style="background-color: darkorange; color: white">Submit</button>
+        </form>
+    </div>
+</div>
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 </body>
