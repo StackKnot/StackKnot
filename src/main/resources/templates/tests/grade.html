@@ -2,37 +2,41 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>StackKnot | Test</title>
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<h1 th:text="${test.grade} + '%'"></h1>
+<div class="container mt-3">
+    <h1 class="pt-4" th:text="${test.grade} + '%'"></h1>
 
-<div th:each="testQuestion : ${test.testQuestions}">
-    <h4 th:text="${testQuestion.question}"></h4>
-    <br>
-    <div class="row pl-4">
-    <div class="col-6"><p th:text="${testQuestion.answer1}"></p></div>
-    <div class="col-6"><p th:text="${testQuestion.answer2}"></p></div>
+    <div th:each="testQuestion : ${test.testQuestions}">
+        <h4 th:text="${testQuestion.question}"></h4>
+        <br>
+        <div class="row pl-4">
+            <div class="col-6"><p th:text="${testQuestion.answer1}"></p></div>
+            <div class="col-6"><p th:text="${testQuestion.answer2}"></p></div>
+        </div>
+        <div class="row pl-4">
+            <div class="col-6"><p th:text="${testQuestion.answer3}"></p></div>
+            <div class="col-6"><p th:text="${testQuestion.answer4}"></p></div>
+        </div>
+
+        <div class="user-correct">
+            <h5 class="p-2" th:if="${testQuestion.userChoice.equals(testQuestion.correctAnswer)}"
+                th:text="'You answered: ' + ${testQuestion.userChoice}"></h5>
+        </div>
+        <div class="user-wrong" th:if="${!testQuestion.userChoice.equals(testQuestion.correctAnswer)}">
+            <h5 class="p-2" th:text="'You answered: ' + ${testQuestion.userChoice}"></h5>
+            <h5 class="p-2" th:text="'The correct answer is: ' + ${testQuestion.correctAnswer}"></h5>
+        </div>
     </div>
-    <div class="row pl-4">
-    <div class="col-6"><p th:text="${testQuestion.answer3}"></p></div>
-    <div class="col-6"><p th:text="${testQuestion.answer4}"></p></div>
-    </div>
 
-    <h4 th:if="${testQuestion.userChoice.equals(testQuestion.correctAnswer)}" class="bg-success text-white"
-        th:text="'You answered: ' + ${testQuestion.userChoice}"></h4>
-
-    <div th:if="${!testQuestion.userChoice.equals(testQuestion.correctAnswer)}">
-        <h4 class="bg-danger text-white" th:text="'You answered: ' + ${testQuestion.userChoice}"></h4>
-        <h4 class="bg-danger text-white" th:text="'THe correct answer is: ' + ${testQuestion.correctAnswer}"></h4>
-    </div>
-
+    <form th:action="@{/profile}" th:method="GET">
+        <button class="btn btn-secondary" type="submit">Back to profile</button>
+    </form>
 </div>
-
-<form th:action="@{/profile}" th:method="GET" ><button class="btn btn-secondary" type="submit">Back to profile</button></form>
 <th:block th:replace="partials/header :: scripts"></th:block>
 </body>
 </html>
