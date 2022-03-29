@@ -66,6 +66,15 @@ body {
 /* Very small devices (phones and pocket devices, 300 and up) */
 @media screen and (max-width:576px) { /* ... */
 
+    .welcome-user h1 {
+        font-size: 31.7px ;
+    }
+
+   .profile-hr {
+       background: linear-gradient(to right, #17a2b8, yellow);
+       height: 1px;
+   }
+
     .logo-image {
         position: relative;
         width: 60px;
@@ -188,6 +197,11 @@ label.error {
 /* Small devices (phones and pocket devices, 576 and up) */
 @media screen and (min-width:576px) { /* ... */
 
+    .profile-hr {
+        background: linear-gradient(to right, #17a2b8, yellow);
+        height: 1px;
+    }
+
     .logo-image {
         position: relative;
         width: 60px;
@@ -201,6 +215,11 @@ label.error {
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width:768px) { /* ... */
+
+    .profile-hr {
+        background: linear-gradient(to right, #17a2b8, yellow);
+        height: 1px;
+    }
 
 
     .register{
@@ -223,6 +242,11 @@ label.error {
 
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width:992px) { /* ... */
+
+    .profile-hr {
+        background: linear-gradient(to right, #17a2b8, yellow);
+        height: 1px;
+    }
 
 
     .register{
@@ -247,6 +271,11 @@ label.error {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width:1200px) { /* ... */
+
+    .profile-hr {
+        background: linear-gradient(to right, #17a2b8, yellow);
+        height: 1px;
+    }
 
 
     .register{
