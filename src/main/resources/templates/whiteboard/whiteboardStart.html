@@ -26,16 +26,24 @@
                 "Get
                 Solution" to check your answer. Good Luck!</h5>
         </div>
-        <div class="d-flex justify-content-center mt-4">
-            <form th:action="@{/whiteboardStart}" th:method="post">
-                <button class="btn align-center" type="submit" style="background-color: darkorange; color: white">Get Started</button>
-            </form>
-        </div>
-        <!-- ADMIN UPLOAD BUTTON -->
-        <div sec:authorize="isAuthenticated()">
-            <form th:action="@{/whiteboard-upload}" th:method="post">
-                <button class="btn-outline-secondary mt-2" type="submit" value="Admin Upload" th:if="${user.admin}">Admin Upload</button>
-            </form>
+        <!-- WHITEBOARD START AND ADMIN UPLOAD BUTTONS -->
+        <div class="container mt-4">
+            <div class="btn-toolbar row justify-content-center" role="toolbar" aria-label="Whiteboard btns toolbar">
+                <div class="btn-group mr-4" role="group" aria-label="First group">
+                    <form th:action="@{/whiteboardStart}" th:method="post">
+                        <button class="btn" type="submit"
+                                style="background-color: darkorange; color: white">Get Started
+                        </button>
+                    </form>
+                </div>
+                <div class="btn-group mr-4" role="group" aria-label="Second group" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/whiteboard-upload}" th:method="post">
+                        <button class="btn btn-outline-secondary" type="submit" th:if="${user.admin}">Admin
+                            Upload
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
