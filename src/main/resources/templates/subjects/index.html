@@ -10,21 +10,21 @@
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
-<body>
+<body class="bg-light">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="d-flex justify-content-center mt-5">
     <h1>Subjects</h1>
 </div>
-<div class="card m-3" th:each="subject : ${subjects}">
-    <h2 class="card-header bg-info" th:text="${subject.title}"></h2>
-    <div class="card-body" th:each=" set : ${subject.sets}">
-        <div class="card">
-            <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
-            <div class="card-body">
-                <h4>Description:</h4>
-                <p class="card-title" th:text="${set.description}"></p>
-                <h4>User:</h4>
-                <p class="card-text" th:text="${set.user.username}"></p>
+<div class="container mt-3">
+    <div class="card mb-4" th:each="subject : ${subjects}">
+        <h2 class="card-header text-center" th:text="${subject.title}" style="background-color: #7b00ba; color: white"></h2>
+        <div class="card-body" th:each=" set : ${subject.sets}">
+            <div class="card">
+                <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}"></h3></a>
+                <div class="card-body">
+                    <p>Description: <span class="card-text" th:text="${set.description}"></span></p>
+                    <p>Creator: <span class="card-text" th:text="${set.user.username}"></span></p>
+                </div>
             </div>
         </div>
     </div>
