@@ -31,7 +31,7 @@ public class HomeController {
     @GetMapping("/contact-form")
     public String showContactAnExpert(Model model) {
         model.addAttribute("emailRequest", new EmailRequest());
-        return "/contact-form";
+        return "contact-form";
     }
 
     @PostMapping("/contact-form")

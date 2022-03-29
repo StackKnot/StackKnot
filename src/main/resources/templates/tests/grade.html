@@ -9,7 +9,7 @@
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="container mt-3">
-    <h1 th:text="${test.grade} + '%'"></h1>
+    <h1 class="pt-4" th:text="${test.grade} + '%'"></h1>
 
     <div th:each="testQuestion : ${test.testQuestions}">
         <h4 th:text="${testQuestion.question}"></h4>

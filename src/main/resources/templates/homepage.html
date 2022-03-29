@@ -32,8 +32,26 @@
         </div>
     </div>
 </div>
-<button class="darkButton" onclick="myFunction()">Toggle dark mode</button>
-<br><br><br>
+
+<div class="action" th:if="${#request.userPrincipal}" style="margin-left: 10px">
+    <div class="profile" onclick="menuToggle();">
+        <img src="/img/user-icon.svg" width="40px">
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a th:href="@{/profile}" th:if="${#request.userPrincipal}">My Profile</a></li>
+            <li><a href="#" class="darkButton" onclick="myFunction()" th:if="${#request.userPrincipal}">Darkmode</a></li>
+            <li><form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}"><button class="logOut" style="background-color: white"><a>Logout</a></button></form></li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+<!--<br>-->
+<br><br>
     <h2 style="text-align: center">100% of developers use StackKnot to sharpen their skills</h2>
 
 <div class="container-fluid my-5">
@@ -91,9 +109,8 @@
 
                 <div class="card-footer">
                     <a href="/login" class="btn btn-info" th:if="!${#request.userPrincipal}">Choose Junior</a>
-<!--                </div>-->
-<!--                        <div class="card-footer">-->
-                            <form class="form-inline" th:method="POST" th:action="@{/profile}" th:if="${#request.userPrincipal}">
+
+                            <form class="form-inline" th:method="GET" th:action="@{/profile}" th:if="${#request.userPrincipal}">
                                 <button class="btn btn-info" type="submit">Profile</button>
                             </form>
                         </div>
@@ -122,9 +139,8 @@
                 </div>
                     <div class="card-footer">
                     <a href="/login" class="btn btn-warning" th:if="!${#request.userPrincipal}">Choose Advanced</a>
-<!--                </div>-->
-<!--                        <div class="card-footer">-->
-                            <form class="form-inline" th:method="POST" th:action="@{/profile}" th:if="${#request.userPrincipal}">
+
+                            <form class="form-inline" th:method="GET" th:action="@{/profile}" th:if="${#request.userPrincipal}">
                                 <button class="btn btn-warning" type="submit">Profile</button>
                             </form>
                         </div>
@@ -156,9 +172,8 @@
                 </div>
                 <div class="card-footer">
                     <a href="/login" class="btn btn-info" th:if="!${#request.userPrincipal}">Choose Intermediate</a>
-<!--                </div>-->
-<!--                        <div class="card-footer">-->
-                        <form class="form-inline" th:method="POST" th:action="@{/profile}" th:if="${#request.userPrincipal}">
+
+                        <form class="form-inline" th:method="GET" th:action="@{/profile}" th:if="${#request.userPrincipal}">
                             <button class="btn btn-info" type="submit">Profile</button>
                         </form>
                         </div>

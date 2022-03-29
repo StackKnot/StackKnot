@@ -21,7 +21,7 @@
                         <li><a class="" href="/about-us" style="color:white">About Us</a></li>
                     </ul>
 
-                    <p class="">
+                    <p class="register">
                     <form action="sign-up" method="get" th:if="!${#request.userPrincipal}">
                         <span class="me-3" style="padding-right: 10px">Register for free</span>
                         <button type="submit" class="btn btn-outline-light btn-rounded">
@@ -32,7 +32,7 @@
 
 
                     <p class="">
-                    <form th:method="POST" th:action="@{/profile}" th:if="${#request.userPrincipal}">
+                    <form th:method="GET" th:action="@{/profile}" th:if="${#request.userPrincipal}">
                         <button class="btn btn-outline-light btn-rounded" type="submit">Profile
                         </button>
                     </form>
@@ -40,7 +40,7 @@
                     <form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}">
                         <button class="btn btn-outline-light btn-rounded" type="submit">Logout
                         </button>
-                        <span class="me-3 text-muted" style="padding-right: 10px">You are logged in...</span>
+                        <span class="me-3 text-muted" style="padding-right: 10px">  You are logged in...</span>
                     </form>
                     </p>
 
