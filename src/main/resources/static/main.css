@@ -62,9 +62,6 @@ body {
 
 }
 
-.horizontal-line {
-    border: thin solid black;
-}
 
 /* Very small devices (phones and pocket devices, 300 and up) */
 @media screen and (max-width:576px) { /* ... */
@@ -75,7 +72,7 @@ body {
 
    .profile-hr {
        background: linear-gradient(to right, #17a2b8, yellow);
-       height: 5px;
+       height: 1px;
    }
 
     .logo-image {
@@ -202,7 +199,7 @@ label.error {
 
     .profile-hr {
         background: linear-gradient(to right, #17a2b8, yellow);
-        height: 5px;
+        height: 1px;
     }
 
     .logo-image {
@@ -221,7 +218,7 @@ label.error {
 
     .profile-hr {
         background: linear-gradient(to right, #17a2b8, yellow);
-        height: 5px;
+        height: 1px;
     }
 
 
@@ -248,7 +245,7 @@ label.error {
 
     .profile-hr {
         background: linear-gradient(to right, #17a2b8, yellow);
-        height: 5px;
+        height: 1px;
     }
 
 
@@ -277,7 +274,7 @@ label.error {
 
     .profile-hr {
         background: linear-gradient(to right, #17a2b8, yellow);
-        height: 5px;
+        height: 1px;
     }
 
 
