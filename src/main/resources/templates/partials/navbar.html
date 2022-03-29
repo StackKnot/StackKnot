@@ -7,7 +7,7 @@
 </head>
 <body>
 <!--Thymeleaf template fragment for navbar partial-->
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark NAV" style="background-color: #000000;">
     <!--    navbar code-->
 
     <!--    navbar logo-->
@@ -67,6 +67,20 @@
                 </form>
             </li>
         </ul>
+
+<!--USER PROFILE DROPDOWN-->
+<!--        <div class="action" th:if="${#request.userPrincipal}" style="margin-left: 10px">-->
+<!--            <div class="profile" onclick="menuToggle();">-->
+<!--                <img src="/img/user-icon.svg" width="40px">-->
+<!--            </div>-->
+<!--            <div class="menu">-->
+<!--                <ul>-->
+<!--                    <li style="list-style: none"><a th:href="@{/profile}" th:if="${#request.userPrincipal}">My Profile</a></li>-->
+<!--                    <li style="list-style: none"><a href="#" class="darkButton" onclick="myFunction()" th:if="${#request.userPrincipal}">Darkmode</a></li>-->
+<!--                    <li style="list-style: none"><form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}"><button class="logOut" style="background-color: white"><a>Logout</a></button></form></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <ul class="navbar-nav" th:if="${#request.userPrincipal}">
             <li class="nav item">
