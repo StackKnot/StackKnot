@@ -8,8 +8,9 @@
 </head>
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<h1 th:text="${test.grade} + '%'"></h1>
-<div class="container">
+<div class="container mt-3">
+    <h1 th:text="${test.grade} + '%'"></h1>
+
     <div th:each="testQuestion : ${test.testQuestions}">
         <h4 th:text="${testQuestion.question}"></h4>
         <br>
@@ -23,18 +24,19 @@
         </div>
 
         <div class="user-correct">
-            <h5 th:if="${testQuestion.userChoice.equals(testQuestion.correctAnswer)}" class=""
+            <h5 class="p-2" th:if="${testQuestion.userChoice.equals(testQuestion.correctAnswer)}"
                 th:text="'You answered: ' + ${testQuestion.userChoice}"></h5>
         </div>
         <div class="user-wrong" th:if="${!testQuestion.userChoice.equals(testQuestion.correctAnswer)}">
-            <h5 class="" th:text="'You answered: ' + ${testQuestion.userChoice}"></h5>
-            <h5 class="" th:text="'The correct answer is: ' + ${testQuestion.correctAnswer}"></h5>
+            <h5 class="p-2" th:text="'You answered: ' + ${testQuestion.userChoice}"></h5>
+            <h5 class="p-2" th:text="'The correct answer is: ' + ${testQuestion.correctAnswer}"></h5>
         </div>
     </div>
+
+    <form th:action="@{/profile}" th:method="GET">
+        <button class="btn btn-secondary" type="submit">Back to profile</button>
+    </form>
 </div>
-<form th:action="@{/profile}" th:method="GET">
-    <button class="btn btn-secondary" type="submit">Back to profile</button>
-</form>
 <th:block th:replace="partials/header :: scripts"></th:block>
 </body>
 </html>

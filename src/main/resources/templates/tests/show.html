@@ -8,7 +8,7 @@
 </head>
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container">
+<div class="container mt-3">
     <div>
         <form th:action="@{/tests/{setId}/grade (setId = ${test.getSetId()})}" th:method="GET" th:object="${test}">
             <input type="hidden" th:value="${test.setId}" th:field="*{setId}">
