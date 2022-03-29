@@ -23,26 +23,30 @@
     <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <form name="likeform" method="post" th:action="@{/sets/{id}/like (id = ${singleSet.id})}">
-                <button type="submit" class="btn btn-success">Like</button>
+                <button type="submit" class="btn" style="background-color: darkorange; color: white">Like</button>
             </form>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Second group">
             <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}">
-                <button type="submit" class="btn btn-success">Add a card</button>
+                <button type="submit" class="btn" style="background-color: darkorange; color: white">Add a card</button>
             </form>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Third group">
             <form th:action="@{/tests/{setId} (setId = ${singleSet.id})}">
-                <button type="submit" class="btn btn-success">Take a test</button>
+                <button type="submit" class="btn" style="background-color: darkorange; color: white">Take a test</button>
             </form>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Fourth group">
             <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
-                <button class="btn btn-outline-secondary" type="submit"
+                <button class="btn" type="submit" style="background-color: darkorange; color: white"
                         th:if="${user.id == singleSet.user.id} or ${user.admin}">
-                    Edit
+                    Edit Set
                 </button>
             </form>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Fifth group">
+            <form th:action="@{/sets/{id}/delete (id = ${singleSet.getId()})}">
+            <button class="btn btn-outline-danger" type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete Set</button>
         </div>
     </div>
 
@@ -68,15 +72,15 @@
                     <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group mr-2" role="group" aria-label="First group">
                             <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
-                                <button class="btn btn-outline-secondary" type="submit"
-                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit
+                                <button class="btn" type="submit" style="background-color: darkorange; color: white"
+                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit Card
                                 </button>
                             </form>
                         </div>
                         <div class="btn-group mr-2" role="group" aria-label="Second group">
                             <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
                                 <button class="btn btn-outline-danger" type="submit"
-                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete
+                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete Card
                                 </button>
                             </form>
                         </div>
