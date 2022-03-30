@@ -6,6 +6,7 @@
 
     <meta charset="UTF-8">
     <title th:text="'StackKnot | ' + ${singleSet.title}"> </title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
@@ -23,16 +24,18 @@
     <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <form name="likeform" method="post" th:action="@{/sets/{id}/like (id = ${singleSet.id})}">
-                <button type="submit" class="btn" style="background-color: darkorange; color: white">Like</button>
+                <button type="submit" class="btn mb-2" style="background-color: darkorange; color: white">Like</button>
             </form>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Second group">
             <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}">
+
                 <button th:if="${user.id == singleSet.user.id} or ${user.admin}" type="submit" class="btn" style="background-color: darkorange; color: white">Add a card</button>
             </form>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Third group">
                 <a th:href="@{/tests/{setId} (setId = ${singleSet.id})}" th:if="${#request.userPrincipal}"  class="btn" style="background-color: darkorange; color: white">Take a test</a>
+
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Fourth group">
             <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
@@ -52,8 +55,8 @@
         <div class="card m-3" th:each="card : ${cards}">
             <div class="card-body">
                 <h5 class="card-title" th:text="${card.question}"></h5>
-
-                    <button class="btn btn-info" type="button" data-toggle="collapse"
+                <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <button class="btn btn-group mr-2 mb-2 btn-info" type="button" role="group" aria-label="First Group" data-toggle="collapse"
                             th:data-target="'#collapse'+${card.id}"
                             aria-expanded="false" th:attr="aria-controls= '#collapse'+${card.id}">
                         Show Answer
@@ -67,15 +70,14 @@
 
                 <!-- EDIT AND DELETE BUTTONS ONLY SHOWN IF THE USER CREATED OR USER IS ADMIN -->
                 <div sec:authorize="isAuthenticated()">
-                    <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <div class="btn-group mr-1" role="group" aria-label="Second group">
                             <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
                                 <button class="btn" type="submit" style="background-color: darkorange; color: white"
                                         th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit Card
                                 </button>
                             </form>
                         </div>
-                        <div class="btn-group mr-2" role="group" aria-label="Second group">
+                        <div class="btn-group mr-2" role="group" aria-label="Third group">
                             <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
                                 <button class="btn btn-outline-danger" type="submit"
                                         th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete Card
