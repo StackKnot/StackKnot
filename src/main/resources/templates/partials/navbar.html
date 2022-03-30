@@ -77,9 +77,9 @@
             <div class="menu MENU" style="background-color: black; opacity: 90%">
 
                 <ul>
-                    <li style="list-style: none; padding: 4px; font-size: 20px"><a th:href="@{/profile}" th:if="${#request.userPrincipal}">My Profile</a></li>
+                    <li style="list-style: none; padding: 4px; font-size: 20px"><form th:method="GET" th:action="@{/profile}" th:if="${#request.userPrincipal}"><button class="btn btn-outline-light btn-rounded"><a>Profile</a></button></form></li>
                     <li style="list-style: none; padding: 4px; font-size: 20px"><a href="#" class="darkButton" onclick="myFunction()" th:if="${#request.userPrincipal}">Darkmode</a></li>
-                    <li style="list-style: none; padding: 4px; font-size: 20px"><form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}"><button class="logOut" style="background-color: white"><a>Logout</a></button></form></li>
+                    <li style="list-style: none; padding: 4px; font-size: 20px"><form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}"><button class="btn btn-outline-light btn-rounded"><a>Logout</a></button></form></li>
                 </ul>
             </div>
         </div>
