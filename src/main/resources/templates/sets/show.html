@@ -34,9 +34,11 @@
             </form>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Third group">
+
             <form th:action="@{/tests/{setId} (setId = ${singleSet.id})}">
                 <button  th:if="${#request.userPrincipal}"  class="btn" style="background-color: darkorange; color: white">Take a Test</button>
             </form>
+
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Fourth group">
             <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
