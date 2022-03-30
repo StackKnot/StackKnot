@@ -369,9 +369,9 @@ label.error {
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width:1200px) { /* ... */
 
-    .STEPS {
-        margin-top: -250px;
-    }
+    /*.STEPS {*/
+    /*    margin-top: -250px;*/
+    /*}*/
 
     .hpTopText {
         margin-top: 13px;

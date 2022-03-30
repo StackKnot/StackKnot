@@ -35,7 +35,6 @@
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Third group">
                 <a th:href="@{/tests/{setId} (setId = ${singleSet.id})}" th:if="${#request.userPrincipal}"  class="btn" style="background-color: darkorange; color: white">Take a test</a>
-
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Fourth group">
             <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">
