@@ -12,25 +12,38 @@
 </head>
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="d-flex row">
 
-    <div style="padding-right: 50px"><img src="/img/loginImage.jpg" alt="Login" width="700px"></div>
-    <div style="padding-left: 120px; margin-top: 100px">
-    <h1>Please Log In To Start</h1>
-<form id="validateLog" th:action="@{/login}" method="post">
-    <div class="form-group">
-    <label for="username">Username</label>
-    <input id="username" name="username" class="form-control" type="text" required/>
-    </div>
-    <div class="form-group">
-    <label for="password">Password</label>
-    <input id="password" name="password" class="form-control" type="password" required/>
-    </div>
-    <input type="submit" class="btn btn-block" value="Log In" style="background-color: darkorange; color: white"/>
-</form><br>
-    <small>Don't have an account? <a href="/sign-up">Register here!</a></small>
+
+<!--<div class="login-container d-flex flex-column flex-lg-row justify-content-md-between">-->
+<div class="log-container">
+    <div class="row">
+
+        <div class="col-12 col-lg-7 pr-lg-0 ">
+    <img class="login-image" src="/img/loginImage.jpg" alt="Login">
+        </div>
+
+        <div class="col-12 mt-4 col-lg-5 pr-lg-0 mt-lg-0 d-flex justify-content-center align-items-center">
+    <form id="validateLog" class="log-form" th:action="@{/login}" method="post">
+        <h1>Please Log In To Start</h1>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" name="username" class="form-control" type="text" required/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" class="form-control" type="password" required/>
+        </div>
+        <input type="submit" class="btn btn-block" value="Log In"
+               style="background-color: darkorange; color: white"/>
+        <small>Don't have an account? <a href="/sign-up">Register here!</a></small>
+    </form>
+        </div>
+
+
+        </div>
 </div>
-</div>
+
+<!--</div>-->
 
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 <!--JQUERY CDN-->
