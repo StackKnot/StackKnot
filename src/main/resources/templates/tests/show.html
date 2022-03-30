@@ -3,74 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>StackKnot | Test</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
-<body onload="onload()">
+<body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="container mt-3">
     <div>
-        <form th:action="@{/tests/{setId}/grade (setId = ${test.getSetId()})}" th:method="GET" th:object="${test}">
+        <form th:action="@{/tests/{setId} (setId = ${test.getSetId()})}" th:method="POST" th:object="${test}">
             <input type="hidden" th:value="${test.setId}" th:field="*{setId}">
 
             <div class="form-group" th:each="testquestion, i : ${test.testQuestions}">
                 <h4 class="pl-2" th:text="${testquestion.question}"></h4>
                 <input type="hidden" th:value="${testquestion.question}"
                        th:field="*{testQuestions[__${i.index}__].question}">
-                <div class="form-row">
-                    <div class="col-6">
-                        <div class="form-check pl-4">
-                            <input class="form-check-input mr-1" type="radio"
-                                   th:field="*{testQuestions[__${i.index}__].userChoice}"
-                                   th:name="${testquestion.question}"
-                                   th:value="${testquestion.answer1}" th:id="${testquestion.answer1}">
-                            <label class="form-check-label" th:for="${testquestion.answer1}"
-                                   th:text="${testquestion.answer1}"></label>
-                            <input type="hidden" class="form-control" th:value="${testquestion.answer1}"
-                                   th:field="*{testQuestions[__${i.index}__].answer1}">
-                        </div>
+
+                <div class="py-1">
+                    <div class="form-check py-1">
+                        <input class="form-check-input mr-1" type="radio"
+                               th:field="*{testQuestions[__${i.index}__].userChoice}"
+                               th:name="${testquestion.question}"
+                               th:value="${testquestion.answer1}" th:id="${testquestion.answer1}">
+                        <label class="form-check-label" th:for="${testquestion.answer1}"
+                               th:text="${testquestion.answer1}"></label>
+                        <input type="hidden" class="form-control" th:value="${testquestion.answer1}"
+                               th:field="*{testQuestions[__${i.index}__].answer1}">
                     </div>
-                    <div class="col-6">
-                        <div class="form-check pl-4">
-                            <input class="form-check-input mr-1" type="radio"
-                                   th:field="*{testQuestions[__${i.index}__].userChoice}"
-                                   th:name="${testquestion.question}"
-                                   th:value="${testquestion.answer2}" th:id="${testquestion.answer2}">
-                            <label class="form-check-label" th:for="${testquestion.answer2}"
-                                   th:text="${testquestion.answer2}"></label>
-                            <input type="hidden" th:value="${testquestion.answer2}"
-                                   th:field="*{testQuestions[__${i.index}__].answer2}">
-                        </div>
+
+                    <div class="form-check py-1">
+                        <input class="form-check-input mr-1" type="radio"
+                               th:field="*{testQuestions[__${i.index}__].userChoice}"
+                               th:name="${testquestion.question}"
+                               th:value="${testquestion.answer2}" th:id="${testquestion.answer2}">
+                        <label class="form-check-label" th:for="${testquestion.answer2}"
+                               th:text="${testquestion.answer2}"></label>
+                        <input type="hidden" th:value="${testquestion.answer2}"
+                               th:field="*{testQuestions[__${i.index}__].answer2}">
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-6">
-                        <div class="form-check pl-4">
-                            <input class="form-check-input mr-1" type="radio"
-                                   th:field="*{testQuestions[__${i.index}__].userChoice}"
-                                   th:name="${testquestion.question}"
-                                   th:value="${testquestion.answer3}" th:id="${testquestion.answer3}">
-                            <label class="form-check-label" th:for="${testquestion.answer3}"
-                                   th:text="${testquestion.answer3}"></label>
-                            <input type="hidden" th:value="${testquestion.answer3}"
-                                   th:field="*{testQuestions[__${i.index}__].answer3}">
-                        </div>
+
+
+                    <div class="form-check py-1">
+                        <input class="form-check-input mr-1" type="radio"
+                               th:field="*{testQuestions[__${i.index}__].userChoice}"
+                               th:name="${testquestion.question}"
+                               th:value="${testquestion.answer3}" th:id="${testquestion.answer3}">
+                        <label class="form-check-label" th:for="${testquestion.answer3}"
+                               th:text="${testquestion.answer3}"></label>
+                        <input type="hidden" th:value="${testquestion.answer3}"
+                               th:field="*{testQuestions[__${i.index}__].answer3}">
                     </div>
-                    <div class="col-6">
-                        <div class="form-check pl-4">
-                            <input class="form-check-input mr-1" type="radio"
-                                   th:field="*{testQuestions[__${i.index}__].userChoice}"
-                                   th:name="${testquestion.question}"
-                                   th:value="${testquestion.answer4}" th:id="${testquestion.answer4}">
-                            <label class="form-check-label" th:for="${testquestion.answer4}"
-                                   th:text="${testquestion.answer4}"></label>
-                            <input type="hidden" th:value="${testquestion.answer4}"
-                                   th:field="*{testQuestions[__${i.index}__].answer4}">
-                        </div>
+
+                    <div class="form-check py-1">
+                        <input class="form-check-input mr-1" type="radio"
+                               th:field="*{testQuestions[__${i.index}__].userChoice}"
+                               th:name="${testquestion.question}"
+                               th:value="${testquestion.answer4}" th:id="${testquestion.answer4}">
+                        <label class="form-check-label" th:for="${testquestion.answer4}"
+                               th:text="${testquestion.answer4}"></label>
+                        <input type="hidden" th:value="${testquestion.answer4}"
+                               th:field="*{testQuestions[__${i.index}__].answer4}">
                     </div>
                 </div>
             </div>
-            <button class="btn btn-secondary" type="submit">Submit your answers</button>
+
+            <button class="btn text-white" style="background-color: darkorange" type="submit">Submit Your Answers</button>
+
+
         </form>
     </div>
 </div>

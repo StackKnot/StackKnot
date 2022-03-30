@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
 
     <title>StackKnot | Home </title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
     <!--    Templating-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
@@ -15,11 +16,11 @@
 
 <div class="d-flex justify-content-center">
     <div class="card bg-dark text-white">
-        <img src="/img/tech.jpg" class="card-img" alt="tech image"/>
+        <img src="/img/tech2.jpg" class="card-img" alt="tech image"/>
         <div class="card-img-overlay">
-            <div style="background-color: black; max-width: fit-content; opacity: 75%; border-radius: 10px">
-            <h4 id="CARDTEXTTITLE" class="card-title" style="text-align: left">Stack Your Developer Skills..</h4>
-            <p id="CARDTEXT" class="card-text" style="margin-top: -13px">
+            <div class="hpTopText" style="background-color: black; max-width: fit-content; opacity: 75%; border-radius: 10px">
+            <h4 id="CARDTEXTTITLE" class="card-title" style="text-align: left; padding: 20px">Stack Your Developer Skills..</h4>
+            <p id="CARDTEXT" class="card-text" style="padding: 20px; margin-top: -15px">
                 StackKnot allows you to unravel<br>
                 the proverbial knot of full stack<br>
                 software development. We<br>
@@ -33,31 +34,13 @@
     </div>
 </div>
 
-<div class="action" th:if="${#request.userPrincipal}" style="margin-left: 10px">
-    <div class="profile" onclick="menuToggle();">
-        <img src="/img/user-icon.svg" width="40px">
-    </div>
-    <div class="menu">
-        <ul>
-            <li><a th:href="@{/profile}" th:if="${#request.userPrincipal}">My Profile</a></li>
-            <li><a href="#" class="darkButton" onclick="myFunction()" th:if="${#request.userPrincipal}">Darkmode</a></li>
-            <li><form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}"><button class="logOut" style="background-color: white"><a>Logout</a></button></form></li>
-        </ul>
-    </div>
-</div>
-
-
-
-
-
-<!--<br>-->
 <br><br>
     <h2 style="text-align: center">100% of developers use StackKnot to sharpen their skills</h2>
 
 <div class="container-fluid my-5">
     <div class="row align-items-center">
-        <div class="col-4">
-            <div style="margin-left: 75px">
+        <div class="col-5">
+            <div style="margin-left: 65px">
                 <h1> Trained Experts</h1>
                 <img src="/img/contact.png" alt="Logo" width="120px">
                 <p>Need a little help?<br>Our experts are Codeup Certified, highly trained and available 24 hours a day, 7 days a week. Codeup is a fully-immersive, project-based, and intensive 22-week Full-Stack Java Career Accelerator that provides students with 670 hours of expert instruction in software development. If you are interested in knowing more about our experts, check out the "About Us" page down below. It is filled with information about our expert developers to include business profile, project portfolio and how to contact them.
@@ -66,8 +49,8 @@
             </div>
         </div>
 
-        <div class="col-6">
-            <div style="margin-left: 50px">
+        <div class="col-7">
+            <div style="margin-left: 65px">
                 <h1>Get Started With Whiteboard</h1>
                 <img src="/img/stackKnot_Logow.png" alt="Logo" width="120px">
                 <p>Also, do you dread the whiteboard? <br>We have a section for that!. Set with questions and picture answers for Javascript and Java! In the white-boarding practice section, once you click "Get Started" a randomly generated question will appear. Use the text editor to type out your solution in Java, Javascript, or both! Once complete click "Get Solution" to check your answer. Good Luck!<br><br>
@@ -184,7 +167,7 @@
 <br><br>
 
 
-        <div class="col">
+        <div class="col STEPS">
             <div>
                 <h3><img src="/img/Steps1.png" alt="Logo" width="100px"></h3>
                 <p><strong>Register then login in order to start creating, stacking and learning at your own pace. StackKnot makes it easy to navigate and study multiple areas of interest.</strong></p><br>

@@ -32,15 +32,15 @@
 
 
                     <p class="">
-                    <form th:method="GET" th:action="@{/profile}" th:if="${#request.userPrincipal}">
-                        <button class="btn btn-outline-light btn-rounded" type="submit">Profile
-                        </button>
-                    </form>
+<!--                    <form th:method="GET" th:action="@{/profile}" th:if="${#request.userPrincipal}">-->
+<!--                        <button class="btn btn-outline-light btn-rounded" type="submit">Profile-->
+<!--                        </button>-->
+<!--                    </form>-->
 
                     <form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}">
-                        <button class="btn btn-outline-light btn-rounded" type="submit">Logout
-                        </button>
-                        <span class="me-3 text-muted" style="padding-right: 10px">  You are logged in...</span>
+<!--                        <button class="btn btn-outline-light btn-rounded" type="submit">Logout-->
+<!--                        </button>-->
+                        <span class="me-3 text-muted" style="margin-right: 150px">  You are logged in...</span>
                     </form>
                     </p>
 

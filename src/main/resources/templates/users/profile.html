@@ -5,10 +5,11 @@
 
     <meta charset="UTF-8">
     <title th:text="'StackKnot | '+${user.username}"></title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
-<body onload="onload()">
+<body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="container">
@@ -19,7 +20,7 @@
     </div>
     <div class="edit-profile-btn d-flex justify-content-center mb-4">
         <form th:action="@{/profile/{id}/edit (id = ${user.getId()})}" th:method="GET">
-            <button class="btn btn-sm text-white" style="background-color: darkorange" type="submit">Edit Profile
+            <button class="btn btn-lg text-white" style="background-color: darkorange" type="submit">Edit Profile
             </button>
         </form>
     </div>
@@ -32,12 +33,10 @@
     <div class="row justify-content-center">
         <div class="card-body col-xl-4 col-lg-4 col-md-4 col-sm-6" th:each=" set : ${sets}">
             <div class="card">
-                <a class="card-header bg-info" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}" style="color: black"></h3></a>
+                <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}" style="background-color: #7b00ba"><h3 th:text="${set.title}" style="color: white"></h3></a>
                 <div class="card-body">
                     <p>Description: <span class="card-title" th:text="${set.description}"></span></p>
                     <p>Subject: <span class="card-text" th:text="${set.subject.title}"></span></p>
-                    <p>User: <span class="card-text" th:text="${set.user.username}"></span></p>
-
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
 </head>
 <body>
 <!--Thymeleaf template fragment for navbar partial-->
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark NAV" style="background-color: #000000;">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark NAV" style="background-color: #000000; z-index: 10">
     <!--    navbar code-->
 
     <!--    navbar logo-->
@@ -69,34 +69,18 @@
         </ul>
 
 <!--USER PROFILE DROPDOWN-->
-<!--        <div class="action" th:if="${#request.userPrincipal}" style="margin-left: 10px">-->
-<!--            <div class="profile" onclick="menuToggle();">-->
-<!--                <img src="/img/user-icon.svg" width="40px">-->
-<!--            </div>-->
-<!--            <div class="menu">-->
-<!--                <ul>-->
-<!--                    <li style="list-style: none"><a th:href="@{/profile}" th:if="${#request.userPrincipal}">My Profile</a></li>-->
-<!--                    <li style="list-style: none"><a href="#" class="darkButton" onclick="myFunction()" th:if="${#request.userPrincipal}">Darkmode</a></li>-->
-<!--                    <li style="list-style: none"><form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}"><button class="logOut" style="background-color: white"><a>Logout</a></button></form></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <ul class="navbar-nav" th:if="${#request.userPrincipal}">
-            <li class="nav item">
-
-                <form class="form-inline mr-2 mb-1 mb-lg-0" th:method="GET" th:action="@{/profile}">
-
-                    <button class="btn btn-outline-light btn-rounded" type="submit">Profile</button>
-                </form>
-            </li>
-            <li>
-                <form class="form-inline" th:method="POST" th:action="@{/logout}">
-                    <button class="btn btn-outline-light btn-rounded" type="submit">Logout</button>
-                </form>
-            </li>
-        </ul>
-
+        <div class="action" th:if="${#request.userPrincipal}" style="margin-left: 10px">
+            <div class="profile" onclick="menuToggle();">
+                <img src="/img/user-icon.svg" width="40px">
+            </div>
+            <div class="menu MENU" style="background-color: black; opacity: 90%">
+                <ul>
+                    <li style="list-style: none; padding: 4px; font-size: 20px"><a th:href="@{/profile}" th:if="${#request.userPrincipal}">My Profile</a></li>
+                    <li style="list-style: none; padding: 4px; font-size: 20px"><a href="#" class="darkButton" onclick="myFunction()" th:if="${#request.userPrincipal}">Darkmode</a></li>
+                    <li style="list-style: none; padding: 4px; font-size: 20px"><form th:method="POST" th:action="@{/logout}" th:if="${#request.userPrincipal}"><button class="logOut" style="background-color: white"><a>Logout</a></button></form></li>
+                </ul>
+            </div>
+        </div>
 
     </div>
 </nav>
