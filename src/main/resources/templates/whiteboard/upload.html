@@ -4,38 +4,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>White Board Upload</title>
+    <title>StackKnot | White Board Upload</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <!--    CKEDITOR SCRIPT -->
     <script src="https://cdn.ckeditor.com/4.17.2/standard-all/ckeditor.js"></script>
 </head>
-<body onload="onload()">
+<body class="bg-light" onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="container-fluid mt-5">
-    <form th:action="@{/whiteboard/upload}" th:method="post" th:object="${newBoard}">
-        <div class="form-group">
-            <h3>Enter a New Problem</h3>
-            <input type="text" id="question" class="form-control" name="question" th:field="*{question}">
-        </div>
-
-        <div class="form-group">
-            <h3>Upload Solution Images</h3>
-            <label for="js-upload">Javascript Solution</label>
-            <input id="js-upload" type="file" class="form-control-file">
-            <input type="text" th:field="*{jsURL}" id="js-url" style="display:none">
-        </div>
-
-        <div class="form-group">
-            <label for="java-upload">Java Solution</label>
-            <input id="java-upload" type="file" class="form-control-file">
-            <input type="text" th:field="*{javaURL}" id="java-url" style="display:none">
-        </div>
-        <button class="btn btn-success" type="submit">Save</button>
-    </form>
+<div class="container-fluid">
+    <div class="m-5">
+        <form th:action="@{/whiteboard/upload}" th:method="post" th:object="${newBoard}">
+            <div class="form-group">
+                <h3>Enter New Problem</h3>
+                <input type="text" id="question" class="form-control" name="question" th:field="*{question}">
+            </div>
+            <h3 class="mt-4">Upload Solution Images</h3>
+            <div class="row pl-3 mt-3">
+                <div class="form-group">
+                    <label for="js-upload">JavaScript Solution</label>
+                    <input id="js-upload" type="file" class="form-control-file">
+                    <input type="text" th:field="*{jsURL}" id="js-url" style="display:none">
+                </div>
+                <div class="form-group">
+                    <label for="java-upload">Java Solution</label>
+                    <input id="java-upload" type="file" class="form-control-file">
+                    <input type="text" th:field="*{javaURL}" id="java-url" style="display:none">
+                </div>
+            </div>
+            <button class="btn mt-3" type="submit" style="background-color: darkorange; color: white">Save</button>
+        </form>
+    </div>
 </div>
 <!--    Thymeleaf attribute container (th: block) used replace to include header partial named scripts-->
-<th:block th:replace="partials/footer :: styling"></th:block>
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 
 <script>

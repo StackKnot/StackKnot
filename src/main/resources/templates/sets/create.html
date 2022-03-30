@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta charset="UTF-8">
-    <title>Create Set</title>
+    <title>StackKnot | Create Set</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
@@ -15,7 +16,6 @@
 
 <div class="container">
     <div class="mt-5">
-
         <form name="formValidation" id="formValidation" th:action="@{/sets/create}" th:method="POST"
               th:object="${newSet}">
             <div class="form-group">
@@ -37,7 +37,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" class="btn btn-block" style="background-color: darkorange; color: white">Submit</button>
 
         </form>
     </div>

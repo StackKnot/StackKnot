@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta charset="UTF-8">
-    <title th:text="${user.username}"></title>
+    <title th:text="'StackKnot | '+ ${user.username}"></title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
@@ -33,7 +34,7 @@
             </div>
             <input type="hidden" th:field="*{id}">
 
-            <button class="btn btn-primary" type="submit">submit</button>
+            <button class="btn text-white" style="background-color: darkorange" type="submit">submit</button>
         </form>
     </div>
 </div>

@@ -70,6 +70,26 @@ body {
         margin-top: 10px;
     }
 
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .welcome-user h1 {
+        font-size: 31.7px ;
+    }
+
+   .profile-hr {
+       background: linear-gradient(to right, #17a2b8, yellow);
+       height: 1px;
+   }
+
+
     .logo-image {
         position: relative;
         width: 60px;
@@ -180,6 +200,18 @@ body {
     height: 100%;
 }
 
+.user-correct{
+    border: 1px solid darkgreen;
+    background-color: #d0ffbc;
+    text-decoration-color: darkgreen;
+}
+
+.user-wrong {
+    border: 1px solid #b00d0e;
+    background-color: #ffc4b5;
+    text-decoration-color: #b00d0e;
+}
+
 /*VALIDATION ERROR MESSAGES CSS*/
 
 .form-err {
@@ -198,6 +230,22 @@ label.error {
     .profile {
         margin-top: 10px;
     }
+
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .profile-hr {
+        background: linear-gradient(to right, #17a2b8, yellow);
+        height: 1px;
+    }
+
 
     .logo-image {
         position: relative;
@@ -220,6 +268,22 @@ label.error {
     .profile {
         margin-top: 10px;
     }
+
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .profile-hr {
+        background: linear-gradient(to right, #17a2b8, yellow);
+        height: 1px;
+    }
+
 
     .register{
         margin-left: 50px;
@@ -247,6 +311,16 @@ label.error {
         margin-left: 9px;
     }
 
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
+
     .profile {
         margin-top: 140px;
     }
@@ -258,6 +332,13 @@ label.error {
     .NAV {
         height: 59px;
     }
+
+    .profile-hr {
+        background: linear-gradient(to right, #17a2b8, yellow);
+        height: 1px;
+    }
+
+
 
     .register{
         margin-left: 120px;
@@ -302,6 +383,22 @@ label.error {
     .NAV {
         height: 59px;
     }
+
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .profile-hr {
+        background: linear-gradient(to right, #17a2b8, yellow);
+        height: 1px;
+    }
+
 
     .register{
         margin-left: 180px;

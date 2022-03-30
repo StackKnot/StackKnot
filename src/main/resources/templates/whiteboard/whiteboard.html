@@ -4,7 +4,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>White Boarding Problems</title>
+    <title>StackKnot | White Boarding Problems</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" type="text/css" th:href="@{/js/codemirror/lib/codemirror.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/js/codemirror/theme/dracula.css}">
     <!--    Thymeleaf attribute container (th: block) used include for header partial named styling-->
@@ -20,14 +21,19 @@
         <div class="card-body">
             <h4 class="card-title my-3 text-center" th:text="${whiteboard.getQuestion()}"></h4>
             <!-- BUTTONS -->
-            <div class="btn-toolbar justify-content-center m-4" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group mr-5" role="group" aria-label="First group">
-                    <form th:action="@{/whiteboard-next}" th:method="post">
-                        <button type="submit" class="btn btn-outline-secondary">Next Problem</button>
-                    </form>
-                </div>
-                <div class="btn-group ml-5" role="group" aria-label="Second group">
-                    <button class="btn btn-outline-success" onclick="showImage()">Get Solution</button>
+            <div class="container my-5">
+                <div class="btn-toolbar row justify-content-center" role="toolbar"
+                     aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-5" role="group" aria-label="First group">
+                        <form th:action="@{/whiteboard-next}" th:method="post">
+                            <button type="submit" class="btn" style="background-color: darkorange; color: white">Next
+                                Problem
+                            </button>
+                        </form>
+                    </div>
+                    <div class="btn-group mr-4" role="group" aria-label="Second group">
+                        <button class="btn btn-outline-success" onclick="showImage()">Get Solution</button>
+                    </div>
                 </div>
             </div>
             <!-- CODE EDITOR -->
@@ -44,7 +50,7 @@
             <img th:src="${whiteboard.getJavaURL()}" th:target="_blank" alt="Java Solution"/>
         </div>
         <div class="card m-1 p-2 align-middle" id="solutionJS" style="visibility: hidden">
-            <h5 class="card-title mt-2 text-center">Javascript Solution</h5>
+            <h5 class="card-title mt-2 text-center">JavaScript Solution</h5>
             <img th:src="${whiteboard.getJsURL()}" th:target="_blank" alt="JS Solution"/>
         </div>
     </div>
