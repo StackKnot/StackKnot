@@ -9,22 +9,18 @@
 <body onload="onload()">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="container mt-3">
-    <h1 class="pt-4" th:text="${test.grade} + '%'"></h1>
+    <h1 class="pt-4" th:text="${gradedTest.grade} + '%'"></h1>
 
-    <div th:each="testQuestion : ${test.testQuestions}">
+    <div class="py-1" th:each="testQuestion : ${gradedTest.testQuestions}">
         <h4 th:text="${testQuestion.question}"></h4>
-        <br>
-        <div class="row pl-4">
-            <div class="col-6"><p th:text="${testQuestion.answer1}"></p></div>
-            <div class="col-6"><p th:text="${testQuestion.answer2}"></p></div>
+        <div class="py-1">
+            <div class="py1"><p th:text="${testQuestion.answer1}"></p></div>
+            <div class="py-1"><p th:text="${testQuestion.answer2}"></p></div>
+            <div class="py-1"><p th:text="${testQuestion.answer3}"></p></div>
+            <div class="py-1"><p th:text="${testQuestion.answer4}"></p></div>
         </div>
-        <div class="row pl-4">
-            <div class="col-6"><p th:text="${testQuestion.answer3}"></p></div>
-            <div class="col-6"><p th:text="${testQuestion.answer4}"></p></div>
-        </div>
-
-        <div class="user-correct">
-            <h5 class="p-2" th:if="${testQuestion.userChoice.equals(testQuestion.correctAnswer)}"
+        <div class="user-correct" th:if="${testQuestion.userChoice.equals(testQuestion.correctAnswer)}">
+            <h5 class="p-2">
                 th:text="'You answered: ' + ${testQuestion.userChoice}"></h5>
         </div>
         <div class="user-wrong" th:if="${!testQuestion.userChoice.equals(testQuestion.correctAnswer)}">

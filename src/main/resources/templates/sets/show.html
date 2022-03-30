@@ -28,13 +28,11 @@
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Second group">
             <form th:action="@{/cards/create/{setId} (setId = ${singleSet.id})}">
-                <button type="submit" class="btn" style="background-color: darkorange; color: white">Add a card</button>
+                <button th:if="${user.id == singleSet.user.id} or ${user.admin}" type="submit" class="btn" style="background-color: darkorange; color: white">Add a card</button>
             </form>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Third group">
-            <form th:action="@{/tests/{setId} (setId = ${singleSet.id})}">
-                <button type="submit" class="btn" style="background-color: darkorange; color: white">Take a test</button>
-            </form>
+                <a th:href="@{/tests/{setId} (setId = ${singleSet.id})}" th:if="${#request.userPrincipal}"  class="btn" style="background-color: darkorange; color: white">Take a test</a>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Fourth group">
             <form th:action="@{/sets/{id}/edit (id = ${singleSet.getId()})}">

@@ -16,6 +16,23 @@
     color: #00c4ff;
 }
 
+.user-correct{
+    border: 1px solid darkgreen;
+    background-color: #d0ffbc;
+    text-decoration-color: darkgreen;
+}
+
+.user-wrong {
+    border: 1px solid #b00d0e;
+    background-color: #ffc4b5;
+    text-decoration-color: #b00d0e;
+}
+
+.center{
+    margin: auto;
+    width: 40%;
+}
+
 body {
     background-color: white;
     color: black;
@@ -188,17 +205,7 @@ body {
     height: 100%;
 }
 
-.user-correct{
-    border: 1px solid darkgreen;
-    background-color: #d0ffbc;
-    text-decoration-color: darkgreen;
-}
 
-.user-wrong {
-    border: 1px solid #b00d0e;
-    background-color: #ffc4b5;
-    text-decoration-color: #b00d0e;
-}
 
 /*VALIDATION ERROR MESSAGES CSS*/
 

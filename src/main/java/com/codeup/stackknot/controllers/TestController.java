@@ -5,14 +5,21 @@ import com.codeup.stackknot.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class TestController {
@@ -83,8 +90,10 @@ public class TestController {
         double totalCorrect = 0;
 
         for (TestQuestion question : test.getTestQuestions()) {
-
-            String correctAnswer = cardDao.getByQuestionAndSetId(question.getQuestion(), test.getSetId()).getAnswer();
+            System.out.println(question.getQuestion());
+            System.out.println(test.getSetId());
+            String correctAnswer = cardDao.getByQuestionAndSetId(question.getQuestion(),test.getSetId()).getAnswer();
+            System.out.println(correctAnswer);
             question.setCorrectAnswer(correctAnswer);
 
             if (question.getUserChoice().equals(question.getCorrectAnswer())) {
@@ -134,15 +143,16 @@ public class TestController {
     }
 
     @PostMapping("/tests/{setId}")
-    public String gradeTest(@ModelAttribute Test test, Model model) {
-        model.addAttribute("test", test);
-        return "redirect:tests/grade";
+    public String gradeTest(@ModelAttribute Test test, @PathVariable long setId, RedirectAttributes attr, Model model) {
+//        model.addAttribute("test", test);
+        attr.addFlashAttribute("gradedTest", gradeTest(test));
+       return "redirect:/tests/"+setId+"/grade";
     }
 
     @GetMapping("/tests/{setId}/grade")
-    public String showgGradedTest(@ModelAttribute Test test, Model model) {
-        model.addAttribute("test", gradeTest(test));
-        return "tests/grade";
+    public String showGradedTest(HttpServletRequest request, Model model) {
+//        Map<String,?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
+            return "tests/grade";
     }
 
 
