@@ -66,6 +66,15 @@ body {
 /* Very small devices (phones and pocket devices, 300 and up) */
 @media screen and (max-width:576px) { /* ... */
 
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
 
     /*.profile {*/
     /*    margin-top: 10px;*/
@@ -215,6 +224,16 @@ label.error {
 /* Small devices (phones and pocket devices, 576 and up) */
 @media screen and (min-width:576px) { /* ... */
 
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
+
 
     /*.profile {*/
     /*    margin-top: 10px;*/
@@ -239,6 +258,16 @@ label.error {
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width:768px) { /* ... */
+
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
 
 
     /*.profile {*/
@@ -271,6 +300,16 @@ label.error {
 
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width:992px) { /* ... */
+
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
 
 
     /*.profile {*/
@@ -319,6 +358,16 @@ label.error {
     /*.NAV {*/
     /*    height: 59px;*/
     /*}*/
+
+    .login-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .signup-image {
+        max-width: 100%;
+        height: auto;
+    }
 
     .profile-hr {
         background: linear-gradient(to right, #17a2b8, yellow);
