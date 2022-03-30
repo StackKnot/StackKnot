@@ -45,7 +45,7 @@
                 </button>
             </form>
         </div>
-        <div class="btn-group mr-2 " role="group" aria-label="Fifth group">
+        <div class="btn-group mr-2" role="group" aria-label="Fifth group">
             <form th:action="@{/sets/{id}/delete (id = ${singleSet.getId()})}">
             <button class="btn btn-outline-danger" type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete Set</button>
         </div>
@@ -70,7 +70,7 @@
 
                 <!-- EDIT AND DELETE BUTTONS ONLY SHOWN IF THE USER CREATED OR USER IS ADMIN -->
                 <div sec:authorize="isAuthenticated()">
-                        <div class="btn-group mr-2" role="group" aria-label="Second group">
+                        <div class="btn-group mr-1" role="group" aria-label="Second group">
                             <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
                                 <button class="btn" type="submit" style="background-color: darkorange; color: white"
                                         th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit Card
