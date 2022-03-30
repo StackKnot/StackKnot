@@ -24,7 +24,7 @@
     <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <form name="likeform" method="post" th:action="@{/sets/{id}/like (id = ${singleSet.id})}">
-                <button type="submit" class="btn" style="background-color: darkorange; color: white">Like</button>
+                <button type="submit" class="btn mb-2" style="background-color: darkorange; color: white">Like</button>
             </form>
         </div>
         <div class="btn-group mr-2" role="group" aria-label="Second group">
@@ -45,7 +45,7 @@
                 </button>
             </form>
         </div>
-        <div class="btn-group mr-2" role="group" aria-label="Fifth group">
+        <div class="btn-group mr-2 " role="group" aria-label="Fifth group">
             <form th:action="@{/sets/{id}/delete (id = ${singleSet.getId()})}">
             <button class="btn btn-outline-danger" type="submit" th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete Set</button>
         </div>
@@ -56,7 +56,7 @@
             <div class="card-body">
                 <h5 class="card-title" th:text="${card.question}"></h5>
                 <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    <button class="btn btn-group mr-2 btn-info" type="button" role="group" aria-label="First Group" data-toggle="collapse"
+                    <button class="btn btn-group mr-2 mb-2 btn-info" type="button" role="group" aria-label="First Group" data-toggle="collapse"
                             th:data-target="'#collapse'+${card.id}"
                             aria-expanded="false" th:attr="aria-controls= '#collapse'+${card.id}">
                         Show Answer
