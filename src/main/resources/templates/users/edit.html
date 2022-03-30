@@ -6,29 +6,32 @@
 
     <meta charset="UTF-8">
     <title th:text="'StackKnot | '+ ${user.username}"></title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <th:block th:include="partials/bootstrap :: styling"></th:block>
     <th:block th:include="partials/header :: styling"></th:block>
 </head>
-<body onload="onload()">
+<body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="d-flex">
-    <div style="padding-left: 25px; margin-top: 25px; margin-bottom: 100px">
+<div class="col-12 col-lg-7 pr-lg-0">
+    <img class="signup-image" src="/img/registerImage.jpg" alt="register">
+</div>
+    <div class="col-12 mt-4 col-lg-5 pl-lg-0 mt-lg-0 d-flex justify-content-center align-items-center">
         <form th:action="@{/profile/{id}/edit (id = ${user.getId()})}" method="POST" th:object="${user}">
 
             <div class="form-group">
-                <label for="username">username</label>
+                <label for="username">Username:</label>
                 <input id="username" class="form-control" th:field="*{username}">
             </div>
             <div class="form-group">
-                <label for="firstName">first name</label>
+                <label for="firstName">First Name:</label>
                 <input id="firstName" class="form-control" th:field="*{firstName}">
             </div>
             <div class="form-group">
-                <label for="lastName">last name</label>
+                <label for="lastName">Last Name:</label>
                 <input id="lastName" class="form-control" th:field="*{lastName}">
             </div>
             <div class="form-group">
-                <label for="email">email</label>
+                <label for="email">Email:</label>
                 <input id="email" class="form-control" th:field="*{email}"/>
             </div>
             <input type="hidden" th:field="*{id}">
