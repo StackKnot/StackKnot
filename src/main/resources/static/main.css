@@ -66,6 +66,10 @@ body {
 /* Very small devices (phones and pocket devices, 300 and up) */
 @media screen and (max-width:576px) { /* ... */
 
+    .profile {
+        margin-top: 10px;
+    }
+
     .login-image {
         max-width: 100%;
         height: auto;
@@ -75,10 +79,6 @@ body {
         max-width: 100%;
         height: auto;
     }
-
-    /*.profile {*/
-    /*    margin-top: 10px;*/
-    /*}*/
 
     .welcome-user h1 {
         font-size: 31.7px ;
@@ -96,9 +96,12 @@ body {
         max-height: 70px;
     }
 
+    #CARDTEXT {
+        font-size: 6px;
+    }
 
     #CARDTEXTTITLE {
-        font-size: 15px;
+        font-size: 10px;
     }
 }
 
@@ -224,6 +227,10 @@ label.error {
 /* Small devices (phones and pocket devices, 576 and up) */
 @media screen and (min-width:576px) { /* ... */
 
+    .profile {
+        margin-top: 10px;
+    }
+
     .login-image {
         max-width: 100%;
         height: auto;
@@ -233,11 +240,6 @@ label.error {
         max-width: 100%;
         height: auto;
     }
-
-
-    /*.profile {*/
-    /*    margin-top: 10px;*/
-    /*}*/
 
     .profile-hr {
         background: linear-gradient(to right, #17a2b8, yellow);
@@ -251,6 +253,10 @@ label.error {
         max-height: 70px;
     }
 
+    #CARDTEXT{
+        font-size: 10px;
+    }
+
     #CARDTEXTTITLE {
         font-size: 15px;
     }
@@ -258,6 +264,10 @@ label.error {
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width:768px) { /* ... */
+
+    .profile {
+        margin-top: 10px;
+    }
 
     .login-image {
         max-width: 100%;
@@ -268,11 +278,6 @@ label.error {
         max-width: 100%;
         height: auto;
     }
-
-
-    /*.profile {*/
-    /*    margin-top: 10px;*/
-    /*}*/
 
     .profile-hr {
         background: linear-gradient(to right, #17a2b8, yellow);
@@ -301,6 +306,11 @@ label.error {
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width:992px) { /* ... */
 
+    .hpTopText {
+        margin-top: 13px;
+        margin-left: 9px;
+    }
+
     .login-image {
         max-width: 100%;
         height: auto;
@@ -311,14 +321,17 @@ label.error {
         height: auto;
     }
 
+    .profile {
+        margin-top: 140px;
+    }
 
-    /*.profile {*/
-    /*    margin-top: 97px;*/
-    /*}*/
+    .MENU {
+        margin-left: -75px;
+    }
 
-    /*.NAV {*/
-    /*    height: 59px;*/
-    /*}*/
+    .NAV {
+        height: 59px;
+    }
 
     .profile-hr {
         background: linear-gradient(to right, #17a2b8, yellow);
@@ -338,11 +351,11 @@ label.error {
     }
 
     #CARDTEXT {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     #CARDTEXTTITLE {
-        font-size: 30px;
+        font-size: 25px;
     }
 }
 
@@ -350,14 +363,26 @@ label.error {
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width:1200px) { /* ... */
 
+    .STEPS {
+        margin-top: -250px;
+    }
 
-    /*.profile {*/
-    /*    margin-top: 97px;*/
-    /*}*/
+    .hpTopText {
+        margin-top: 13px;
+        margin-left: 9px;
+    }
 
-    /*.NAV {*/
-    /*    height: 59px;*/
-    /*}*/
+    .profile {
+        margin-top: 140px;
+    }
+
+    .MENU {
+        margin-left: -75px;
+    }
+
+    .NAV {
+        height: 59px;
+    }
 
     .login-image {
         max-width: 100%;
