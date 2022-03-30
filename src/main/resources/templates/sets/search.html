@@ -17,7 +17,7 @@
 <div class="row ml-2 mr-2">
     <div class="card-body col-xl-4 col-lg-4 col-md-4 col-sm-6" th:each=" set : ${searchResult}">
         <div class="card">
-            <a class="card-header bg-info" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.title}" style="color: black"></h3></a>
+            <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}" style="background-color: #7b00ba; color: white"><h3 th:text="${set.title}"></h3></a>
             <div class="card-body">
                 <p>Description: <span class="card-title" th:text="${set.description}"></span></p>
                 <p>Subject: <span class="card-text" th:text="${set.subject.title}"></span></p>
