@@ -66,9 +66,9 @@ body {
 /* Very small devices (phones and pocket devices, 300 and up) */
 @media screen and (max-width:576px) { /* ... */
 
-    /*.profile {*/
-    /*    margin-top: 10px;*/
-    /*}*/
+    .profile {
+        margin-top: 10px;
+    }
 
     .logo-image {
         position: relative;
@@ -76,9 +76,12 @@ body {
         max-height: 70px;
     }
 
+    #CARDTEXT {
+        font-size: 6px;
+    }
 
     #CARDTEXTTITLE {
-        font-size: 15px;
+        font-size: 10px;
     }
 }
 
@@ -192,14 +195,18 @@ label.error {
 /* Small devices (phones and pocket devices, 576 and up) */
 @media screen and (min-width:576px) { /* ... */
 
-    /*.profile {*/
-    /*    margin-top: 10px;*/
-    /*}*/
+    .profile {
+        margin-top: 10px;
+    }
 
     .logo-image {
         position: relative;
         width: 60px;
         max-height: 70px;
+    }
+
+    #CARDTEXT{
+        font-size: 10px;
     }
 
     #CARDTEXTTITLE {
@@ -210,9 +217,9 @@ label.error {
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width:768px) { /* ... */
 
-    /*.profile {*/
-    /*    margin-top: 10px;*/
-    /*}*/
+    .profile {
+        margin-top: 10px;
+    }
 
     .register{
         margin-left: 50px;
@@ -235,13 +242,22 @@ label.error {
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width:992px) { /* ... */
 
-    /*.profile {*/
-    /*    margin-top: 97px;*/
-    /*}*/
+    .hpTopText {
+        margin-top: 13px;
+        margin-left: 9px;
+    }
 
-    /*.NAV {*/
-    /*    height: 59px;*/
-    /*}*/
+    .profile {
+        margin-top: 140px;
+    }
+
+    .MENU {
+        margin-left: -75px;
+    }
+
+    .NAV {
+        height: 59px;
+    }
 
     .register{
         margin-left: 120px;
@@ -254,11 +270,11 @@ label.error {
     }
 
     #CARDTEXT {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     #CARDTEXTTITLE {
-        font-size: 30px;
+        font-size: 25px;
     }
 }
 
@@ -266,13 +282,26 @@ label.error {
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width:1200px) { /* ... */
 
-    /*.profile {*/
-    /*    margin-top: 97px;*/
-    /*}*/
+    .STEPS {
+        margin-top: -250px;
+    }
 
-    /*.NAV {*/
-    /*    height: 59px;*/
-    /*}*/
+    .hpTopText {
+        margin-top: 13px;
+        margin-left: 9px;
+    }
+
+    .profile {
+        margin-top: 140px;
+    }
+
+    .MENU {
+        margin-left: -75px;
+    }
+
+    .NAV {
+        height: 59px;
+    }
 
     .register{
         margin-left: 180px;
