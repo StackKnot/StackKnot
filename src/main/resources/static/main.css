@@ -330,10 +330,11 @@ label.error {
 
     .profile {
         margin-top: 140px;
+        margin-left: 125px;
     }
 
     .MENU {
-        margin-left: -75px;
+        margin-left: 50px;
     }
 
     .NAV {
@@ -344,8 +345,6 @@ label.error {
         background: linear-gradient(to right, #17a2b8, yellow);
         height: 1px;
     }
-
-
 
     .register{
         margin-left: 120px;
@@ -381,10 +380,11 @@ label.error {
 
     .profile {
         margin-top: 140px;
+        margin-left: 125px;
     }
 
     .MENU {
-        margin-left: -75px;
+        margin-left: 50px;
     }
 
     .NAV {
