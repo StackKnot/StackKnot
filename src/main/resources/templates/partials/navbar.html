@@ -73,7 +73,9 @@
             <div class="profile" onclick="menuToggle();">
                 <img src="/img/user-icon.svg" width="40px">
             </div>
-            <div class="menu MENU" style="background-color: black; margin-right: 25px">
+
+            <div class="menu MENU" style="background-color: black; opacity: 90%">
+
                 <ul>
                     <li style="list-style: none; padding: 4px; font-size: 20px"><a th:href="@{/profile}" th:if="${#request.userPrincipal}">My Profile</a></li>
                     <li style="list-style: none; padding: 4px; font-size: 20px"><a href="#" class="darkButton" onclick="myFunction()" th:if="${#request.userPrincipal}">Darkmode</a></li>
