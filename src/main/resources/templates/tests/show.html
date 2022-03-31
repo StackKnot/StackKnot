@@ -21,7 +21,7 @@
 
                 <div class="py-1">
                     <div class="form-check py-1">
-                        <input class="form-check-input mr-1" type="radio"
+                        <input required class="form-check-input mr-1" type="radio"
                                th:field="*{testQuestions[__${i.index}__].userChoice}"
                                th:name="${testquestion.question}"
                                th:value="${testquestion.answer1}" th:id="${testquestion.answer1}">
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-check py-1">
-                        <input class="form-check-input mr-1" type="radio"
+                        <input  class="form-check-input mr-1" type="radio"
                                th:field="*{testQuestions[__${i.index}__].userChoice}"
                                th:name="${testquestion.question}"
                                th:value="${testquestion.answer2}" th:id="${testquestion.answer2}">
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <button class="btn text-white" style="background-color: darkorange" type="submit">Submit Your Answers</button>
+            <button class="mb-3 btn text-white" style="background-color: darkorange" type="submit">Submit Your Answers</button>
 
 
         </form>
