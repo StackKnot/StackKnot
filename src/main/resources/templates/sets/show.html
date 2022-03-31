@@ -65,8 +65,8 @@
         <div class="card m-3" th:each="card : ${cards}">
             <div class="card-body">
                 <h5 class="card-title" th:text="${card.question}"></h5>
-                <div class="m-3 btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    <button class="btn btn-group mr-2 mb-2 btn-info" type="button" role="group" aria-label="First Group"
+                <div class="m-3 btn-toolbar d-flex flex-column" role="toolbar" aria-label="Toolbar with button groups">
+                    <button class="btn align-self-start btn-group mr-2 mb-2 btn-info" type="button" role="group" aria-label="First Group"
                             data-toggle="collapse"
                             th:data-target="'#collapse'+${card.id}"
                             aria-expanded="false" th:attr="aria-controls= '#collapse'+${card.id}">
