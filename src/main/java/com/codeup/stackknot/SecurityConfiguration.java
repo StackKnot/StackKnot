@@ -49,7 +49,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/",
                         "/sets", "/sets/{id: [\\d+]}",
                         "/subjects", "/subjects/{id: [\\d+]}", "/subjects/{title}",
-                        "/cards/create/{id: [\\d+]}",
                         "/about-us", "/contact-form", "/search", "/sign-up",
                         "/whiteboard", "/whiteboardStart", "/whiteboard/{id: [\\d+]}", "/whiteboard-next"
                         )
@@ -60,7 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/sets/create",
                         "/sets/{id: [\\d+]}/edit", "/sets/{id: [\\d+]}/delete",
-                        "/cards/{id: [\\d+]}/edit", "/cards/{id}/delete",
+                        "/cards/{id: [\\d+]}/edit", "/cards/{id}/delete","/cards/create/{id: [\\d+]}",
                         "/tests/{id: [\\d+]}", "/tests/{id: [\\d+]}/grade",
                         "/profile/{username}", "/profile/{id: [\\d+]}/edit",
                         "/whiteboard/upload", "/whiteboard/whiteboard-upload"

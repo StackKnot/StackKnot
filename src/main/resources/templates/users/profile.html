@@ -50,18 +50,16 @@
     <div class="row justify-content-center">
         <div class="card-body col-xl-4 col-lg-4 col-md-4 col-sm-6" th:each=" set : ${setsStudied}">
             <div class="card">
-                <a class="card-header bg-info" th:href="@{/sets/{id} (id = ${set.id})}"><h3 th:text="${set.set.title}" style="color: black"></h3></a>
+                <a class="card-header" th:href="@{/sets/{id} (id = ${set.id})}" style="background-color: #7b00ba; color: white"><h3 th:text="${set.set.title}"></h3></a>
                 <div class="card-body">
                     <p>Description: <span class="card-title" th:text="${set.set.description}"></span></p>
                     <p>Subject: <span class="card-text" th:text="${set.set.subject.title}"></span></p>
                     <p>Progress: <span class="card-text" th:text="${set.progression.status}"></span></p>
                     <p>User: <span class="card-text" th:text="${set.set.user.username}"></span></p>
-
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>

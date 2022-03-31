@@ -67,6 +67,10 @@ public class SetController {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
             User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             model.addAttribute("user", loggedInUser);
+        } else {
+            User guestuser = new User();
+            user.setId(0);
+            model.addAttribute("user", guestuser);
         }
         return "sets/show";
     }
@@ -82,6 +86,7 @@ public class SetController {
     @GetMapping("/sets/{id}/edit")
     public String editSetFrom(@PathVariable long id, Model model, @ModelAttribute User user) {
         model.addAttribute("set", setDao.getById(id));
+        model.addAttribute("subjects", subjectDao.findAll());
         return "sets/edit";
 
     }
