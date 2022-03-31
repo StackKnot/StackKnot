@@ -66,13 +66,31 @@
             <div class="card-body">
                 <h5 class="card-title" th:text="${card.question}"></h5>
                 <div class="m-3 btn-toolbar d-flex flex-column" role="toolbar" aria-label="Toolbar with button groups">
-                    <button class="btn align-self-start btn-group mr-2 mb-2 btn-info" type="button" role="group" aria-label="First Group"
-                            data-toggle="collapse"
-                            th:data-target="'#collapse'+${card.id}"
-                            aria-expanded="false" th:attr="aria-controls= '#collapse'+${card.id}">
-                        Show Answer
-                    </button>
-
+                    <div class="d-flex align-self-start">
+                        <button class="btn btn-group mr-2 mb-2 btn-info" type="button" role="group"
+                                aria-label="First Group"
+                                data-toggle="collapse"
+                                th:data-target="'#collapse'+${card.id}"
+                                aria-expanded="false" th:attr="aria-controls= '#collapse'+${card.id}">
+                            Show Answer
+                        </button>
+                        <div class="d-flex" sec:authorize="isAuthenticated()">
+                            <div class="btn-group mr-2" role="group" aria-label="Second group">
+                                <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
+                                    <button class="btn" type="submit" style="background-color: darkorange; color: white"
+                                            th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit Card
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="Third group">
+                                <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
+                                    <button class="btn btn-outline-danger" type="submit"
+                                            th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete Card
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="collapse m-2" th:id="'collapse'+${card.id}">
                         <div class="card card-body">
                             <h5 th:text="${card.answer}"></h5>
@@ -80,22 +98,7 @@
                     </div>
 
                     <!-- EDIT AND DELETE BUTTONS ONLY SHOWN IF THE USER CREATED OR USER IS ADMIN -->
-                    <div sec:authorize="isAuthenticated()">
-                        <div class="btn-group mr-1" role="group" aria-label="Second group">
-                            <form th:action="@{/cards/{id}/edit (id = ${card.getId()})}">
-                                <button class="btn" type="submit" style="background-color: darkorange; color: white"
-                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Edit Card
-                                </button>
-                            </form>
-                        </div>
-                        <div class="btn-group mr-2" role="group" aria-label="Third group">
-                            <form th:action="@{/cards/{id}/delete (id = ${card.getId()})}">
-                                <button class="btn btn-outline-danger" type="submit"
-                                        th:if="${user.id == singleSet.user.id} or ${user.admin}">Delete Card
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
