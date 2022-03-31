@@ -77,114 +77,13 @@
         </div>
     </div>
 
-    <br>
-    <!--        <div class="col-12 col-md-4">-->
-    <!--            <ul class="d-flex flex-row flex-md-column justify-content-between list-unstyled">-->
-    <!--                <li>Junior Dev</li>-->
-    <!--                <li>Advanced Dev</li>-->
-    <!--                <li>Intermediate Dev</li>-->
-    <!--            </ul>-->
-    <!--        </div>-->
-
-    <!--        CARDS-->
-    <!--        CARD1-->
-    <div class="container-fluid mt-4">
-        <!--        <div class="row" style="border-radius: 12px; border-color: lightgrey; border-width: 10px">-->
-        <div class="row">
-            <div class="col-6 align-self-center d-flex justify-content-end"><img src="/img/textEdit1.png" alt="register"
-                                                                                 height="300px"></div>
-            <div class="col-6">
-                <div class="card-title">
-                    <h2>Junior dev</h2>
-                </div>
-                <div class="card-body">
-                    <p>Excellent for junior developers</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">Unlimited open source repositories</li>
-                        <li class="feature-item">Review any solution</li>
-                        <li class="feature-item">Expert help 24 hours</li>
-                    </ul>
-                    <p class="price"><strong>Free</strong></p>
-                </div>
-                <!--                <div class="card-footer">-->
-                <div>
-                    <a href="/login" class="btn" th:if="!${#request.userPrincipal}"
-                       style="background-color: darkorange; color: white">Choose Junior</a>
-                    <form class="form-inline" th:method="GET" th:action="@{/profile}"
-                          th:if="${#request.userPrincipal}">
-                        <button class="btn" type="submit" style="background-color: darkorange; color: white">Profile
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <hr>
-
-        <!--                    CARD2-->
-        <!--        <div class="row" style="border-radius: 12px; border-color: lightgrey; border-width: 10px">-->
-        <div class="row">
-            <div class="col-6 align-self-center d-flex justify-content-end"><img src="/img/expertImage.png" alt="register" height="300px"></div>
-            <div class="col-6">
-                <div class="card-title">
-                    <h2>Advanced dev</h2>
-                </div>
-                <div class="card-body">
-                    <p>Excellent for big companies</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">Unlimited open source repositories</li>
-                        <li class="feature-item">8 free private repositories</li>
-                        <li class="feature-item">Support for project planning tools</li>
-                        <li class="feature-item">No limit on the size of a team!</li>
-                    </ul>
-                    <p class="price"><strong>Free</strong></p>
-                </div>
-                <div>
-                    <a href="/login" class="btn" th:if="!${#request.userPrincipal}"
-                       style="background-color: darkorange; color: white">Choose
-                        Advanced</a>
-                    <form class="form-inline" th:method="GET" th:action="@{/profile}"
-                          th:if="${#request.userPrincipal}">
-                        <button class="btn" type="submit" style="background-color: darkorange; color: white">Profile
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <hr>
-
-        <!--                    CARD3-->
-        <div class="row">
-            <div class="col-6 align-self-center d-flex justify-content-end" style=""><img src="/img/cpu1.png" alt="register" height="250px">
-            </div>
-            <div class="col-6">
-                <div class="card-title">
-                    <h2>Intermediate dev</h2>
-                </div>
-                <div class="card-body">
-                    <p>Excellent for companies with small teams</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">Unlimited additions</li>
-                        <li class="feature-item">Support for project planning tools</li>
-                        <li class="feature-item">Teams up to 6 developers</li>
-                    </ul>
-                    <p class="price"><strong>Free</strong></p>
-                </div>
-                <div>
-                    <a href="/login" class="btn" th:if="!${#request.userPrincipal}"
-                       style="background-color: darkorange; color: white">Choose
-                        Intermediate</a>
-                    <form class="form-inline" th:method="GET" th:action="@{/profile}"
-                          th:if="${#request.userPrincipal}">
-                        <button class="btn" type="submit" style="background-color: darkorange; color: white">Profile
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
+      <div class="container-fluid mt-5 mb-5">
+          <div class="row">
+            <div class="col-4 align-self-center d-flex justify-content-center"><img src="/img/textEdit1.png" alt="register" height="300px"></div>
+            <div class="col-4 align-self-center d-flex justify-content-center"><img src="/img/expertImage.png" alt="register" height="300px"></div>
+            <div class="col-4 align-self-center d-flex justify-content-center"><img src="/img/cpu1.png" alt="register" height="300px"></div>
+          </div>
+      </div>
 
     <div class="container-fluid mt-5">
         <div class="row STEPS">
